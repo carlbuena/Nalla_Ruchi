@@ -34,41 +34,7 @@ public class SigninActivity  extends AsyncTask<String,Void,String>{
 
    @Override
     protected String doInBackground(String... arg0) {
-        if(byGetOrPost == 0){ //means by Get Method
 
-            try{
-                String username = (String)arg0[0];
-                String password = (String)arg0[1];
-                String link = "http://myphpmysqlweb.hostei.com/login.php?username="+username+"& password="+password;
-
-                URL url = new URL(link);
-                String data  = URLEncoder.encode("username", "UTF-8")
-                        + "=" + URLEncoder.encode(username, "UTF-8");
-                data += "&" + URLEncoder.encode("password", "UTF-8")
-                        + "=" + URLEncoder.encode(password, "UTF-8");
-                URLConnection conn = url.openConnection();
-
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                wr.write( data );
-                BufferedReader reader = new BufferedReader(new
-                        InputStreamReader(conn.getInputStream()));
-
-                StringBuffer sb = new StringBuffer("");
-                String line="";
-
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                    break;
-                }
-                reader.close();
-                return sb.toString();
-            }
-
-            catch(Exception e){
-                return new String("Exception: " + e.getMessage());
-            }
-        }
-        else{
             try{
                 String username = (String)arg0[0];
                 String password = (String)arg0[1];
@@ -103,7 +69,7 @@ public class SigninActivity  extends AsyncTask<String,Void,String>{
                 return new String("Exception: " + e.getMessage());
             }
         }
-    }
+
 
     @Override
     protected void onPostExecute(String result){
