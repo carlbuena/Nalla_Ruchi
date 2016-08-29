@@ -29,7 +29,7 @@ public class Config {
     public static final String TAG_PRICE = "Price";
     public static final String TAG_DES = "Description";
     public static final String TAG_ETH = "Ethnicity";
-    public static final String TAG_FOOD_TYPE = "Type";
+    public static final String TAG_TYPE = "Type";
     public static final String TAG_MENU_ID = "Menu_ID";
 
     //employee id to pass with intent

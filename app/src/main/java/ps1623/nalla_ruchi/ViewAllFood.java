@@ -102,8 +102,8 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(this, ViewFood.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
-        String empId = map.get(Config.TAG_ID).toString();
-        intent.putExtra(Config.FOOD_ID,Food_Id);
+        String foodid = map.get(Config.TAG_ID).toString();
+        intent.putExtra(Config.FOOD_ID,foodid);
         startActivity(intent);
     }
 }

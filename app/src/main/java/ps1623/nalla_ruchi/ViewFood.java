@@ -25,10 +25,13 @@ package ps1623.nalla_ruchi;
 
 public class ViewFood extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText editTextId;
-    private EditText editTextName;
-    private EditText editTextDesg;
-    private EditText editTextSalary;
+    private EditText editTextFood_Id;
+    private EditText editTextFood_Name;
+    private EditText editTextPrice;
+    private EditText editTextDescription;
+    private EditText editTextEthnicity;
+    private EditText editTextType;
+    private EditText editTextMenu_ID;
 
     private Button buttonUpdate;
     private Button buttonDelete;
@@ -44,10 +47,13 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
 
         id = intent.getStringExtra(Config.FOOD_ID);
 
-        editTextId = (EditText) findViewById(R.id.editTextId);
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextDesg = (EditText) findViewById(R.id.editTextDesg);
-        editTextSalary = (EditText) findViewById(R.id.editTextSalary);
+        editTextFood_Id = (EditText) findViewById(R.id.editTextFood_Id);
+        editTextFood_Name = (EditText) findViewById(R.id.editTextFood_Name);
+        editTextPrice = (EditText) findViewById(R.id.editTextPrice);
+        editTextDescription = (EditText) findViewById(R.id.editTextDescription);
+        editTextEthnicity = (EditText) findViewById(R.id.editTextEthnicity);
+        editTextType = (EditText) findViewById(R.id.editTextType);
+        editTextMenu_ID = (EditText) findViewById(R.id.editTextMenu_ID);
 
         buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
         buttonDelete = (Button) findViewById(R.id.buttonDelete);
@@ -55,13 +61,13 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
         buttonUpdate.setOnClickListener(this);
         buttonDelete.setOnClickListener(this);
 
-        editTextId.setText(id);
+        editTextFood_Id.setText(id);
 
-        getEmployee();
+        getFood();
     }
 
-    private void getEmployee(){
-        class GetEmployee extends AsyncTask<Void,Void,String>{
+    private void getFood(){
+        class GetFood extends AsyncTask<Void,Void,String>{
             ProgressDialog loading;
             @Override
             protected void onPreExecute() {
@@ -73,32 +79,40 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                showEmployee(s);
+                showFood(s);
             }
 
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_GET_EMP,id);
+                String s = rh.sendGetRequestParam(Config.URL_GET_FOOD,id);
                 return s;
             }
         }
-        GetEmployee ge = new GetEmployee();
+        GetFood ge = new GetFood();
         ge.execute();
     }
 
-    private void showEmployee(String json){
+    private void showFood(String json){
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
             JSONObject c = result.getJSONObject(0);
+            String id = c.getString(Config.TAG_ID);
             String name = c.getString(Config.TAG_NAME);
-            String desg = c.getString(Config.TAG_DESG);
-            String sal = c.getString(Config.TAG_SAL);
+            String price = c.getString(Config.TAG_PRICE);
+            String des = c.getString(Config.TAG_DES);
+            String eth = c.getString(Config.TAG_ETH);
+            String type = c.getString(Config.TAG_TYPE);
+            String menu_id = c.getString(Config.TAG_MENU_ID);
 
-            editTextName.setText(name);
-            editTextDesg.setText(desg);
-            editTextSalary.setText(sal);
+            editTextFood_Id.setText(id);
+            editTextFood_Name.setText(name);
+            editTextPrice.setText(price);
+            editTextDescription.setText(des);
+            editTextEthnicity.setText(eth);
+            editTextType.setText(type);
+            editTextMenu_ID.setText(menu_id);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -106,12 +120,16 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-    private void updateEmployee(){
-        final String name = editTextName.getText().toString().trim();
-        final String desg = editTextDesg.getText().toString().trim();
-        final String salary = editTextSalary.getText().toString().trim();
+    private void updateFood(){
+        final String Food_ID = editTextFood_Id.getText().toString().trim();
+        final String Food_Name = editTextFood_Name.getText().toString().trim();
+        final String Price = editTextPrice.getText().toString().trim();
+        final String Description = editTextDescription.getText().toString().trim();
+        final String Ethnicity = editTextEthnicity.getText().toString().trim();
+        final String Type = editTextType.getText().toString().trim();
+        final String Menu_ID = editTextMenu_ID.getText().toString().trim();
 
-        class UpdateEmployee extends AsyncTask<Void,Void,String>{
+        class UpdateFood extends AsyncTask<Void,Void,String>{
             ProgressDialog loading;
             @Override
             protected void onPreExecute() {
@@ -145,12 +163,12 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             }
         }
 
-        UpdateEmployee ue = new UpdateEmployee();
+        UpdateFood ue = new UpdateFood();
         ue.execute();
     }
 
-    private void deleteEmployee(){
-        class DeleteEmployee extends AsyncTask<Void,Void,String> {
+    private void deleteFood(){
+        class DeleteFood extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
 
             @Override
@@ -174,19 +192,19 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             }
         }
 
-        DeleteEmployee de = new DeleteEmployee();
+        DeleteFood de = new DeleteFood();
         de.execute();
     }
 
-    private void confirmDeleteEmployee(){
+    private void confirmDeleteFood(){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Are you sure you want to delete this employee?");
+        alertDialogBuilder.setMessage("Are you sure you want to delete this food?");
 
         alertDialogBuilder.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        deleteEmployee();
+                        deleteFood();
                         startActivity(new Intent(ViewFood.this,ViewAllFood.class));
                     }
                 });
@@ -206,11 +224,11 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         if(v == buttonUpdate){
-            updateEmployee();
+            updateFood();
         }
 
         if(v == buttonDelete){
-            confirmDeleteEmployee();
+            confirmDeleteFood();
         }
     }
 }

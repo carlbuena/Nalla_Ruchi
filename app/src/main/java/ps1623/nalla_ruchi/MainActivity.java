@@ -17,9 +17,13 @@ package ps1623.nalla_ruchi;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     //Defining views
-    private EditText editTextName;
-    private EditText editTextDesg;
-    private EditText editTextSal;
+    private EditText editTextFood_Id;
+    private EditText editTextFood_Name;
+    private EditText editTextPrice;
+    private EditText editTextDescription;
+    private EditText editTextEthnicity;
+    private EditText editTextType;
+    private EditText editTextMenu_ID;
 
     private Button buttonAdd;
     private Button buttonView;
@@ -30,9 +34,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         //Initializing views
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextDesg = (EditText) findViewById(R.id.editTextDesg);
-        editTextSal = (EditText) findViewById(R.id.editTextSalary);
+        editTextFood_Id = (EditText) findViewById(R.id.editTextFood_Id);
+        editTextFood_Name = (EditText) findViewById(R.id.editTextFood_Name);
+        editTextPrice = (EditText) findViewById(R.id.editTextPrice);
+        editTextDescription = (EditText) findViewById(R.id.editTextDescription);
+        editTextEthnicity = (EditText) findViewById(R.id.editTextEthnicity);
+        editTextType = (EditText) findViewById(R.id.editTextType);
+        editTextMenu_ID = (EditText) findViewById(R.id.editTextMenu_ID);
 
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
         buttonView = (Button) findViewById(R.id.buttonView);
@@ -43,14 +51,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    //Adding an employee
-    private void addEmployee(){
+    //Adding an food
+    private void addFood(){
 
-        final String name = editTextName.getText().toString().trim();
-        final String desg = editTextDesg.getText().toString().trim();
-        final String sal = editTextSal.getText().toString().trim();
+        final String Food_ID = editTextFood_Id.getText().toString().trim();
+        final String Food_Name = editTextFood_Name.getText().toString().trim();
+        final String Price = editTextPrice.getText().toString().trim();
+        final String Description = editTextDescription.getText().toString().trim();
+        final String Ethnicity = editTextEthnicity.getText().toString().trim();
+        final String Type = editTextType.getText().toString().trim();
+        final String Menu_ID = editTextMenu_ID.getText().toString().trim();
 
-        class AddEmployee extends AsyncTask<Void,Void,String>{
+        class AddFood extends AsyncTask<Void,Void,String>{
 
             ProgressDialog loading;
 
@@ -84,14 +96,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
 
-        AddEmployee ae = new AddEmployee();
+        AddFood ae = new AddFood();
         ae.execute();
     }
 
     @Override
     public void onClick(View v) {
         if(v == buttonAdd){
-            addEmployee();
+            addFood();
         }
 
         if(v == buttonView){
