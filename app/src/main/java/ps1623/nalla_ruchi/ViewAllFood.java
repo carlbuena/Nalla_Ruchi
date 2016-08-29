@@ -39,7 +39,7 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
         getJSON();
     }
 
-    private void showEmployee(){
+    private void showFood(){
         JSONObject jsonObject = null;
         ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String, String>>();
         try {
@@ -50,11 +50,19 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
                 JSONObject jo = result.getJSONObject(i);
                 String id = jo.getString(Config.TAG_ID);
                 String name = jo.getString(Config.TAG_NAME);
+                String price = jo.getString(Config.TAG_PRICE);
+                String description = jo.getString(Config.TAG_DES);
+                String ethnicity = jo.getString(Config.TAG_ETH);
+                String type = jo.getString(Config.TAG_TYPE);
 
-                HashMap<String,String> employees = new HashMap<>();
-                employees.put(Config.TAG_ID,id);
-                employees.put(Config.TAG_NAME,name);
-                list.add(employees);
+                HashMap<String,String> food = new HashMap<>();
+                food.put(Config.TAG_ID,id);
+                food.put(Config.TAG_NAME,name);
+                food.put(Config.TAG_PRICE,price);
+                food.put(Config.TAG_DES,description);
+                food.put(Config.TAG_ETH,ethnicity);
+                food.put(Config.TAG_TYPE,type);
+                list.add(food);
             }
 
         } catch (JSONException e) {
@@ -63,8 +71,8 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
 
         ListAdapter adapter = new SimpleAdapter(
                 ViewAllFood.this, list, R.layout.list_item,
-                new String[]{Config.TAG_ID,Config.TAG_NAME},
-                new int[]{R.id.id, R.id.name});
+                new String[]{Config.TAG_ID,Config.TAG_NAME,Config.TAG_PRICE,Config.TAG_DES,Config.TAG_ETH,Config.TAG_TYPE},
+                new int[]{R.id.Food_Id, R.id.Food_Name, R.id.Price, R.id.Description, R.id.Ethnicity, R.id.Type});
 
         listView.setAdapter(adapter);
     }
@@ -84,7 +92,7 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
                 super.onPostExecute(s);
                 loading.dismiss();
                 JSON_STRING = s;
-                showEmployee();
+                showFood();
             }
 
             @Override
@@ -100,7 +108,7 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ViewFood.class);
+        Intent intent = new Intent(this, ViewAllFood.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
         String foodid = map.get(Config.TAG_ID).toString();
         intent.putExtra(Config.FOOD_ID,foodid);
