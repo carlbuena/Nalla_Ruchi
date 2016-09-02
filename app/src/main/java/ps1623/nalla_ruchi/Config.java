@@ -18,6 +18,13 @@ public class Config {
     public static final String URL_UPDATE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/updateCustomer.php";
     public static final String URL_DELETE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/deleteCustomer.php";
 
+    public static final String URL_ADD_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/addBooking.php";
+    public static final String URL_GET_ALL_BOOKINGS = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/getAllBooking.php";
+    public static final String URL_GET_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/getBooking.php";
+    public static final String URL_UPDATE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/updateBooking.php";
+    public static final String URL_DELETE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/deleteBooking.php";
+
+
     //Keys that will be used to send the request to php scripts
     public static final String KEY_FOOD_ID = "Food_Id";
     public static final String KEY_FOOD_NAME = "Food_Name";
@@ -38,6 +45,13 @@ public class Config {
     public static final String KEY_CUSTOMER_SUBURB = "Suburb";
     public static final String KEY_CUSTOMER_STATE = "State";
     public static final String KEY_CUSTOMER_DOR = "DateOfRegistration";
+
+    public static final String KEY_BOOKING_ID = "Booking_ID";
+    public static final String KEY_BOOKING_CUSTOMER_ID = "Customer_ID";
+    public static final String KEY_BOOKING_BOOKINGDATE = "BookingDate";
+    public static final String KEY_BOOKING_COOK_ID = "Cook_ID";
+    public static final String KEY_BOOKING_BOOKINGPRICE = "bookingPrice";
+    public static final String KEY_BOOKING_BOOKINGSTATUS = "bookingStatus";
 
     //JSON Tags
     public static final String TAG_JSON_ARRAY="result";
@@ -61,6 +75,13 @@ public class Config {
     public static final String TAG_SUBURB = "Suburb";
     public static final String TAG_STATE = "State";
     public static final String TAG_DOR = "DateOfRegistration";
+
+    public static final String TAG_BOOKING_ID = "Booking_ID";
+    public static final String TAG_BOOKING_CUSTOMER_ID = "Customer_ID";
+    public static final String TAG_BOOKINGDATE = "BookingDate";
+    public static final String TAG_BOOKING_COOK_ID = "Cook_ID";
+    public static final String TAG_BOOKINGPRICE = "bookingPrice";
+    public static final String TAG_BOOKINGSTATUS = "bookingStatus";
 
     //food id to pass with intent
     public static final String FOOD_ID = "Food_Id";
