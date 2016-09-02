@@ -31,6 +31,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
     private EditText editTextDescription;
     private EditText editTextEthnicity;
     private EditText editTextType;
+    private EditText editTextDish;
     private EditText editTextMenu_ID;
 
     private Button buttonUpdate;
@@ -53,6 +54,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
         editTextDescription = (EditText) findViewById(R.id.editTextDescription);
         editTextEthnicity = (EditText) findViewById(R.id.editTextEthnicity);
         editTextType = (EditText) findViewById(R.id.editTextType);
+        editTextDish = (EditText) findViewById(R.id.editTextDish);
         editTextMenu_ID = (EditText) findViewById(R.id.editTextMenu_ID);
 
         buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
@@ -104,6 +106,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             String des = c.getString(Config.TAG_DES);
             String eth = c.getString(Config.TAG_ETH);
             String type = c.getString(Config.TAG_TYPE);
+            String dish = c.getString(Config.TAG_DISH);
             String menu_id = c.getString(Config.TAG_MENU_ID);
 
             editTextFood_Id.setText(id);
@@ -112,6 +115,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             editTextDescription.setText(des);
             editTextEthnicity.setText(eth);
             editTextType.setText(type);
+            editTextDish.setText(dish);
             editTextMenu_ID.setText(menu_id);
 
         } catch (JSONException e) {
@@ -127,6 +131,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
         final String Description = editTextDescription.getText().toString().trim();
         final String Ethnicity = editTextEthnicity.getText().toString().trim();
         final String Type = editTextType.getText().toString().trim();
+        final String Dish = editTextDish.getText().toString().trim();
         final String Menu_ID = editTextMenu_ID.getText().toString().trim();
 
         class UpdateFood extends AsyncTask<Void,Void,String>{
@@ -153,6 +158,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
                 hashMap.put(Config.KEY_FOOD_DES,Description);
                 hashMap.put(Config.KEY_FOOD_ETH,Ethnicity);
                 hashMap.put(Config.KEY_FOOD_TYPE,Type);
+                hashMap.put(Config.KEY_FOOD_DISH,Dish);
                 hashMap.put(Config.KEY_MENU_ID,Menu_ID);
 
                 RequestHandler rh = new RequestHandler();

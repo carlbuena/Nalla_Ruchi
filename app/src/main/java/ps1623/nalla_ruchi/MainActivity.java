@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextDescription;
     private EditText editTextEthnicity;
     private EditText editTextType;
+    private EditText editTextDish;
     private EditText editTextMenu_ID;
 
     private Button buttonAdd;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextDescription = (EditText) findViewById(R.id.editTextDescription);
         editTextEthnicity = (EditText) findViewById(R.id.editTextEthnicity);
         editTextType = (EditText) findViewById(R.id.editTextType);
+        editTextDish = (EditText) findViewById(R.id.editTextDish);
         editTextMenu_ID = (EditText) findViewById(R.id.editTextMenu_ID);
 
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String Description = editTextDescription.getText().toString().trim();
         final String Ethnicity = editTextEthnicity.getText().toString().trim();
         final String Type = editTextType.getText().toString().trim();
+        final String Dish = editTextDish.getText().toString().trim();
         final String Menu_ID = editTextMenu_ID.getText().toString().trim();
 
         class AddFood extends AsyncTask<Void,Void,String>{
@@ -88,10 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 params.put(Config.KEY_FOOD_DES,Description);
                 params.put(Config.KEY_FOOD_ETH,Ethnicity);
                 params.put(Config.KEY_FOOD_TYPE,Type);
+                params.put(Config.KEY_FOOD_DISH,Type);
                 params.put(Config.KEY_MENU_ID,Menu_ID);
 
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(Config.URL_ADD, params);
+                String res = rh.sendPostRequest(Config.URL_ADD_FOOD, params);
                 return res;
             }
         }

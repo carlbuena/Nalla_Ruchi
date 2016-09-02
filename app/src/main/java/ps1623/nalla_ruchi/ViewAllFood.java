@@ -54,6 +54,7 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
                 String description = jo.getString(Config.TAG_DES);
                 String ethnicity = jo.getString(Config.TAG_ETH);
                 String type = jo.getString(Config.TAG_TYPE);
+                String dish = jo.getString(Config.TAG_DISH);
 
                 HashMap<String,String> food = new HashMap<>();
                 food.put(Config.TAG_ID,id);
@@ -62,6 +63,7 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
                 food.put(Config.TAG_DES,description);
                 food.put(Config.TAG_ETH,ethnicity);
                 food.put(Config.TAG_TYPE,type);
+                food.put(Config.TAG_DISH,type);
                 list.add(food);
             }
 
@@ -71,8 +73,8 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
 
         ListAdapter adapter = new SimpleAdapter(
                 ViewAllFood.this, list, R.layout.list_item,
-                new String[]{Config.TAG_ID,Config.TAG_NAME,Config.TAG_PRICE,Config.TAG_DES,Config.TAG_ETH,Config.TAG_TYPE},
-                new int[]{R.id.Food_Id, R.id.Food_Name, R.id.Price, R.id.Description, R.id.Ethnicity, R.id.Type});
+                new String[]{Config.TAG_ID,Config.TAG_NAME,Config.TAG_PRICE,Config.TAG_DES,Config.TAG_ETH,Config.TAG_TYPE,Config.TAG_DISH},
+                new int[]{R.id.Food_Id, R.id.Food_Name, R.id.Price, R.id.Description, R.id.Ethnicity, R.id.Type, R.id.Dish});
 
         listView.setAdapter(adapter);
     }
