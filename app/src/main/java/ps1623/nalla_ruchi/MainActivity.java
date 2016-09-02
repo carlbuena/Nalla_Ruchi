@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 params.put(Config.KEY_FOOD_ETH,Ethnicity);
                 params.put(Config.KEY_FOOD_TYPE,Type);
                 params.put(Config.KEY_FOOD_DISH,Dish);
-                params.put(Config.KEY_MENU_ID,Menu_ID);
+                params.put(Config.KEY_FOOD_MENU_ID,Menu_ID);
 
                 RequestHandler rh = new RequestHandler();
                 String res = rh.sendPostRequest(Config.URL_ADD_FOOD, params);

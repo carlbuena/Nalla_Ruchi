@@ -107,7 +107,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             String eth = c.getString(Config.TAG_ETH);
             String type = c.getString(Config.TAG_TYPE);
             String dish = c.getString(Config.TAG_DISH);
-            String menu_id = c.getString(Config.TAG_MENU_ID);
+            String menu_id = c.getString(Config.TAG_FOOD_MENU_ID);
 
             editTextFood_Id.setText(id);
             editTextFood_Name.setText(name);
@@ -159,7 +159,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
                 hashMap.put(Config.KEY_FOOD_ETH,Ethnicity);
                 hashMap.put(Config.KEY_FOOD_TYPE,Type);
                 hashMap.put(Config.KEY_FOOD_DISH,Dish);
-                hashMap.put(Config.KEY_MENU_ID,Menu_ID);
+                hashMap.put(Config.KEY_FOOD_MENU_ID,Menu_ID);
 
                 RequestHandler rh = new RequestHandler();
 
