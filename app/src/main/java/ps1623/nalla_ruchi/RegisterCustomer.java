@@ -1,5 +1,6 @@
 package ps1623.nalla_ruchi;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -26,6 +27,8 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
     private EditText editTextSuburb;
     private EditText editTextState;
 
+    private EditText editTextConfirm_Password;
+
     private Button buttonRegister;
 
     @Override
@@ -43,10 +46,45 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
         editTextState = (EditText) findViewById(R.id.editTextState);
         editTextSuburb = (EditText) findViewById(R.id.editTextSuburb);
 
+        editTextConfirm_Password = (EditText) findViewById(R.id.editTextConfirm_Password);
+
         buttonRegister = (Button) findViewById(R.id.buttonRegister_Customer);
 
         //Setting listeners to button
         buttonRegister.setOnClickListener(this);
+
+    }
+
+    public boolean noNull (String First_Name, String Surname, String Mobile, String Email, String Address, String State, String Suburb)
+    {
+        boolean check = false;
+        if(First_Name.equals("") || Surname.equals("") || Mobile.equals("") || Email.equals("") || Address.equals("") || State.equals("") || Suburb.equals(""))
+        {
+            new AlertDialog.Builder(this).setMessage("You must fill in all the fields.").show();
+        }
+        else
+        {
+            check = true;
+        }
+        return check;
+    }
+
+
+    public boolean checkPassword (String Password, String Confirm)
+    {
+        boolean pstatus = false;
+        if(Confirm.equals("") || Password.equals(""))
+        {
+            new AlertDialog.Builder(this).setMessage("You must fill in all the fields.").show();
+        }
+        else
+        {
+            if(Password.equals(Confirm))
+            {
+                pstatus = true;
+            }
+        }
+        return pstatus;
     }
 
 
@@ -61,6 +99,9 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
         final String Address = editTextAddress.getText().toString().trim();
         final String State = editTextState.getText().toString().trim();
         final String Suburb = editTextSuburb.getText().toString().trim();
+
+        final String Confirm = editTextConfirm_Password.getText().toString().trim();
+
 
         class AddCustomer extends AsyncTask<Void,Void,String>{
 
@@ -97,14 +138,29 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
             }
         }
 
-        AddCustomer ae = new AddCustomer();
-        ae.execute();
+        if(noNull(First_Name, Surname, Mobile, Email, Address, State, Suburb))
+        {
+            if(checkPassword(Password, Confirm))
+            {
+                AddCustomer ac = new AddCustomer();
+                ac.execute();
+            }
+            else
+            {
+                new AlertDialog.Builder(this).setMessage("Your password must match.").show();
+            }
+        }
+
     }
 
     @Override
     public void onClick(View v) {
-        if(v == buttonRegister){
-            addCustomer();
-        }
+
+            if(v == buttonRegister){
+                addCustomer();
+            }
+
     }
+
+
 }
