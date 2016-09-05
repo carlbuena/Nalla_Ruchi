@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editTextEthnicity = (EditText) findViewById(R.id.editTextEthnicity);
         editTextType = (EditText) findViewById(R.id.editTextType);
         editTextDish = (EditText) findViewById(R.id.editTextDish);
-        editTextDish = (EditText) findViewById(R.id.editTextMenu_ID);
+        editTextMenu_ID = (EditText) findViewById(R.id.editTextMenu_ID);
 
         buttonAdd = (Button) findViewById(R.id.buttonAdd);
         buttonView = (Button) findViewById(R.id.buttonView);
