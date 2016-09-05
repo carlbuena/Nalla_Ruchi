@@ -32,6 +32,12 @@ android:versionName="1.0" >
         android:name="ps1623.nalla_ruchi.RegisterCustomer"
         android:label="Nalla Ruchi" >
 
+    </activity>
+
+    <activity
+        android:name="ps1623.nalla_ruchi.RegisterCook"
+        android:label="Nalla Ruchi" >
+
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />

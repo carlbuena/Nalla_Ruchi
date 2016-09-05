@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 
-public class RegisterCustomer extends AppCompatActivity implements View.OnClickListener{
+public class RegisterCook extends AppCompatActivity implements View.OnClickListener{
 
     //Defining views
     private EditText editTextFirst_Name;
@@ -34,7 +34,7 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register_customer);
+        setContentView(R.layout.register_cook);
 
         //Initializing views
         editTextFirst_Name = (EditText) findViewById(R.id.editTextFirst_Name);
@@ -48,7 +48,7 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
 
         editTextConfirm_Password = (EditText) findViewById(R.id.editTextConfirm_Password);
 
-        buttonRegister = (Button) findViewById(R.id.buttonRegister_Customer);
+        buttonRegister = (Button) findViewById(R.id.buttonRegister_Cook);
 
         //Setting listeners to button
         buttonRegister.setOnClickListener(this);
@@ -88,8 +88,8 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
     }
 
 
-    //Adding customer
-    private void addCustomer(){
+    //Adding cook
+    private void addCook(){
 
         final String First_Name = editTextFirst_Name.getText().toString().trim();
         final String Surname = editTextSurname.getText().toString().trim();
@@ -103,37 +103,37 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
         final String Confirm = editTextConfirm_Password.getText().toString().trim();
 
 
-        class AddCustomer extends AsyncTask<Void,Void,String>{
+        class AddCook extends AsyncTask<Void,Void,String>{
 
             ProgressDialog loading;
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(RegisterCustomer.this,"Adding...","Wait...",false,false);
+                loading = ProgressDialog.show(RegisterCook.this,"Adding...","Wait...",false,false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(RegisterCustomer.this,s,Toast.LENGTH_LONG).show();
+                Toast.makeText(RegisterCook.this,s,Toast.LENGTH_LONG).show();
             }
 
             @Override
             protected String doInBackground(Void... v) {
                 HashMap<String,String> params = new HashMap<>();
-                params.put(Config.KEY_CUSTOMER_FIRSTNAME,First_Name);
-                params.put(Config.KEY_CUSTOMER_SURNAME,Surname);
-                params.put(Config.KEY_CUSTOMER_MOBILE,Mobile);
-                params.put(Config.KEY_CUSTOMER_EMAIL,Email);
-                params.put(Config.KEY_CUSTOMER_PASSWORD,Password);
-                params.put(Config.KEY_CUSTOMER_ADDRESS,Address);
-                params.put(Config.KEY_CUSTOMER_STATE,State);
-                params.put(Config.KEY_CUSTOMER_SUBURB,Suburb);
+                params.put(Config.KEY_COOK_FIRSTNAME,First_Name);
+                params.put(Config.KEY_COOK_SURNAME,Surname);
+                params.put(Config.KEY_COOK_MOBILE,Mobile);
+                params.put(Config.KEY_COOK_EMAIL,Email);
+                params.put(Config.KEY_COOK_PASSWORD,Password);
+                params.put(Config.KEY_COOK_ADDRESS,Address);
+                params.put(Config.KEY_COOK_STATE,State);
+                params.put(Config.KEY_COOK_SUBURB,Suburb);
 
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(Config.URL_ADD_CUSTOMER, params);
+                String res = rh.sendPostRequest(Config.URL_ADD_COOK, params);
                 return res;
             }
         }
@@ -142,7 +142,7 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
         {
             if(checkPassword(Password, Confirm))
             {
-                AddCustomer ac = new AddCustomer();
+                AddCook ac = new AddCook();
                 ac.execute();
             }
             else
@@ -156,9 +156,9 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
 
-            if(v == buttonRegister){
-                addCustomer();
-            }
+        if(v == buttonRegister){
+            addCook();
+        }
 
     }
 

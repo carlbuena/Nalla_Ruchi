@@ -65,7 +65,7 @@ public class Config {
 
     public static final String KEY_COOK_ID = "Cook_Id";
     public static final String KEY_COOK_FIRSTNAME = "FirstName";
-    public static final String KEY_COOK_SURNAME = "SurName";
+    public static final String KEY_COOK_SURNAME = "Surname";
     public static final String KEY_COOK_MOBILE = "Mobile";
     public static final String KEY_COOK_EMAIL = "Email";
     public static final String KEY_COOK_PASSWORD = "Password";
@@ -126,7 +126,7 @@ public class Config {
 
     public static final String TAG_COOK_ID = "Cook_Id";
     public static final String TAG_COOK_FIRSTNAME = "FirstName";
-    public static final String TAG_COOK_SURNAME = "SurName";
+    public static final String TAG_COOK_SURNAME = "Surname";
     public static final String TAG_COOK_MOBILE = "Mobile";
     public static final String TAG_COOK_EMAIL = "Email";
     public static final String TAG_COOK_PASSWORD = "Password";
