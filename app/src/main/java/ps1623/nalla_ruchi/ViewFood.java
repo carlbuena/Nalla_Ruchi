@@ -25,7 +25,7 @@ package ps1623.nalla_ruchi;
 
 public class ViewFood extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText editTextFood_Id;
+    private EditText editTextFood_ID;
     private EditText editTextFood_Name;
     private EditText editTextPrice;
     private EditText editTextDescription;
@@ -48,7 +48,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
 
         id = intent.getStringExtra(Config.FOOD_ID);
 
-        editTextFood_Id = (EditText) findViewById(R.id.editTextFood_Id);
+        editTextFood_ID = (EditText) findViewById(R.id.editTextFood_ID);
         editTextFood_Name = (EditText) findViewById(R.id.editTextFood_Name);
         editTextPrice = (EditText) findViewById(R.id.editTextPrice);
         editTextDescription = (EditText) findViewById(R.id.editTextDescription);
@@ -63,7 +63,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
         buttonUpdate.setOnClickListener(this);
         buttonDelete.setOnClickListener(this);
 
-        editTextFood_Id.setText(id);
+        editTextFood_ID.setText(id);
 
         getFood();
     }
@@ -109,7 +109,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             String dish = c.getString(Config.TAG_DISH);
             String menu_id = c.getString(Config.TAG_FOOD_MENU_ID);
 
-            editTextFood_Id.setText(id);
+            editTextFood_ID.setText(id);
             editTextFood_Name.setText(name);
             editTextPrice.setText(price);
             editTextDescription.setText(des);
@@ -125,7 +125,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
 
 
     private void updateFood(){
-        final String Food_ID = editTextFood_Id.getText().toString().trim();
+        final String Food_ID = editTextFood_ID.getText().toString().trim();
         final String Food_Name = editTextFood_Name.getText().toString().trim();
         final String Price = editTextPrice.getText().toString().trim();
         final String Description = editTextDescription.getText().toString().trim();

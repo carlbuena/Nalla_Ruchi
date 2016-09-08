@@ -14,7 +14,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editTextFood_Id" />
+        android:id="@+id/editTextFood_ID" />
 
     <TextView
         android:layout_width="wrap_content"

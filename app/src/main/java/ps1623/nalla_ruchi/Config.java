@@ -43,7 +43,7 @@ public class Config {
     public static final String URL_DELETE_PAYMENT = "http://pe-ps1623.scem.westernsydney.edu.au/api/payment/deletePayment.php";
 
     //Keys that will be used to send the request to php scripts
-    public static final String KEY_FOOD_ID = "Food_Id";
+    public static final String KEY_FOOD_ID = "Food_ID";
     public static final String KEY_FOOD_NAME = "Food_Name";
     public static final String KEY_FOOD_PRICE = "Price";
     public static final String KEY_FOOD_DES = "Description";
@@ -63,7 +63,7 @@ public class Config {
     public static final String KEY_CUSTOMER_STATE = "State";
     public static final String KEY_CUSTOMER_DOR = "DateOfRegistration";
 
-    public static final String KEY_COOK_ID = "Cook_Id";
+    public static final String KEY_COOK_ID = "Cook_ID";
     public static final String KEY_COOK_FIRSTNAME = "FirstName";
     public static final String KEY_COOK_SURNAME = "Surname";
     public static final String KEY_COOK_MOBILE = "Mobile";
@@ -87,6 +87,7 @@ public class Config {
     public static final String KEY_ORDER_CUSTOMER_ID = "Customer_ID";
     public static final String KEY_ORDER_FOOD_ID= "Food_ID";
     public static final String KEY_ORDER_COOK_ID = "Cook_ID";
+    public static final String KEY_ORDER_QUANTITY = "orderQuantity";
     public static final String KEY_ORDER_PRICE = "orderPrice";
     public static final String KEY_ORDER_DATE = "orderDate";
     public static final String KEY_ORDER_STATUS = "orderStatus";
@@ -104,7 +105,7 @@ public class Config {
     //JSON Tags
     public static final String TAG_JSON_ARRAY="result";
 
-    public static final String TAG_ID = "Food_Id";
+    public static final String TAG_ID = "Food_ID";
     public static final String TAG_NAME = "Food_Name";
     public static final String TAG_PRICE = "Price";
     public static final String TAG_DES = "Description";
@@ -124,7 +125,7 @@ public class Config {
     public static final String TAG_STATE = "State";
     public static final String TAG_DOR = "DateOfRegistration";
 
-    public static final String TAG_COOK_ID = "Cook_Id";
+    public static final String TAG_COOK_ID = "Cook_ID";
     public static final String TAG_COOK_FIRSTNAME = "FirstName";
     public static final String TAG_COOK_SURNAME = "Surname";
     public static final String TAG_COOK_MOBILE = "Mobile";
@@ -146,6 +147,7 @@ public class Config {
     public static final String TAG_ORDER_CUSTOMER_ID= "Customer_ID";
     public static final String TAG_ORDER_FOOD_ID = "Food_ID";
     public static final String TAG_ORDER_COOK_ID = "Cook_ID";
+    public static final String TAG_ORDER_QUANTITY = "orderQuantity";
     public static final String TAG_ORDER_PRICE = "orderPrice";
     public static final String TAG_ORDER_DATE = "orderDate";
     public static final String TAG_ORDER_STATUS = "orderStatus";
@@ -160,10 +162,10 @@ public class Config {
     public static final String TAG_PAYMENT_BOOKING_ID = "Booking_ID";
     public static final String TAG_PAYMENT_CUSTOMER_ID = "Customer_ID";
 
-    //food id to pass with intent
+    //id to pass with intent
     public static final String FOOD_ID = "Food_ID";
     public static final String CUSTOMER_ID = "Customer_ID";
-    public static final String COOK_ID = "Cook_Id";
+    public static final String COOK_ID = "Cook_ID";
     public static final String BOOKING_ID = "Booking_ID";
     public static final String ORDER_ID = "Order_ID";
     public static final String PAYMENT_ID = "Payment_ID";
