@@ -13,6 +13,7 @@ package ps1623.nalla_ruchi;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.TextView;
         import android.widget.Toast;
 
         import org.json.JSONArray;
@@ -35,7 +36,14 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
     private Button buttonUpdate;
     private Button buttonDelete;
 
-    private String id;
+    private String foodid;
+    private  String foodname;
+    private String foodprice;
+    private  String fooddes;
+    private String foodeth;
+    private  String foodtype;
+    private String fooddish;
+    private  String foodmenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +51,16 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.view_food);
 
         Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
 
-        id = intent.getStringExtra(Config.FOOD_ID);
+        foodid = extras.getString(Config.FOOD_ID);
+        foodname = extras.getString(Config.FOOD_NAME);
+        foodprice = extras.getString(Config.FOOD_PRICE);
+        fooddes = extras.getString(Config.FOOD_DES);
+        foodeth = extras.getString(Config.FOOD_ETH);
+        foodtype = extras.getString(Config.FOOD_TYPE);
+        fooddish = extras.getString(Config.FOOD_DISH);
+        foodmenu = extras.getString(Config.FOOD_MENU_ID);
 
         editTextFood_ID = (EditText) findViewById(R.id.editTextFood_ID);
         editTextFood_Name = (EditText) findViewById(R.id.editTextFood_Name);
@@ -61,7 +77,14 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
         buttonUpdate.setOnClickListener(this);
         buttonDelete.setOnClickListener(this);
 
-        editTextFood_ID.setText(id);
+        editTextFood_ID.setText(foodid);
+        editTextFood_Name.setText(foodname);
+        editTextPrice.setText(foodprice);
+        editTextDescription.setText(fooddes);
+        editTextEthnicity.setText(foodeth);
+        editTextType.setText(foodtype);
+        editTextDish.setText(fooddish);
+        editTextMenu_ID.setText(foodmenu);
 
         getFood();
     }
@@ -85,7 +108,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_GET_FOOD,id);
+                String s = rh.sendGetRequestParam(Config.URL_GET_FOOD,foodid);
                 return s;
             }
         }
@@ -191,7 +214,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_DELETE_FOOD, id);
+                String s = rh.sendGetRequestParam(Config.URL_DELETE_FOOD, foodid);
                 return s;
             }
         }

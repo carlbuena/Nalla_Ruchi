@@ -164,6 +164,14 @@ public class Config {
 
     //id to pass with intent
     public static final String FOOD_ID = "Food_ID";
+    public static final String FOOD_NAME = "Food_Name";
+    public static final String FOOD_PRICE = "Price";
+    public static final String FOOD_DES = "Description";
+    public static final String FOOD_ETH = "Ethnicity";
+    public static final String FOOD_TYPE = "Type";
+    public static final String FOOD_DISH = "Dish_Type";
+    public static final String FOOD_MENU_ID = "Menu_ID";
+
     public static final String CUSTOMER_ID = "Customer_ID";
     public static final String COOK_ID = "Cook_ID";
     public static final String BOOKING_ID = "Booking_ID";

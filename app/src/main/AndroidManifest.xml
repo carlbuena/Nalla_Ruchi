@@ -23,7 +23,7 @@ android:versionName="1.0" >
 
     <activity
     android:name=".InsertFood"
-    android:label="Nalla Ruchi Add Food" >
+    android:label="Add Food" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
@@ -33,19 +33,19 @@ android:versionName="1.0" >
 
     <activity
         android:name="ps1623.nalla_ruchi.ViewAllFood"
-        android:label="Nalla Ruchi" >
+        android:label="View All Food" >
 
     </activity>
 
     <activity
         android:name="ps1623.nalla_ruchi.ViewFood"
-        android:label="Nalla Ruchi" >
+        android:label="View Food" >
 
     </activity>
 
     <activity
         android:name="ps1623.nalla_ruchi.RegisterCustomer"
-        android:label="Nalla Ruchi" >
+        android:label="Register Customer" >
 
     </activity>
 

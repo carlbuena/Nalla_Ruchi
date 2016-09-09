@@ -55,6 +55,7 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
                 String ethnicity = jo.getString(Config.TAG_ETH);
                 String type = jo.getString(Config.TAG_TYPE);
                 String dish = jo.getString(Config.TAG_DISH);
+                String menu = jo.getString(Config.TAG_FOOD_MENU_ID);
 
                 HashMap<String,String> food = new HashMap<>();
                 food.put(Config.TAG_ID,id);
@@ -64,6 +65,7 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
                 food.put(Config.TAG_ETH,ethnicity);
                 food.put(Config.TAG_TYPE,type);
                 food.put(Config.TAG_DISH,dish);
+                food.put(Config.TAG_FOOD_MENU_ID,menu);
                 list.add(food);
             }
 
@@ -73,8 +75,8 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
 
         ListAdapter adapter = new SimpleAdapter(
                 ViewAllFood.this, list, R.layout.list_item,
-                new String[]{Config.TAG_ID,Config.TAG_NAME,Config.TAG_PRICE,Config.TAG_DES,Config.TAG_ETH,Config.TAG_TYPE,Config.TAG_DISH},
-                new int[]{R.id.Food_ID, R.id.Food_Name, R.id.Price, R.id.Description, R.id.Ethnicity, R.id.Type, R.id.Dish});
+                new String[]{Config.TAG_ID,Config.TAG_NAME,Config.TAG_PRICE,Config.TAG_DES,Config.TAG_ETH,Config.TAG_TYPE,Config.TAG_DISH,Config.TAG_FOOD_MENU_ID},
+                new int[]{R.id.Food_ID, R.id.Food_Name, R.id.Price, R.id.Description, R.id.Ethnicity, R.id.Type, R.id.Dish, R.id.Menu_ID});
 
         listView.setAdapter(adapter);
     }
@@ -110,10 +112,31 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ViewAllFood.class);
+        Intent intent = new Intent(this, ViewFood.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
+
         String foodid = map.get(Config.TAG_ID).toString();
-        intent.putExtra(Config.FOOD_ID,foodid);
+        String foodname = map.get(Config.TAG_NAME).toString();
+        String foodprice = map.get(Config.TAG_PRICE).toString();
+        String fooddes = map.get(Config.TAG_DES).toString();
+        String foodeth = map.get(Config.TAG_ETH).toString();
+        String foodtype = map.get(Config.TAG_TYPE).toString();
+        String fooddish = map.get(Config.TAG_DISH).toString();
+        String foodmenu = map.get(Config.TAG_FOOD_MENU_ID).toString();
+
+        Bundle extras = new Bundle();
+
+        extras.putString(Config.FOOD_ID,foodid);
+        extras.putString(Config.FOOD_NAME,foodname);
+        extras.putString(Config.FOOD_PRICE,foodprice);
+        extras.putString(Config.FOOD_DES,fooddes);
+        extras.putString(Config.FOOD_ETH,foodeth);
+        extras.putString(Config.FOOD_TYPE,foodtype);
+        extras.putString(Config.FOOD_DISH,fooddish);
+        extras.putString(Config.FOOD_MENU_ID,foodmenu);
+
+        intent.putExtras(extras);
+
         startActivity(intent);
     }
 }
