@@ -48,8 +48,7 @@ public class InsertFood extends AppCompatActivity implements View.OnClickListene
         buttonView.setOnClickListener(this);
     }
 
-
-    //Adding an food
+    //Adding food
     private void addFood(){
 
         final String Food_Name = editTextFood_Name.getText().toString().trim();
