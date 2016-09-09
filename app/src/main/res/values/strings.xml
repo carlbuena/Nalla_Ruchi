@@ -15,5 +15,6 @@
     <string name="Role">Not assigned</string>
     <string name="method">Login Method</string>
     <string name="Choose">Choose Method</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
