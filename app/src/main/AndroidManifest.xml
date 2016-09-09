@@ -17,13 +17,13 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="Nalla Ruchi"
         android:theme="@style/AppTheme">
         <activity
@@ -36,7 +36,8 @@
         </activity>
         <activity
             android:name=".InsertFood"
-            android:label="Add Food"></activity>
+            android:label="Add Food"
+            android:icon="@drawable/logo"></activity>
         <activity
             android:name=".ViewAllFood"
             android:label="View All Food"></activity>
