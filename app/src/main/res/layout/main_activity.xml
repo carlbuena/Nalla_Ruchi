@@ -3,18 +3,62 @@
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:id="@+id/buttonSignIn"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dip"
+        android:textSize="10pt"
+        android:theme="@style/MyButton"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:id="@+id/buttonRegisterCustomer"
-            android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up as Customer"
+        android:id="@+id/buttonRegisterCustomer"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dip"
+        android:textSize="10pt"
+        android:theme="@style/MyButton"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View Map"
-            android:id="@+id/buttonMaps"
-            android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up as Cook"
+        android:id="@+id/buttonRegisterCook"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dip"
+        android:textSize="10pt"
+        android:theme="@style/MyButton"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View All Food"
+        android:id="@+id/buttonViewAllFood"
+        android:layout_gravity="center_horizontal"
+        android:padding="20dip"
+        android:textSize="10pt"
+        android:theme="@style/MyButton"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Food"
+        android:id="@+id/buttonAddFood"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dip"
+        android:textSize="10pt"
+        android:theme="@style/MyButton" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Map"
+        android:id="@+id/buttonMaps"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dip"
+        android:textSize="10pt"
+        android:theme="@style/MyButton"/>
 </LinearLayout>

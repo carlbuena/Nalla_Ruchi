@@ -43,4 +43,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(vazhakulam).title("Marker in Vazhakulam"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(vazhakulam));
     }
+
 }

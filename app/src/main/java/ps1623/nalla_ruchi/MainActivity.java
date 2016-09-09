@@ -17,8 +17,12 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-        private Button buttonRegisterCustomer;
-        private Button buttonMaps;
+    private Button buttonRegisterCustomer;
+    private Button buttonRegisterCook;
+    private Button buttonSignIn;
+    private Button buttonViewAllFood;
+    private Button buttonAddFood;
+    private Button buttonMaps;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +30,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             setContentView(R.layout.main_activity);
 
             buttonRegisterCustomer = (Button) findViewById(R.id.buttonRegisterCustomer);
+            buttonRegisterCook = (Button) findViewById(R.id.buttonRegisterCook);
+            buttonSignIn = (Button) findViewById(R.id.buttonSignIn);
+            buttonViewAllFood = (Button) findViewById(R.id.buttonViewAllFood);
+            buttonAddFood = (Button) findViewById(R.id.buttonAddFood);
             buttonMaps = (Button) findViewById(R.id.buttonMaps);
 
             //Setting listeners to button
             buttonRegisterCustomer.setOnClickListener(this);
+            buttonRegisterCook.setOnClickListener(this);
+            buttonSignIn.setOnClickListener(this);
+            buttonViewAllFood.setOnClickListener(this);
+            buttonAddFood.setOnClickListener(this);
             buttonMaps.setOnClickListener(this);
         }
 
     public void onClick(View v) {
-        if(v == buttonRegisterCustomer)
-        {
+        if(v == buttonRegisterCustomer) {
             startActivity(new Intent(this,RegisterCustomer.class));
+        }
+        if(v == buttonRegisterCook) {
+            startActivity(new Intent(this,RegisterCook.class));
+        }
+        if(v == buttonSignIn) {
+            //startActivity(new Intent(this,SignIn.class));
+        }
+        if(v == buttonViewAllFood) {
+            startActivity(new Intent(this,ViewAllFood.class));
+        }
+        if(v == buttonAddFood) {
+            startActivity(new Intent(this,InsertFood.class));
         }
         if(v == buttonMaps) {
             startActivity(new Intent(this,MapsActivity.class));
