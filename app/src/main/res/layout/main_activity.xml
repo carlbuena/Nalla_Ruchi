@@ -6,10 +6,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
         android:text="Sign In"
         android:id="@+id/buttonSignIn"
         android:layout_gravity="center_horizontal"
-        android:padding="10dip"
         android:textSize="10pt"
         android:theme="@style/MyButton"/>
 
@@ -19,7 +20,8 @@
         android:text="Sign Up as Customer"
         android:id="@+id/buttonRegisterCustomer"
         android:layout_gravity="center_horizontal"
-        android:padding="10dip"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
         android:textSize="10pt"
         android:theme="@style/MyButton"/>
 
@@ -29,7 +31,8 @@
         android:text="Sign Up as Cook"
         android:id="@+id/buttonRegisterCook"
         android:layout_gravity="center_horizontal"
-        android:padding="10dip"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
         android:textSize="10pt"
         android:theme="@style/MyButton"/>
 
@@ -39,7 +42,8 @@
         android:text="View All Food"
         android:id="@+id/buttonViewAllFood"
         android:layout_gravity="center_horizontal"
-        android:padding="20dip"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
         android:textSize="10pt"
         android:theme="@style/MyButton"/>
 
@@ -49,7 +53,8 @@
         android:text="Add Food"
         android:id="@+id/buttonAddFood"
         android:layout_gravity="center_horizontal"
-        android:padding="10dip"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
         android:textSize="10pt"
         android:theme="@style/MyButton" />
     <Button
@@ -58,7 +63,8 @@
         android:text="View Map"
         android:id="@+id/buttonMaps"
         android:layout_gravity="center_horizontal"
-        android:padding="10dip"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
         android:textSize="10pt"
         android:theme="@style/MyButton"/>
 </LinearLayout>
