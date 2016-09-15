@@ -17,4 +17,8 @@
     <string name="Choose">Choose Method</string>
     <string name="title_activity_maps">Map</string>
 
+    <string-array name="spinnerCook">
+        <item></item>
+    </string-array>
+
 </resources>

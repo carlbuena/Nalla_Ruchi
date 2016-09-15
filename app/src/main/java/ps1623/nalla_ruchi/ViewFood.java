@@ -4,23 +4,22 @@ package ps1623.nalla_ruchi;
  * Created by Carl on 29/08/16.
  */
         import android.app.ProgressDialog;
-        import android.content.DialogInterface;
-        import android.content.Intent;
-        import android.os.AsyncTask;
-        import android.support.v7.app.AlertDialog;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import java.util.HashMap;
+import java.util.HashMap;
 
 public class ViewFood extends AppCompatActivity implements View.OnClickListener {
 
@@ -252,6 +251,7 @@ public class ViewFood extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         if(v == buttonUpdate){
             updateFood();
+            startActivity(new Intent(ViewFood.this,ViewAllFood.class));
         }
 
         if(v == buttonDelete){
