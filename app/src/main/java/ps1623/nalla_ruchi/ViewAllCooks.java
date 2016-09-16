@@ -117,16 +117,16 @@ public class ViewAllCooks extends AppCompatActivity implements ListView.OnItemCl
         Intent intent = new Intent(this, ViewCook.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
 
-        String cook_id = map.get(Config.TAG_COOK_ID);
-        String role = map.get(Config.TAG_COOK_ROLE);
-        String firstName = map.get(Config.TAG_COOK_FIRSTNAME);
-        String surname = map.get(Config.TAG_COOK_SURNAME);
-        String mobile = map.get(Config.TAG_COOK_MOBILE);
-        String email = map.get(Config.TAG_COOK_EMAIL);
-        String address = map.get(Config.TAG_COOK_ADDRESS);
-        String suburb = map.get(Config.TAG_COOK_SUBURB);
-        String state = map.get(Config.TAG_COOK_STATE);
-        String dor = map.get(Config.TAG_COOK_DOR);
+        String cook_id = map.get(Config.TAG_COOK_ID).toString();
+        String role = map.get(Config.TAG_COOK_ROLE).toString();
+        String firstName = map.get(Config.TAG_COOK_FIRSTNAME).toString();
+        String surname = map.get(Config.TAG_COOK_SURNAME).toString();
+        String mobile = map.get(Config.TAG_COOK_MOBILE).toString();
+        String email = map.get(Config.TAG_COOK_EMAIL).toString();
+        String address = map.get(Config.TAG_COOK_ADDRESS).toString();
+        String suburb = map.get(Config.TAG_COOK_SUBURB).toString();
+        String state = map.get(Config.TAG_COOK_STATE).toString();
+        String dor = map.get(Config.TAG_COOK_DOR).toString();
 
         Bundle extras = new Bundle();
 

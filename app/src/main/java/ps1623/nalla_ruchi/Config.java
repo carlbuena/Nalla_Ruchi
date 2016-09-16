@@ -16,7 +16,7 @@ public class Config {
     public static final String URL_GET_ALL_CUSTOMERS = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/getAllCustomers.php";
     public static final String URL_GET_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/getCustomer.php";
     public static final String URL_UPDATE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/updateCustomer.php";
-    public static final String URL_DELETE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/deleteCustomer.php";
+    public static final String URL_DELETE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/deleteCustomer.php?Customer_ID=";
 
     public static final String URL_ADD_COOK="http://pe-ps1623.scem.westernsydney.edu.au/api/cook/addCook.php";
     public static final String URL_GET_ALL_COOKS = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getAllCooks.php";
@@ -81,6 +81,8 @@ public class Config {
     public static final String KEY_BOOKING_PAYMENT_ID = "Payment_ID";
     public static final String KEY_BOOKING_CUSTOMER_ID = "Customer_ID";
     public static final String KEY_BOOKING_DATE = "BookingDate";
+    public static final String KEY_BOOKING_TIME = "BookingTime";
+    public static final String KEY_BOOKING_MADE = "BookingDateMade";
     public static final String KEY_BOOKING_COOK_ID = "Cook_ID";
     public static final String KEY_BOOKING_PRICE = "bookingPrice";
     public static final String KEY_BOOKING_STATUS = "bookingStatus";
@@ -143,6 +145,8 @@ public class Config {
     public static final String TAG_BOOKING_ID = "Booking_ID";
     public static final String TAG_BOOKING_CUSTOMER_ID = "Customer_ID";
     public static final String TAG_BOOKINGDATE = "BookingDate";
+    public static final String TAG_BOOKINGTIME = "BookingTime";
+    public static final String TAG_BOOKINGMADE = "BookingDateMade";
     public static final String TAG_BOOKING_COOK_ID = "Cook_ID";
     public static final String TAG_BOOKINGPRICE = "bookingPrice";
     public static final String TAG_BOOKINGSTATUS = "bookingStatus";
@@ -176,6 +180,17 @@ public class Config {
     public static final String FOOD_DISH = "Dish_Type";
     public static final String FOOD_MENU_ID = "Menu_ID";
 
+    public static final String CUSTOMER_ID = "Customer_ID";
+    public static final String CUSTOMER_FIRSTNAME = "FirstName";
+    public static final String CUSTOMER_SURNAME = "Surname";
+    public static final String CUSTOMER_MOBILE = "Mobile";
+    public static final String CUSTOMER_EMAIL = "Email";
+    public static final String CUSTOMER_PASSWORD = "Password";
+    public static final String CUSTOMER_ADDRESS = "Address";
+    public static final String CUSTOMER_SUBURB = "Suburb";
+    public static final String CUSTOMER_STATE = "State";
+    public static final String CUSTOMER_DOR = "DateOfRegistration";
+
     public static final String COOK_ID = "Cook_ID";
     public static final String COOK_ROLE = "Role";
     public static final String COOK_FIRSTNAME = "FirstName";
@@ -188,7 +203,6 @@ public class Config {
     public static final String COOK_STATE = "State";
     public static final String COOK_DOR = "DateOfRegistration";
 
-    public static final String CUSTOMER_ID = "Customer_ID";
     public static final String BOOKING_ID = "Booking_ID";
     public static final String ORDER_ID = "Order_ID";
     public static final String PAYMENT_ID = "Payment_ID";
