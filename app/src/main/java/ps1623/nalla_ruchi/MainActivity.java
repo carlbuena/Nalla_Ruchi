@@ -1,15 +1,10 @@
 package ps1623.nalla_ruchi;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.Toast;
 
 /**
  * Created by Carl on 6/09/16.
@@ -21,6 +16,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonRegisterCook;
     private Button buttonSignIn;
     private Button buttonViewAllFood;
+    private Button buttonViewAllCooks;
+    private Button buttonViewAllCustomers;
     private Button buttonAddFood;
     private Button buttonMaps;
 
@@ -31,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             buttonRegisterCustomer = (Button) findViewById(R.id.buttonRegisterCustomer);
             buttonRegisterCook = (Button) findViewById(R.id.buttonRegisterCook);
+            buttonViewAllCooks = (Button) findViewById(R.id.buttonViewAllCooks);
+            buttonViewAllCustomers = (Button) findViewById(R.id.buttonViewAllCustomers);
             buttonSignIn = (Button) findViewById(R.id.buttonSignIn);
             buttonViewAllFood = (Button) findViewById(R.id.buttonViewAllFood);
             buttonAddFood = (Button) findViewById(R.id.buttonAddFood);
@@ -39,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //Setting listeners to button
             buttonRegisterCustomer.setOnClickListener(this);
             buttonRegisterCook.setOnClickListener(this);
+            buttonViewAllCooks.setOnClickListener(this);
+            buttonViewAllCustomers.setOnClickListener(this);
             buttonSignIn.setOnClickListener(this);
             buttonViewAllFood.setOnClickListener(this);
             buttonAddFood.setOnClickListener(this);
@@ -51,6 +52,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(v == buttonRegisterCook) {
             startActivity(new Intent(this,RegisterCook.class));
+        }
+        if(v == buttonViewAllCooks) {
+            startActivity(new Intent(this,ViewAllCooks.class));
+        }
+        if(v == buttonViewAllCustomers) {
+            startActivity(new Intent(this,ViewAllCustomers.class));
         }
         if(v == buttonSignIn) {
             startActivity(new Intent(this,LoginActivity.class));

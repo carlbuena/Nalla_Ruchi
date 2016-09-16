@@ -6,6 +6,8 @@ package ps1623.nalla_ruchi;
 public class Config {
 
     //Address of our scripts of the CRUD
+    public static final String URL_LOGIN ="http://pe-ps1623.scem.westernsydney.edu.au/api/login/login.php";
+
     public static final String URL_ADD_FOOD ="http://pe-ps1623.scem.westernsydney.edu.au/api/food/addFood.php";
     public static final String URL_GET_ALL = "http://pe-ps1623.scem.westernsydney.edu.au/api/food/getAllFood.php";
     public static final String URL_GET_FOOD = "http://pe-ps1623.scem.westernsydney.edu.au/api/food/getFood.php";
@@ -45,6 +47,9 @@ public class Config {
     public static final String URL_COOK_CATEGORY = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getCookSpinner.php";
 
     //Keys that will be used to send the request to php scripts
+    public static final String KEY_EMAIL = "Email";
+    public static final String KEY_PASSWORD = "Password";
+
     public static final String KEY_FOOD_ID = "Food_ID";
     public static final String KEY_FOOD_NAME = "Food_Name";
     public static final String KEY_FOOD_PRICE = "Price";

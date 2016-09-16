@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
     android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:padding="12dp"
@@ -15,7 +18,7 @@
         android:theme="@style/MyButton"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up as Customer"
         android:id="@+id/buttonRegisterCustomer"
@@ -26,7 +29,29 @@
         android:theme="@style/MyButton"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View All Cooks"
+        android:id="@+id/buttonViewAllCooks"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:textSize="10pt"
+        android:theme="@style/MyButton"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View All Customers"
+        android:id="@+id/buttonViewAllCustomers"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:padding="12dp"
+        android:textSize="10pt"
+        android:theme="@style/MyButton"/>
+
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up as Cook"
         android:id="@+id/buttonRegisterCook"
@@ -37,7 +62,7 @@
         android:theme="@style/MyButton"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="View All Food"
         android:id="@+id/buttonViewAllFood"
@@ -48,7 +73,7 @@
         android:theme="@style/MyButton"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Food"
         android:id="@+id/buttonAddFood"
@@ -58,7 +83,7 @@
         android:textSize="10pt"
         android:theme="@style/MyButton" />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="View Map"
         android:id="@+id/buttonMaps"
@@ -68,3 +93,4 @@
         android:textSize="10pt"
         android:theme="@style/MyButton"/>
 </LinearLayout>
+</ScrollView>
