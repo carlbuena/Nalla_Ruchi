@@ -27,4 +27,8 @@ dependencies {
     compile 'com.google.android.gms:play-services:9.2.1'
     compile 'com.jakewharton:butterknife:6.1.0'
     compile 'com.android.support:design:24.1.1'
+    //Volley Library
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+
+
 }

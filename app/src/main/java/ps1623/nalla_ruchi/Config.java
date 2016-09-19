@@ -48,6 +48,9 @@ public class Config {
 
     public static final String URL_COOK_CATEGORY = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getCookSpinner.php";
 
+    public static final String DATA_URL = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/cookSpinner.php";
+
+
     //Keys that will be used to send the request to php scripts
     public static final String KEY_EMAIL = "Email";
     public static final String KEY_PASSWORD = "Password";
@@ -116,6 +119,7 @@ public class Config {
 
     //JSON Tags
     public static final String TAG_JSON_ARRAY="result";
+    public static final String JSON_ARRAY2 = "result";
 
     public static final String TAG_ID = "Food_ID";
     public static final String TAG_NAME = "Food_Name";
