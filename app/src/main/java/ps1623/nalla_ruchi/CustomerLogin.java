@@ -1,6 +1,5 @@
 package ps1623.nalla_ruchi;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,19 +19,20 @@ import butterknife.InjectView;
 /**
  * Created by Carl on 19/09/16.
  */
-public class CustomerLogin extends AppCompatActivity {
+public class CustomerLogin extends AppCompatActivity implements View.OnClickListener {
     private static final int REQUEST_SIGNUP = 0;
 
     private EditText editTextUserName;
     private EditText editTextPassword;
 
-    public static final String USER_NAME = "USERNAME";
-    String email;
-    String password;
+    public static final String USER_NAME = "USER_NAME";
+    public static final String PASSWORD = "PASSWORD";
 
-    @InjectView(R.id.input_email) EditText _emailText;
-    @InjectView(R.id.input_password) EditText _passwordText;
-    @InjectView(R.id.btn_login) Button _loginButton;
+    private static final String URL_CUSTOMER_LOGIN ="http://pe-ps1623.scem.westernsydney.edu.au/api/login/customerlogin.php";
+
+    @InjectView(R.id.customer_input_email) EditText _emailText;
+    @InjectView(R.id.customer_input_password) EditText _passwordText;
+    @InjectView(R.id.customer_btn_login) Button _loginButton;
     @InjectView(R.id.link_customer_register) TextView _customerRegisterLink;
     @InjectView(R.id.link_continue_guest) TextView _continueGuestLink;
 
@@ -40,8 +40,8 @@ public class CustomerLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_login);
-        editTextUserName = (EditText) findViewById(R.id.input_email);
-        editTextPassword = (EditText) findViewById(R.id.input_password);
+        editTextUserName = (EditText) findViewById(R.id.customer_input_email);
+        editTextPassword = (EditText) findViewById(R.id.customer_input_password);
 
         ButterKnife.inject(this);
 
@@ -64,57 +64,68 @@ public class CustomerLogin extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
-    }
-    public void invokeLogin(View view){
-        email = editTextUserName.getText().toString();
-        password = editTextPassword.getText().toString();
 
+        _loginButton.setOnClickListener(this);
+    }
+    public void invokeLogin(){
+        String email = editTextUserName.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
         login(email,password);
     }
     public void login(final String email, final String password) {
-        class LoginAsync extends AsyncTask<String, String, String> {
-            private Dialog loadingDialog;
+        class UserLoginClass extends AsyncTask<String, Void, String> {
+            ProgressDialog loading;
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loadingDialog = ProgressDialog.show(CustomerLogin.this, "Please wait", "Loading...");
-            }
-            @Override
-            protected String doInBackground(String... v) {
-                HashMap<String,String> params = new HashMap<>();
-                params.put(Config.KEY_EMAIL,email);
-                params.put(Config.KEY_PASSWORD,password);
-
-                RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(Config.URL_CUSTOMER_LOGIN, params);
-                return res;
+                loading = ProgressDialog.show(CustomerLogin.this, "Please wait", null, true, true);
             }
 
             @Override
-            protected void onPostExecute(String result){
-                String s = result.trim();
-                loadingDialog.dismiss();
-                if(s.equalsIgnoreCase("success")){
-                    Intent intent = new Intent(CustomerLogin.this, CustomerHome.class);
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                if (s.equalsIgnoreCase("success")) {
+                    Intent intent = new Intent(CustomerLogin.this, MainActivity.class);
                     intent.putExtra(USER_NAME, email);
                     startActivity(intent);
-                }else {
-                    Toast.makeText(getApplicationContext(), "Invalid User Name or Password", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(CustomerLogin.this, s, Toast.LENGTH_LONG).show();
                 }
             }
-        }
 
-        LoginAsync la = new LoginAsync();
-        if (!validate()) {
-            onLoginFailed();
-            return;
+            @Override
+            protected String doInBackground(String... params) {
+                HashMap<String, String> data = new HashMap<>();
+                data.put("email", params[0]);
+                data.put("password", params[1]);
+
+                RequestHandler ruc = new RequestHandler();
+
+                String result = ruc.sendPostRequest(URL_CUSTOMER_LOGIN, data);
+
+                return result;
+            }
         }
-        else
+        UserLoginClass la = new UserLoginClass();
+        la.execute(email,password);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        if(v == _loginButton)
         {
-            la.execute(email, password);
+            if(!validate())
+            {
+                onLoginFailed();
+            }
+            else
+            {
+                invokeLogin();
+            }
         }
-
     }
 
     public void onLoginFailed() {
@@ -136,13 +147,19 @@ public class CustomerLogin extends AppCompatActivity {
             _emailText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("Please enter between 4 and 10 alphanumeric characters.");
+        if (password.isEmpty()) {
+            _passwordText.setError("Please enter your password.");
             valid = false;
         } else {
             _passwordText.setError(null);
         }
 
         return valid;
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        moveTaskToBack(true);
     }
 }
