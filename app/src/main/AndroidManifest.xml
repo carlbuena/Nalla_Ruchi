@@ -29,10 +29,6 @@
         <activity
             android:name=".MainActivity"
             android:label="Nalla Ruchi Home">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".InsertFood"
@@ -89,9 +85,28 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="Locate Cook"
+            android:theme="@style/AppTheme.Dark">
+
+        </activity>
         <activity
             android:name=".LoginActivity"
+            android:label="Admin Login"
+            android:theme="@style/AppTheme.Dark">
+        </activity>
+
+        <activity
+            android:name=".CustomerLogin"
+            android:label="Customer Login"
+            android:theme="@style/AppTheme.Dark">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CustomerHome"
+            android:label="Nalla Ruchi Home"
             android:theme="@style/AppTheme.Dark">
         </activity>
 

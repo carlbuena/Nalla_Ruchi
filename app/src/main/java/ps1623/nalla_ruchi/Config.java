@@ -7,6 +7,8 @@ public class Config {
 
     //Address of our scripts of the CRUD
     public static final String URL_LOGIN ="http://pe-ps1623.scem.westernsydney.edu.au/api/login/login.php";
+    public static final String URL_CUSTOMER_LOGIN ="http://pe-ps1623.scem.westernsydney.edu.au/api/login/customerlogin.php";
+    public static final String URL_COOK_LOGIN ="http://pe-ps1623.scem.westernsydney.edu.au/api/login/cooklogin.php";
 
     public static final String URL_ADD_FOOD ="http://pe-ps1623.scem.westernsydney.edu.au/api/food/addFood.php";
     public static final String URL_GET_ALL = "http://pe-ps1623.scem.westernsydney.edu.au/api/food/getAllFood.php";

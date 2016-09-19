@@ -17,8 +17,10 @@ import java.util.HashMap;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class LoginActivity extends AppCompatActivity {
-
+/**
+ * Created by Carl on 19/09/16.
+ */
+public class CustomerLogin extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
 
     private EditText editTextUserName;
@@ -31,27 +33,17 @@ public class LoginActivity extends AppCompatActivity {
     @InjectView(R.id.input_email) EditText _emailText;
     @InjectView(R.id.input_password) EditText _passwordText;
     @InjectView(R.id.btn_login) Button _loginButton;
-    @InjectView(R.id.link_cook_register) TextView _cookRegisterLink;
     @InjectView(R.id.link_customer_register) TextView _customerRegisterLink;
     @InjectView(R.id.link_continue_guest) TextView _continueGuestLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.customer_login);
         editTextUserName = (EditText) findViewById(R.id.input_email);
         editTextPassword = (EditText) findViewById(R.id.input_password);
 
         ButterKnife.inject(this);
-        _cookRegisterLink.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // Start the Cook Register activity
-                Intent intent = new Intent(getApplicationContext(), RegisterCook.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
-            }
-        });
 
         _customerRegisterLink.setOnClickListener(new View.OnClickListener() {
 
@@ -80,13 +72,13 @@ public class LoginActivity extends AppCompatActivity {
         login(email,password);
     }
     public void login(final String email, final String password) {
-        class LoginAsync extends AsyncTask<String, String, String>{
+        class LoginAsync extends AsyncTask<String, String, String> {
             private Dialog loadingDialog;
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loadingDialog = ProgressDialog.show(LoginActivity.this, "Please wait", "Loading...");
+                loadingDialog = ProgressDialog.show(CustomerLogin.this, "Please wait", "Loading...");
             }
             @Override
             protected String doInBackground(String... v) {
@@ -95,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                 params.put(Config.KEY_PASSWORD,password);
 
                 RequestHandler rh = new RequestHandler();
-                String res = rh.sendPostRequest(Config.URL_LOGIN, params);
+                String res = rh.sendPostRequest(Config.URL_CUSTOMER_LOGIN, params);
                 return res;
             }
 
@@ -104,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 String s = result.trim();
                 loadingDialog.dismiss();
                 if(s.equalsIgnoreCase("success")){
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(CustomerLogin.this, CustomerHome.class);
                     intent.putExtra(USER_NAME, email);
                     startActivity(intent);
                 }else {
@@ -118,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
             onLoginFailed();
             return;
         }
-        else 
+        else
         {
             la.execute(email, password);
         }
@@ -129,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
         _loginButton.setEnabled(true);
-        }
+    }
 
     public boolean validate() {
         boolean valid = true;
