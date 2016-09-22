@@ -28,7 +28,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Nalla Ruchi Home">
+            android:label="Nalla Ruchi Home"
+            android:theme="@style/AppTheme.Dark">
         </activity>
         <activity
             android:name=".InsertFood"
@@ -99,20 +100,35 @@
             android:name=".CustomerLogin"
             android:label="Customer Login"
             android:theme="@style/AppTheme.Dark">
-
         </activity>
 
         <activity
-            android:name=".spinnerForCooks"
+            android:name=".CustomerHome"
             android:label="Cook Spinner"
             android:theme="@style/AppTheme.Dark">
+        </activity>
 
+        <activity
+            android:name=".CookLogin"
+            android:label="Cook Login"
+            android:theme="@style/AppTheme.Dark">
+        </activity>
+
+        <activity
+            android:name=".HomePage"
+            android:label="Nalla Ruchi Home"
+            android:theme="@style/AppTheme.Dark">
+        </activity>
+
+        <activity
+            android:name=".CreateBooking"
+            android:label="Create Booking"
+            android:theme="@style/AppTheme.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
     </application>
 

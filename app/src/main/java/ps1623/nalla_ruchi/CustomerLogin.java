@@ -30,11 +30,11 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
 
     private static final String URL_CUSTOMER_LOGIN ="http://pe-ps1623.scem.westernsydney.edu.au/api/login/customerlogin.php";
 
-    @InjectView(R.id.customer_input_email) EditText _emailText;
-    @InjectView(R.id.customer_input_password) EditText _passwordText;
-    @InjectView(R.id.customer_btn_login) Button _loginButton;
-    @InjectView(R.id.link_customer_register) TextView _customerRegisterLink;
-    @InjectView(R.id.link_continue_guest) TextView _continueGuestLink;
+    @InjectView(R.id.customer_input_email) EditText emailText;
+    @InjectView(R.id.customer_input_password) EditText passwordText;
+    @InjectView(R.id.customer_btn_login) Button loginButton;
+    @InjectView(R.id.link_customer_register) TextView customerRegisterLink;
+    @InjectView(R.id.link_continue_guest) TextView continueGuestLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
 
         ButterKnife.inject(this);
 
-        _customerRegisterLink.setOnClickListener(new View.OnClickListener() {
+        customerRegisterLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -55,7 +55,7 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        _continueGuestLink.setOnClickListener(new View.OnClickListener() {
+        continueGuestLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -65,7 +65,7 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        _loginButton.setOnClickListener(this);
+        loginButton.setOnClickListener(this);
     }
     public void invokeLogin(){
         String email = editTextUserName.getText().toString().trim();
@@ -87,7 +87,7 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
                 super.onPostExecute(s);
                 loading.dismiss();
                 if (s.equalsIgnoreCase("success")) {
-                    Intent intent = new Intent(CustomerLogin.this, MainActivity.class);
+                    Intent intent = new Intent(CustomerLogin.this, CustomerHome.class);
                     intent.putExtra(USER_NAME, email);
                     startActivity(intent);
                 } else {
@@ -108,14 +108,14 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
                 return result;
             }
         }
-        UserLoginClass la = new UserLoginClass();
-        la.execute(email,password);
+        UserLoginClass ulc = new UserLoginClass();
+        ulc.execute(email,password);
     }
 
     @Override
     public void onClick(View v)
     {
-        if(v == _loginButton)
+        if(v == loginButton)
         {
             if(!validate())
             {
@@ -131,35 +131,35 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
-        _loginButton.setEnabled(true);
+        loginButton.setEnabled(true);
     }
 
     public boolean validate() {
         boolean valid = true;
 
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
+        String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("Please enter a valid email address.");
+            emailText.setError("Please enter a valid email address.");
             valid = false;
         } else {
-            _emailText.setError(null);
+            emailText.setError(null);
         }
 
         if (password.isEmpty()) {
-            _passwordText.setError("Please enter your password.");
+            passwordText.setError("Please enter your password.");
             valid = false;
         } else {
-            _passwordText.setError(null);
+            passwordText.setError(null);
         }
 
         return valid;
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        moveTaskToBack(true);
-    }
+    //@Override
+    //public void onBackPressed()
+    //{
+      //  moveTaskToBack(true);
+    //}
 }

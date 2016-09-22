@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this,ViewAllCustomers.class));
         }
         if(v == buttonSignIn) {
-            startActivity(new Intent(this,LoginActivity.class));
+            startActivity(new Intent(this,CookLogin.class));
         }
         if(v == buttonViewAllFood) {
             startActivity(new Intent(this,ViewAllFood.class));

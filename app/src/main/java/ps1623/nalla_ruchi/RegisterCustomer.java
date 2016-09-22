@@ -4,10 +4,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -118,6 +116,11 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(RegisterCustomer.this,s,Toast.LENGTH_LONG).show();
+                if (s.equalsIgnoreCase("Customer account created successfully")) {
+                    //TODO: change customerlogin.class to customer home page and pass email: intent.putExtra(USER_NAME, email);
+                    Intent intent = new Intent(RegisterCustomer.this, CustomerLogin.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
