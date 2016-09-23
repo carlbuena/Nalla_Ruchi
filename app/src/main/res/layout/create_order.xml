@@ -12,21 +12,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".CreateOrder">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:text="Cook"
-        />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cookOrderSpinner" />
-
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Cook"
+                />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cookOrderSpinner" />
+        </TableRow>
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
@@ -191,21 +192,49 @@
         android:layout_height="wrap_content">
         <TableRow>
             <DatePicker
-                android:id="@+id/orderDate">
-            </DatePicker>
+                android:id="@+id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            </TableRow>
+        <TableRow>
+            <Button
+                android:id="@+id/select_date_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Date" />
         </TableRow>
             <TableRow>
-            <TimePicker
-                android:id="@+id/orderTime">
-            </TimePicker>
+                <TimePicker
+                    android:id="@+id/timePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                </TableRow>
+        <TableRow>
+                <Button
+                    android:id="@+id/bchange_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Change Time" />
             </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/display_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/display_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </TableRow>
         <TableRow>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="10dp"
-                android:text="Total"
+                android:text="Total: "
                 />
             <TextView
                 android:layout_width="wrap_content"

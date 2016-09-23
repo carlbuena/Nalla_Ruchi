@@ -1,11 +1,15 @@
 package ps1623.nalla_ruchi;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -46,10 +50,47 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
     private TextView textViewType;
     private TextView textViewDishType;
 
+    DatePicker datePicker;
+    TextView displayDate;
+    Button selectDate;
+    int month;
+
+    TimePicker timePicker;
+    TextView displayTime;
+    Button changeTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_order);
+
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
+        selectDate = (Button) findViewById(R.id.select_date_button);
+        displayDate = (TextView) findViewById(R.id.display_date);
+        displayDate.setText("Display Date");
+
+        datePicker.setMinDate(System.currentTimeMillis()-1000);
+
+        displayDate.setText(currentDate());
+        selectDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayDate.setText(currentDate());
+            }
+        });
+
+        timePicker = (TimePicker) findViewById(R.id.timePicker);
+        displayTime = (TextView) findViewById(R.id.display_time);
+        changeTime = (Button) findViewById(R.id.bchange_time);
+
+        timePicker.setIs24HourView(false);
+        displayTime.setText(currentTime());
+        changeTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                displayTime.setText(currentTime());
+            }
+        });
 
         //Initializing the ArrayList
         cooks = new ArrayList<String>();
@@ -262,6 +303,7 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
         textViewDishType.setText(getFoodDishType(position));
     }
 
+
     //When no item is selected this method would execute
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
@@ -275,4 +317,32 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
         textViewType.setText("");
         textViewDishType.setText("");
     }
+
+    //Database format
+    public String databaseDate() {
+        StringBuilder dataDate = new StringBuilder();
+        month = datePicker.getMonth() + 1;
+        dataDate.append(datePicker.getYear() + "-" + month + "-" + datePicker.getDayOfMonth());
+        return dataDate.toString();
+    }
+
+    public String dataTime() {
+        String dataTime = ("Time: " + timePicker.getHour() + ":" + timePicker.getMinute());
+        return dataTime;
+    }
+
+    //Ui format
+    public String currentDate() {
+        StringBuilder mcurrentDate = new StringBuilder();
+        month = datePicker.getMonth() + 1;
+        mcurrentDate.append("This is your selected date: " + datePicker.getDayOfMonth() + "/" + month);
+        return mcurrentDate.toString();
+    }
+
+    public String currentTime() {
+        String mcurrentTime = ("This is your selected Time: " + timePicker.getHour() + ":" + timePicker.getMinute());
+        return mcurrentTime;
+    }
 }
+
+

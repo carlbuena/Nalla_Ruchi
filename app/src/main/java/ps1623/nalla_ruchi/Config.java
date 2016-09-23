@@ -13,6 +13,7 @@ public class Config {
     public static final String URL_GET_FOOD = "http://pe-ps1623.scem.westernsydney.edu.au/api/food/getFood.php";
     public static final String URL_UPDATE_FOOD = "http://pe-ps1623.scem.westernsydney.edu.au/api/food/updateFood.php";
     public static final String URL_DELETE_FOOD = "http://pe-ps1623.scem.westernsydney.edu.au/api/food/deleteFood.php?Food_ID=";
+    public static final String URL_GET_FOOD_COOK = "http://pe-ps1623.scem.westernsydney.edu.au/api/food/getFoodForCook.php?Cook_ID=";
 
     public static final String URL_ADD_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/addCustomer.php";
     public static final String URL_GET_ALL_CUSTOMERS = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/getAllCustomers.php";
@@ -47,7 +48,6 @@ public class Config {
     public static final String URL_COOK_CATEGORY = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getCookSpinner.php";
 
     public static final String DATA_URL = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/cookSpinner.php";
-
 
     //Keys that will be used to send the request to php scripts
     public static final String KEY_EMAIL = "Email";
