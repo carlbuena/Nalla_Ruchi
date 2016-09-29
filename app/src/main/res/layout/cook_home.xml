@@ -12,8 +12,8 @@
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
             android:padding="12dp"
-            android:text="Create Order"
-            android:id="@+id/Order"
+            android:text="View Menu"
+            android:id="@+id/viewMenu"
             android:layout_gravity="center_horizontal"
             android:textSize="5pt"
             android:theme="@style/MyButton"
@@ -23,21 +23,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:text="Make a Booking"
-            android:id="@+id/Booking"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:padding="12dp"
-            android:textSize="5pt"
-            android:theme="@style/MyButton"
-            android:layout_weight="1"
-            android:background="#ffffff" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:text="Search"
-            android:id="@+id/Search"
+            android:text="Add Food Item"
+            android:id="@+id/addFood"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:padding="12dp"
@@ -49,8 +36,34 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="0dp"
-            android:text="View My Profile"
-            android:id="@+id/myProfile"
+            android:text="View Orders"
+            android:id="@+id/viewOrders"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:textSize="5pt"
+            android:theme="@style/MyButton"
+            android:layout_weight="1"
+            android:background="#ffffff" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:text="View Bookings"
+            android:id="@+id/viewBookings"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:textSize="5pt"
+            android:theme="@style/MyButton"
+            android:layout_weight="1"
+            android:background="#ffffff" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:text="View Profile"
+            android:id="@+id/viewProfile"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:padding="12dp"

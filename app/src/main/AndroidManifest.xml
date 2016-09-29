@@ -106,6 +106,10 @@
             android:name=".CustomerHome"
             android:label="Cook Spinner"
             android:theme="@style/AppTheme.Dark">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="ps1623.nalla_ruchi.HomePage">
+        </meta-data>
         </activity>
 
         <activity
@@ -116,18 +120,18 @@
 
         <activity
             android:name=".HomePage"
-            android:label="Nalla Ruchi Home"
+            android:label="Nalla Ruchi"
             android:theme="@style/AppTheme.Dark">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
             android:name=".CreateOrder"
             android:label="Create an Order"
             android:theme="@style/AppTheme.Dark">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
     </application>

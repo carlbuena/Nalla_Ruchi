@@ -82,7 +82,6 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
                 loading = ProgressDialog.show(CustomerLogin.this, "Please wait", null, true, true);
             }
 
-            @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
