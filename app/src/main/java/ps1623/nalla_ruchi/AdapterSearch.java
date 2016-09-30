@@ -43,12 +43,12 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         // Get current position of item in RecyclerView to bind data and assign values from list
-        MyHolder myHolder= (MyHolder) holder;
-        Data current=data.get(position);
+        MyHolder myHolder = (MyHolder) holder;
+        Data current = data.get(position);
         myHolder.textFoodName.setText(current.foodName);
-        myHolder.textFoodDescription.setText(current.foodDescription);
+        myHolder.textFoodDescription.setText("Description: " + current.foodDescription);
         myHolder.textEthnicity.setText("Ethnicity: " + current.foodEthnicity);
-        myHolder.textType.setText("Ethnicity: " + current.foodType);
+        myHolder.textType.setText("Type: " + current.foodType);
         myHolder.textDishType.setText("Dish Type: " + current.dishType);
         myHolder.textPrice.setText("Price: " + current.foodPrice);
         myHolder.textPrice.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
@@ -80,6 +80,7 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             textType = (TextView) itemView.findViewById(R.id.textType);
             textDishType = (TextView) itemView.findViewById(R.id.textDishType);
             textPrice = (TextView) itemView.findViewById(R.id.textPrice);
+
             itemView.setOnClickListener(this);
         }
 

@@ -11,6 +11,8 @@ public class Data {
     public String foodType;
     public String dishType;
     public Double foodPrice;
+    public int menuID;
+    public int foodID;
 
     public String cookName;
     public String cookLocation;

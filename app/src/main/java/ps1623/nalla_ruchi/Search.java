@@ -10,17 +10,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -204,7 +206,10 @@ public class Search extends AppCompatActivity {
 
                 try {
 
-                    JSONArray jArray = new JSONArray(result);
+                    //JSONArray jArray = new JSONArray(result);
+
+                    JSONObject object = new JSONObject(result);
+                    JSONArray jArray  = object.getJSONArray("result");
 
                     // Extract data from json and store into ArrayList as class objects
                     for (int i = 0; i < jArray.length(); i++) {
@@ -216,6 +221,8 @@ public class Search extends AppCompatActivity {
                         foodData.foodType = json_data.getString("Type");
                         foodData.dishType = json_data.getString("Dish_Type");
                         foodData.foodPrice = json_data.getDouble("Price");
+                        foodData.menuID = json_data.getInt("Menu_ID");
+                        foodData.foodID = json_data.getInt("Food_ID");
                         data.add(foodData);
                     }
 
