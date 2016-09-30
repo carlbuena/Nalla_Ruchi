@@ -200,7 +200,7 @@ public class Search extends AppCompatActivity {
             List<Data> data=new ArrayList<>();
 
             pdLoading.dismiss();
-            if(result.equals("no rows")) {
+            if(result.equals("")) {
                 Toast.makeText(Search.this, "No Results found for entered query", Toast.LENGTH_LONG).show();
             }else{
 

@@ -88,7 +88,8 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         @Override
         public void onClick(View v) {
 
-            Toast.makeText(context, "You clicked an item", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Out of stock", Toast.LENGTH_SHORT).show();
+
 
         }
 

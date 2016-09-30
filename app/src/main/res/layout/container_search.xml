@@ -20,6 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Food Description"
         android:id="@+id/textfoodDescription"
+        android:layout_below="@id/textfoodName"
         android:layout_marginLeft="5dp"/>
 
     <TextView
@@ -28,6 +29,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Ethnicity"
         android:id="@+id/textfoodEthnicity"
+        android:layout_below="@id/textfoodDescription"
         android:layout_marginLeft="5dp"
         android:textColor="#666"/>
 
@@ -37,6 +39,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Type"
         android:id="@+id/textType"
+        android:layout_below="@id/textfoodEthnicity"
         android:layout_marginLeft="5dp"
         android:textColor="#666"/>
 
@@ -46,6 +49,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Dish Type"
         android:id="@+id/textDishType"
+        android:layout_below="@id/textType"
         android:layout_marginLeft="5dp"
         android:textColor="#666"/>
 
@@ -55,6 +59,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Price"
         android:id="@+id/textPrice"
+        android:layout_below="@id/textDishType"
         android:textColor="@color/colorAccent"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="5dp"
