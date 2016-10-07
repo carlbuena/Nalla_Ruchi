@@ -48,6 +48,8 @@ public class Config {
     public static final String URL_COOK_CATEGORY = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getCookSpinner.php";
 
     public static final String DATA_URL = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/cookSpinner.php";
+    public static final String DATA_URL_FOODIMAGES = "http://pe-ps1623.scem.westernsydney.edu.au/api/foodImages/feed.php?page=";
+
 
     //Keys that will be used to send the request to php scripts
     public static final String KEY_EMAIL = "Email";
@@ -127,6 +129,7 @@ public class Config {
     public static final String TAG_TYPE = "Type";
     public static final String TAG_DISH = "Dish_Type";
     public static final String TAG_FOOD_MENU_ID = "Menu_ID";
+    public static final String TAG_FOOD_IMAGE = "FoodPicture";
 
     public static final String TAG_CUSTOMER_ID = "Customer_ID";
     public static final String TAG_FIRSTNAME = "FirstName";
@@ -188,6 +191,7 @@ public class Config {
     public static final String FOOD_TYPE = "Type";
     public static final String FOOD_DISH = "Dish_Type";
     public static final String FOOD_MENU_ID = "Menu_ID";
+
 
     public static final String CUSTOMER_ID = "Customer_ID";
     public static final String CUSTOMER_FIRSTNAME = "FirstName";

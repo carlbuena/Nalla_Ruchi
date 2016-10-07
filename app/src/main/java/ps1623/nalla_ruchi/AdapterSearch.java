@@ -5,6 +5,7 @@ package ps1623.nalla_ruchi;
  */
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -33,7 +34,7 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     // Inflate the layout when ViewHolder created
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view=inflater.inflate(R.layout.container_search, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.container_search, parent,false);
         MyHolder holder=new MyHolder(view);
         return holder;
     }
@@ -41,7 +42,6 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     // Bind data
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
         // Get current position of item in RecyclerView to bind data and assign values from list
         MyHolder myHolder = (MyHolder) holder;
         Data current = data.get(position);
@@ -61,9 +61,9 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return data.size();
     }
 
-
     class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        //Views
         TextView textFoodName;
         TextView textFoodDescription;
         TextView textEthnicity;
@@ -84,13 +84,13 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             itemView.setOnClickListener(this);
         }
 
+
+
         // Click event for all items
         @Override
         public void onClick(View v) {
-
             Toast.makeText(context, "Out of stock", Toast.LENGTH_SHORT).show();
-
-
+            context.startActivity(new Intent(v.getContext(),CreateOrder.class));
         }
 
     }

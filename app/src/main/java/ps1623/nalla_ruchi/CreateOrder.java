@@ -1,5 +1,6 @@
 package ps1623.nalla_ruchi;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -44,6 +46,7 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
     private TextView textViewSurname;
     private TextView textViewAddress;
 
+    private TextView textViewFoodID;
     private TextView textViewPrice;
     private TextView textViewDescription;
     private TextView textViewEthnicity;
@@ -174,14 +177,14 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
     }
 
     private String getCookID(int position){
-        String course="";
+        String cook_id="";
         try {
             JSONObject json = result.getJSONObject(position);
-            course = json.getString(Config.TAG_COOK_ID);
+            cook_id = json.getString(Config.TAG_COOK_ID);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return course;
+        return cook_id;
     }
 
     //Method to get cook name of a particular position
@@ -202,88 +205,88 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
 
     //Getting cook last name
     private String getCookSurname(int position){
-        String course="";
+        String surname="";
         try {
             JSONObject json = result.getJSONObject(position);
-            course = json.getString(Config.TAG_COOK_SURNAME);
+            surname = json.getString(Config.TAG_COOK_SURNAME);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return course;
+        return surname;
     }
 
     //Getting cook address
     private String getCookAddress(int position){
-        String session="";
+        String address="";
         try {
             JSONObject json = result.getJSONObject(position);
-            session = json.getString(Config.TAG_COOK_ADDRESS);
+            address = json.getString(Config.TAG_COOK_ADDRESS);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return session;
+        return address;
     }
 
     //Get food details
     private String getFoodID(int position){
-        String session="";
+        String food_id="";
         try {
             JSONObject json = result.getJSONObject(position);
-            session = json.getString(Config.TAG_ID);
+            food_id = json.getString(Config.TAG_ID);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return session;
+        return food_id;
     }
     private String getFoodPrice(int position){
-        String session="";
+        String price="";
         try {
             JSONObject json = result.getJSONObject(position);
-            session = json.getString(Config.TAG_PRICE);
+           price = json.getString(Config.TAG_PRICE);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return session;
+        return price;
     }
     private String getFoodDescription(int position){
-        String session="";
+        String description="";
         try {
             JSONObject json = result.getJSONObject(position);
-            session = json.getString(Config.TAG_DES);
+            description = json.getString(Config.TAG_DES);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return session;
+        return description;
     }
     private String getFoodEthnicity(int position){
-        String session="";
+        String ethnicity="";
         try {
             JSONObject json = result.getJSONObject(position);
-            session = json.getString(Config.TAG_ETH);
+            ethnicity = json.getString(Config.TAG_ETH);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return session;
+        return ethnicity;
     }
     private String getFoodType(int position){
-        String session="";
+        String type="";
         try {
             JSONObject json = result.getJSONObject(position);
-            session = json.getString(Config.TAG_TYPE);
+            type = json.getString(Config.TAG_TYPE);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return session;
+        return type;
     }
     private String getFoodDishType(int position){
-        String session="";
+        String dish="";
         try {
             JSONObject json = result.getJSONObject(position);
-            session = json.getString(Config.TAG_DISH);
+            dish = json.getString(Config.TAG_DISH);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return session;
+        return dish;
     }
 
 
@@ -291,18 +294,54 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //Setting the values to textviews for a selected item
-        textViewFirstName.setText(getCookID(position));
         textViewFirstName.setText(getCookName(position));
         textViewSurname.setText(getCookSurname(position));
         textViewAddress.setText(getCookAddress(position));
 
+        textViewFoodID.setText(getFoodID(position));
         textViewPrice.setText(getFoodPrice(position));
         textViewDescription.setText(getFoodDescription(position));
         textViewEthnicity.setText(getFoodEthnicity(position));
         textViewType.setText(getFoodType(position));
         textViewDishType.setText(getFoodDishType(position));
-    }
 
+        String name = textViewFirstName.toString();
+        String surname = textViewSurname.toString();
+        String address = textViewAddress.toString();
+
+        String foodid = textViewFoodID.toString();
+        String price = textViewPrice.toString();
+        String description = textViewDescription.toString();
+        String ethnicity = textViewEthnicity.toString();
+        String type = textViewType.toString();
+        String dish = textViewDishType.toString();
+
+        String sp1= String.valueOf(cookOrderSpinner.getSelectedItem());
+        Toast.makeText(this, sp1, Toast.LENGTH_SHORT).show();
+        if(sp1.contentEquals(name)) {
+            cooks.add(name);
+            cooks.add(surname);
+            cooks.add(address);
+
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cooks);
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter.notifyDataSetChanged();
+            FoodSpinner.setAdapter(dataAdapter);
+        }
+        if(sp1.contentEquals(foodid)) {
+            food.add(price);
+            food.add(description);
+            food.add(ethnicity);
+            food.add(type);
+            food.add(dish);
+
+            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, food);
+            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            dataAdapter2.notifyDataSetChanged();
+            FoodSpinner.setAdapter(dataAdapter2);
+        }
+
+    }
 
     //When no item is selected this method would execute
     @Override
@@ -327,8 +366,16 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
     }
 
     public String dataTime() {
-        String dataTime = ("Time: " + timePicker.getHour() + ":" + timePicker.getMinute());
-        return dataTime;
+        if(Build.VERSION.SDK_INT<=22)
+        {
+            String dataTime = ("Time: " + timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute());
+            return dataTime;
+        }
+        else
+        {
+            String dataTime = ("Time: " + timePicker.getHour() + ":" + timePicker.getMinute());
+            return dataTime;
+        }
     }
 
     //Ui format
@@ -340,8 +387,15 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
     }
 
     public String currentTime() {
-        String mcurrentTime = ("This is your selected Time: " + timePicker.getHour() + ":" + timePicker.getMinute());
-        return mcurrentTime;
+        if(Build.VERSION.SDK_INT<=22) {
+            String mcurrentTime = ("This is your selected Time: " + timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute());
+            return mcurrentTime;
+        }
+        else
+        {
+            String mcurrentTime = ("This is your selected Time: " + timePicker.getHour() + ":" + timePicker.getMinute());
+            return mcurrentTime;
+        }
     }
 }
 
