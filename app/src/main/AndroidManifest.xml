@@ -41,6 +41,7 @@
         <activity
             android:name=".ViewAllCooks"
             android:label="View All Cooks">
+
         </activity>
         <activity
             android:name=".ViewAllCustomers"
@@ -63,11 +64,15 @@
         <activity
             android:name=".RegisterCustomer"
             android:label="Register Customer">
-
         </activity>
         <activity
             android:name=".RegisterCook"
             android:label="Register Cook">
+
+        </activity>
+        <activity
+            android:name=".CookHome"
+            android:label="Cook Home">
 
         </activity>
 
@@ -105,10 +110,7 @@
             android:name=".CustomerHome"
             android:label="Cook Spinner"
             android:theme="@style/AppTheme.Dark">
-            <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="ps1623.nalla_ruchi.HomePage">
-        </meta-data>
+
         </activity>
 
         <activity
@@ -121,13 +123,16 @@
             android:name=".HomePage"
             android:label="Nalla Ruchi"
             android:theme="@style/AppTheme.Dark">
+
         </activity>
 
         <activity
-            android:name=".CreateOrder"
-            android:label="Create an Order"
+            android:name=".CreateBooking"
+            android:label="Make a Booking"
             android:theme="@style/AppTheme.Dark">
+
         </activity>
+
 
         <activity android:name=".Search" android:launchMode="singleTop">
             <meta-data
@@ -140,18 +145,25 @@
             android:name=".CookProfile"
             android:label="Cook Profile"
             android:theme="@style/AppTheme.Dark">
-        </activity>
-
-        <activity
-            android:name=".foodGalleryMain"
-            android:label="Food Gallery"
-            android:theme="@style/AppTheme.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.SEARCH" />
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".foodGalleryMain"
+            android:label="Food Gallery"
+            android:theme="@style/AppTheme.Dark">
+
+        </activity>
+
+        <activity
+            android:name=".Booking"
+            android:label="Make a Booking"
+            android:theme="@style/AppTheme.Dark">
         </activity>
 
     </application>

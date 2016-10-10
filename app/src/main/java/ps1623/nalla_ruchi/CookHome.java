@@ -39,7 +39,7 @@ public class CookHome extends AppCompatActivity implements View.OnClickListener 
 
     public void onClick(View v) {
         if (v == buttonViewMenu) {
-            //startActivity(new Intent(this, CreateOrder.class));
+            //startActivity(new Intent(this, CreateBooking.class));
         }
         if (v == buttonAddFood) {
             startActivity(new Intent(this, InsertFood.class));

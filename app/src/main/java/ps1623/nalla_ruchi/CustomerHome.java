@@ -2,9 +2,7 @@ package ps1623.nalla_ruchi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -35,12 +33,12 @@ public class CustomerHome extends AppCompatActivity implements View.OnClickListe
         buttonSearch.setOnClickListener(this);
         buttonviewProfile.setOnClickListener(this);
 
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void onClick(View v) {
         if (v == buttonOrder) {
-            startActivity(new Intent(this, CreateOrder.class));
+            startActivity(new Intent(this, CreateBooking.class));
         }
         if (v == buttonViewCooks) {
             //startActivity(new Intent(this, CustomerLogin.class));
@@ -54,7 +52,7 @@ public class CustomerHome extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
@@ -63,6 +61,6 @@ public class CustomerHome extends AppCompatActivity implements View.OnClickListe
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
 

@@ -90,7 +90,7 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         @Override
         public void onClick(View v) {
             Toast.makeText(context, "Out of stock", Toast.LENGTH_SHORT).show();
-            context.startActivity(new Intent(v.getContext(),CreateOrder.class));
+            context.startActivity(new Intent(v.getContext(),CreateBooking.class));
         }
 
     }

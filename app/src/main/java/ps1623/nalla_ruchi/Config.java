@@ -26,6 +26,7 @@ public class Config {
     public static final String URL_GET_COOK = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getCook.php";
     public static final String URL_UPDATE_COOK = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/updateCook.php";
     public static final String URL_DELETE_COOK = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/deleteCook.php?Cook_ID=";
+    public static final String URL_COOK_PROFILE = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/cookProfile.php";
 
     public static final String URL_ADD_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/addBooking.php";
     public static final String URL_GET_ALL_BOOKINGS = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/getAllBooking.php";
@@ -44,6 +45,12 @@ public class Config {
     public static final String URL_GET_PAYMENT = "http://pe-ps1623.scem.westernsydney.edu.au/api/payment/getPayment.php";
     public static final String URL_UPDATE_PAYMENT = "http://pe-ps1623.scem.westernsydney.edu.au/api/payment/updatePayment.php";
     public static final String URL_DELETE_PAYMENT = "http://pe-ps1623.scem.westernsydney.edu.au/api/payment/deletePayment.php";
+
+    public static final String URL_ADD_CLASS ="http://pe-ps1623.scem.westernsydney.edu.au/api/class/addClass.php";
+    public static final String URL_GET_ALL_CLASSES = "http://pe-ps1623.scem.westernsydney.edu.au/api/class/getAllClasses.php";
+    public static final String URL_GET_CLASS = "http://pe-ps1623.scem.westernsydney.edu.au/api/class/getClass.php";
+    public static final String URL_UPDATE_CLASS = "http://pe-ps1623.scem.westernsydney.edu.au/api/class/updateClass.php?Class_ID=";
+    public static final String URL_DELETE_CLASS = "http://pe-ps1623.scem.westernsydney.edu.au/api/class/deleteClass.php";
 
     public static final String URL_COOK_CATEGORY = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getCookSpinner.php";
 
@@ -182,6 +189,15 @@ public class Config {
     public static final String TAG_PAYMENT_BOOKING_ID = "Booking_ID";
     public static final String TAG_PAYMENT_CUSTOMER_ID = "Customer_ID";
 
+    public static final String TAG_CLASS_ID = "Class_ID";
+    public static final String TAG_CLASS_COOK_ID = "Cook_ID";
+    public static final String TAG_CLASS_COOK_NAME = "FirstName";
+    public static final String TAG_CLASS_DATE = "Date";
+    public static final String TAG_CLASS_TIME = "Time";
+    public static final String TAG_CLASS_PRICE = "Price";
+    public static final String TAG_CLASS_MAX = "Max_Attendees";
+    public static final String TAG_CLASS_TOTAL = "Total_Attendees";
+
     //id to pass with intent
     public static final String FOOD_ID = "Food_ID";
     public static final String FOOD_NAME = "Food_Name";
@@ -191,7 +207,6 @@ public class Config {
     public static final String FOOD_TYPE = "Type";
     public static final String FOOD_DISH = "Dish_Type";
     public static final String FOOD_MENU_ID = "Menu_ID";
-
 
     public static final String CUSTOMER_ID = "Customer_ID";
     public static final String CUSTOMER_FIRSTNAME = "FirstName";
@@ -217,6 +232,23 @@ public class Config {
     public static final String COOK_DOR = "DateOfRegistration";
 
     public static final String BOOKING_ID = "Booking_ID";
+    public static final String BOOKING_CUSTOMER_ID = "Customer_ID";
+    public static final String BOOKING_DATE = "BookingDate";
+    public static final String BOOKING_TIME = "BookingTime";
+    public static final String BOOKING_MADE = "BookingDateMade";
+    public static final String BOOKING_COOK_ID = "Cook_ID";
+    public static final String BOOKING_PRICE = "bookingPrice";
+    public static final String BOOKING_STATUS = "bookingStatus";
+
+    public static final String CLASS_ID = "Class_ID";
+    public static final String CLASS_COOK_ID = "Cook_ID";
+    public static final String CLASS_COOK_NAME = "FirstName";
+    public static final String CLASS_DATE = "Date";
+    public static final String CLASS_TIME = "Time";
+    public static final String CLASS_PRICE = "Price";
+    public static final String CLASS_MAX = "Max_Attendees";
+    public static final String CLASS_TOTAL = "Total_Attendees";
+
     public static final String ORDER_ID = "Order_ID";
     public static final String PAYMENT_ID = "Payment_ID";
 }

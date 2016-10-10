@@ -28,15 +28,13 @@ import java.util.ArrayList;
 /**
  * Created by Prazad Silva on 16/9/2016.
  */
-public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSelectedListener {
+public class CreateBooking extends AppCompatActivity implements Spinner.OnItemSelectedListener/*, View.OnClickListener*/ {
 
     //Declaring an Spinner
     private Spinner cookOrderSpinner;
-    private Spinner FoodSpinner;
 
     //An ArrayList for Spinner Items
     private ArrayList<String> cooks;
-    private ArrayList<String> food;
 
     //JSON Array
     private JSONArray result;
@@ -46,12 +44,7 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
     private TextView textViewSurname;
     private TextView textViewAddress;
 
-    private TextView textViewFoodID;
-    private TextView textViewPrice;
-    private TextView textViewDescription;
-    private TextView textViewEthnicity;
-    private TextView textViewType;
-    private TextView textViewDishType;
+    private Button buttonBook;
 
     DatePicker datePicker;
     TextView displayDate;
@@ -97,30 +90,23 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
 
         //Initializing the ArrayList
         cooks = new ArrayList<String>();
-        food = new ArrayList<String>();
 
         //Initializing Spinner
         cookOrderSpinner = (Spinner) findViewById(R.id.cookOrderSpinner);
-        FoodSpinner = (Spinner) findViewById(R.id.FoodSpinner);
 
         //Adding an Item Selected Listener to our Spinner
         //As we have implemented the class Spinner.OnItemSelectedListener to this class itself we are passing this to setOnItemSelectedListener
         cookOrderSpinner.setOnItemSelectedListener(this);
-        FoodSpinner.setOnItemSelectedListener(this);
 
         //Initializing TextViews
         textViewFirstName = (TextView) findViewById(R.id.textViewFirstName);
         textViewSurname = (TextView) findViewById(R.id.textViewSurname);
         textViewAddress = (TextView) findViewById(R.id.textViewAddress);
 
-        textViewPrice = (TextView) findViewById(R.id.textViewPrice);
-        textViewDescription = (TextView) findViewById(R.id.textViewDescription);
-        textViewEthnicity = (TextView) findViewById(R.id.textViewEthnicity);
-        textViewType = (TextView) findViewById(R.id.textViewType);
-        textViewDishType = (TextView) findViewById(R.id.textViewDishType);
-
         //This method will fetch the data from the URL
         getData();
+
+        //buttonBook.setOnClickListener(this);
     }
 
     private void getData(){
@@ -173,7 +159,7 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
         }
 
         //Setting adapter to show the items in the spinner
-        cookOrderSpinner.setAdapter(new ArrayAdapter<String>(CreateOrder.this, android.R.layout.simple_spinner_dropdown_item, cooks));
+        cookOrderSpinner.setAdapter(new ArrayAdapter<String>(CreateBooking.this, android.R.layout.simple_spinner_dropdown_item, cooks));
     }
 
     private String getCookID(int position){
@@ -227,69 +213,6 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
         return address;
     }
 
-    //Get food details
-    private String getFoodID(int position){
-        String food_id="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            food_id = json.getString(Config.TAG_ID);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return food_id;
-    }
-    private String getFoodPrice(int position){
-        String price="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-           price = json.getString(Config.TAG_PRICE);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return price;
-    }
-    private String getFoodDescription(int position){
-        String description="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            description = json.getString(Config.TAG_DES);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return description;
-    }
-    private String getFoodEthnicity(int position){
-        String ethnicity="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            ethnicity = json.getString(Config.TAG_ETH);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return ethnicity;
-    }
-    private String getFoodType(int position){
-        String type="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            type = json.getString(Config.TAG_TYPE);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return type;
-    }
-    private String getFoodDishType(int position){
-        String dish="";
-        try {
-            JSONObject json = result.getJSONObject(position);
-            dish = json.getString(Config.TAG_DISH);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return dish;
-    }
-
-
     //this method will execute when we pic an item from the spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -298,27 +221,12 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
         textViewSurname.setText(getCookSurname(position));
         textViewAddress.setText(getCookAddress(position));
 
-        textViewFoodID.setText(getFoodID(position));
-        textViewPrice.setText(getFoodPrice(position));
-        textViewDescription.setText(getFoodDescription(position));
-        textViewEthnicity.setText(getFoodEthnicity(position));
-        textViewType.setText(getFoodType(position));
-        textViewDishType.setText(getFoodDishType(position));
-
-        String name = textViewFirstName.toString();
-        String surname = textViewSurname.toString();
-        String address = textViewAddress.toString();
-
-        String foodid = textViewFoodID.toString();
-        String price = textViewPrice.toString();
-        String description = textViewDescription.toString();
-        String ethnicity = textViewEthnicity.toString();
-        String type = textViewType.toString();
-        String dish = textViewDishType.toString();
+        String name = (String) textViewFirstName.getText();
+        String surname = (String) textViewSurname.getText();
+        String address = (String) textViewAddress.getText();
 
         String sp1= String.valueOf(cookOrderSpinner.getSelectedItem());
         Toast.makeText(this, sp1, Toast.LENGTH_SHORT).show();
-        if(sp1.contentEquals(name)) {
             cooks.add(name);
             cooks.add(surname);
             cooks.add(address);
@@ -326,20 +234,6 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
             ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cooks);
             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             dataAdapter.notifyDataSetChanged();
-            FoodSpinner.setAdapter(dataAdapter);
-        }
-        if(sp1.contentEquals(foodid)) {
-            food.add(price);
-            food.add(description);
-            food.add(ethnicity);
-            food.add(type);
-            food.add(dish);
-
-            ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, food);
-            dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            dataAdapter2.notifyDataSetChanged();
-            FoodSpinner.setAdapter(dataAdapter2);
-        }
 
     }
 
@@ -349,13 +243,58 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
         textViewFirstName.setText("");
         textViewSurname.setText("");
         textViewAddress.setText("");
-
-        textViewPrice.setText("");
-        textViewDescription.setText("");
-        textViewEthnicity.setText("");
-        textViewType.setText("");
-        textViewDishType.setText("");
     }
+
+    /*private void makeBooking(){
+
+        final String Cook_Name = editTextFood_Name.getText().toString().trim();
+        final String Booking_Time = editTextPrice.getText().toString().trim();
+        final String Booking_Date = editTextDescription.getText().toString().trim();
+        final String Customer_ID = editTextEthnicity.getText().toString().trim();
+
+        class AddFood extends AsyncTask<Void,Void,String> {
+
+            ProgressDialog loading;
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                loading = ProgressDialog.show(InsertFood.this,"Adding...","Wait...",false,false);
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                loading.dismiss();
+                Toast.makeText(InsertFood.this,s,Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            protected String doInBackground(Void... v) {
+                HashMap<String,String> params = new HashMap<>();
+                params.put(Config.KEY_FOOD_NAME,Food_Name);
+                params.put(Config.KEY_FOOD_PRICE,Price);
+                params.put(Config.KEY_FOOD_DES,Description);
+                params.put(Config.KEY_FOOD_ETH,Ethnicity);
+                params.put(Config.KEY_FOOD_TYPE,Type);
+                params.put(Config.KEY_FOOD_DISH,Dish);
+                params.put(Config.KEY_FOOD_MENU_ID,Menu_ID);
+
+                RequestHandler rh = new RequestHandler();
+                String res = rh.sendPostRequest(Config.URL_ADD_FOOD, params);
+                return res;
+            }
+        }
+
+        AddFood af = new AddFood();
+        af.execute();
+    }
+
+    @Override
+    public void setOnTimeChangedListener(TimePicker.OnTimeChangedListener onTimeChangedListener)
+    {
+
+    }*/
 
     //Database format
     public String databaseDate() {
@@ -397,6 +336,14 @@ public class CreateOrder extends AppCompatActivity implements Spinner.OnItemSele
             return mcurrentTime;
         }
     }
+
+    /*@Override
+    public void onClick(View v) {
+        if(v == buttonBook){
+            makeBooking();
+            startActivity(new Intent(this,CustomerHome.class));
+        }
+    }*/
 }
 
 

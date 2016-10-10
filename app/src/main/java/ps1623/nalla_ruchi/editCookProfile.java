@@ -22,7 +22,7 @@ import java.util.HashMap;
  * Created by Carl on 15/09/16.
  */
 
-public class ViewCook extends AppCompatActivity implements View.OnClickListener {
+public class editCookProfile extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editTextCook_ID;
     private EditText editTextRole;
@@ -52,7 +52,7 @@ public class ViewCook extends AppCompatActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_cook);
+        setContentView(R.layout.edit_cook_profile);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -105,7 +105,7 @@ public class ViewCook extends AppCompatActivity implements View.OnClickListener 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ViewCook.this,"Fetching...","Wait...",false,false);
+                loading = ProgressDialog.show(editCookProfile.this,"Fetching...","Wait...",false,false);
             }
 
             @Override
@@ -176,14 +176,14 @@ public class ViewCook extends AppCompatActivity implements View.OnClickListener 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ViewCook.this,"Updating...","Wait...",false,false);
+                loading = ProgressDialog.show(editCookProfile.this,"Updating...","Wait...",false,false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(ViewCook.this,s,Toast.LENGTH_LONG).show();
+                Toast.makeText(editCookProfile.this,s,Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -219,14 +219,14 @@ public class ViewCook extends AppCompatActivity implements View.OnClickListener 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ViewCook.this, "Updating...", "Wait...", false, false);
+                loading = ProgressDialog.show(editCookProfile.this, "Updating...", "Wait...", false, false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(ViewCook.this, s, Toast.LENGTH_LONG).show();
+                Toast.makeText(editCookProfile.this, s, Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -250,7 +250,7 @@ public class ViewCook extends AppCompatActivity implements View.OnClickListener 
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         deleteCook();
-                        startActivity(new Intent(ViewCook.this,ViewAllCooks.class));
+                        startActivity(new Intent(editCookProfile.this,ViewAllCooks.class));
                     }
                 });
 
@@ -270,7 +270,7 @@ public class ViewCook extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         if(v == buttonUpdate){
             updateCook();
-            startActivity(new Intent(ViewCook.this,ViewAllCooks.class));
+            startActivity(new Intent(editCookProfile.this,CookProfile.class));
         }
 
         if(v == buttonDelete){
