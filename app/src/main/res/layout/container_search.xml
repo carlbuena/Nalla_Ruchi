@@ -7,6 +7,50 @@
     android:orientation="horizontal"
     android:padding="10dp">
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/textcookID"
+                android:visibility="gone"
+                android:layout_marginLeft="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Cook Name: "
+                android:layout_marginLeft="5dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textcookFirstName"
+        android:layout_marginLeft="5dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textcookSurname" />
+        </TableRow>
+
+<TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Food Name: "
+        android:layout_marginLeft="5dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textfoodID"
+        android:visibility="gone"
+        android:layout_marginLeft="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +58,8 @@
         android:text="Food Name"
         android:id="@+id/textfoodName"
         android:layout_marginLeft="5dp"/>
-
+    </TableRow>
+        <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +68,8 @@
         android:id="@+id/textfoodDescription"
         android:layout_below="@id/textfoodName"
         android:layout_marginLeft="5dp"/>
-
+</TableRow>
+        <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +79,8 @@
         android:layout_below="@id/textfoodDescription"
         android:layout_marginLeft="5dp"
         android:textColor="#666"/>
-
+            </TableRow>
+        <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,7 +90,8 @@
         android:layout_below="@id/textfoodEthnicity"
         android:layout_marginLeft="5dp"
         android:textColor="#666"/>
-
+</TableRow>
+        <TableRow>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,17 +101,21 @@
         android:layout_below="@id/textType"
         android:layout_marginLeft="5dp"
         android:textColor="#666"/>
+</TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Price"
+                android:id="@+id/textPrice"
+                android:layout_below="@id/textDishType"
+                android:textColor="@color/colorAccent"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                />
+</TableRow>
+    </TableLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Price"
-        android:id="@+id/textPrice"
-        android:layout_below="@id/textDishType"
-        android:textColor="@color/colorAccent"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        />
 </RelativeLayout>

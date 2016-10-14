@@ -8,8 +8,9 @@ package ps1623.nalla_ruchi;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+        import android.view.Menu;
+        import android.view.MenuItem;
+        import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -22,7 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ViewAllCooks extends AppCompatActivity implements ListView.OnItemClickListener {
+public class ViewAllCooks extends BaseActivity implements ListView.OnItemClickListener {
 
     private ListView listView;
 
@@ -145,4 +146,34 @@ public class ViewAllCooks extends AppCompatActivity implements ListView.OnItemCl
 
         startActivity(intent);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        navigationView.getMenu().findItem(R.id.cook_home).setVisible(false);
+        navigationView.getMenu().findItem(R.id.cook_profile).setVisible(false);
+        navigationView.getMenu().findItem(R.id.add_food).setVisible(false);
+        navigationView.getMenu().findItem(R.id.view_bookings).setVisible(false);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        switch (id)
+        {
+            case R.id.view_cooks: return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

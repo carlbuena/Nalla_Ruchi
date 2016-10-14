@@ -18,7 +18,8 @@
     <TextView
         android:text="Cook Name: "
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/cookName"
@@ -28,7 +29,8 @@
     <TextView
         android:text="Address: "
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/Address"
@@ -38,7 +40,8 @@
     <TextView
         android:text="Suburb: "
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/Suburb"
@@ -48,7 +51,8 @@
     <TextView
         android:text="Date: "
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/Date"
@@ -58,7 +62,8 @@
     <TextView
         android:text="Time: "
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/Time"
@@ -68,7 +73,8 @@
     <TextView
         android:text="Price: "
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/bookingPrice"

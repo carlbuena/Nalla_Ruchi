@@ -4,27 +4,25 @@ package ps1623.nalla_ruchi;
  * Created by Carl on 29/08/16.
  */
         import android.app.ProgressDialog;
-        import android.content.Intent;
-        import android.os.AsyncTask;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
         import android.view.Menu;
         import android.view.MenuItem;
         import android.view.View;
-        import android.widget.AdapterView;
-        import android.widget.ListAdapter;
-        import android.widget.ListView;
-        import android.widget.SimpleAdapter;
-        import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import java.util.ArrayList;
-        import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class ViewAllFood extends AppCompatActivity implements ListView.OnItemClickListener {
+public class ViewAllFood extends BaseActivity implements ListView.OnItemClickListener {
 
     private ListView listView;
 
@@ -139,4 +137,34 @@ public class ViewAllFood extends AppCompatActivity implements ListView.OnItemCli
 
         startActivity(intent);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        navigationView.getMenu().findItem(R.id.cook_home).setVisible(false);
+        navigationView.getMenu().findItem(R.id.cook_profile).setVisible(false);
+        navigationView.getMenu().findItem(R.id.view_customers).setVisible(false);
+        navigationView.getMenu().findItem(R.id.add_food).setVisible(false);
+        navigationView.getMenu().findItem(R.id.view_bookings).setVisible(false);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        switch (id)
+        {
+            case R.id.view_food: return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

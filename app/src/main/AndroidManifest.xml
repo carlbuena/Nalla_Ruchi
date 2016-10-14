@@ -28,8 +28,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Nalla Ruchi Home"
-            android:theme="@style/AppTheme.Dark">
+            android:label="Nalla Ruchi Home">
         </activity>
         <activity
             android:name=".InsertFood"
@@ -72,7 +71,7 @@
         </activity>
         <activity
             android:name=".CookHome"
-            android:label="Cook Home">
+            android:label="Home">
 
         </activity>
 
@@ -103,67 +102,87 @@
         <activity
             android:name=".CustomerLogin"
             android:label="Customer Login"
-            android:theme="@style/AppTheme.Dark">
+            android:theme="@style/AppThemeBar">
         </activity>
 
         <activity
             android:name=".CustomerHome"
-            android:label="Cook Spinner"
-            android:theme="@style/AppTheme.Dark">
-
+            android:label="Home">
         </activity>
 
         <activity
             android:name=".CookLogin"
             android:label="Cook Login"
-            android:theme="@style/AppTheme.Dark">
+            android:theme="@style/AppThemeBar">
         </activity>
 
         <activity
             android:name=".HomePage"
             android:label="Nalla Ruchi"
-            android:theme="@style/AppTheme.Dark">
-
-        </activity>
-
-        <activity
-            android:name=".CreateBooking"
-            android:label="Make a Booking"
-            android:theme="@style/AppTheme.Dark">
-
-        </activity>
-
-
-        <activity android:name=".Search" android:launchMode="singleTop">
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-
-        </activity>
-
-        <activity
-            android:name=".CookProfile"
-            android:label="Cook Profile"
-            android:theme="@style/AppTheme.Dark">
+            android:theme="@style/AppThemeBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.SEARCH" />
-                <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
 
         <activity
+            android:name=".CreateOrder"
+            android:label="Order Your Item"
+            android:theme="@style/AppThemeBar">
+
+        </activity>
+
+
+        <activity android:name=".Search" android:launchMode="singleTop"
+            android:theme="@style/AppThemeBar">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <intent-filter>
+            <action android:name="android.intent.action.SEARCH" />
+            <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
             android:name=".foodGalleryMain"
-            android:label="Food Gallery"
-            android:theme="@style/AppTheme.Dark">
+            android:label="Food Gallery">
 
         </activity>
 
         <activity
             android:name=".Booking"
-            android:label="Make a Booking"
-            android:theme="@style/AppTheme.Dark">
+            android:label="Make a Booking">
+
+        </activity>
+
+        <activity
+            android:name=".editCookProfile"
+            android:label="Edit Profile"
+            android:theme="@style/AppThemeBar">
+        </activity>
+
+        <activity
+            android:name=".CookProfile"
+            android:label="Profile">
+        </activity>
+
+        <activity
+            android:name=".CustomerProfile"
+            android:label="Profile">
+        </activity>
+
+        <activity
+            android:name=".editCustomerProfile"
+            android:label="Edit Profile"
+            android:theme="@style/AppThemeBar">
+        </activity>
+
+        <activity
+            android:name=".ConfirmBooking"
+            android:label="Profile">
         </activity>
 
     </application>

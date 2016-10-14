@@ -63,13 +63,5 @@
             android:gravity="center"
             android:textSize="20dip"/>
 
-        <TextView android:id="@+id/link_continue_guest"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:text="Continue as Guest"
-            android:gravity="center"
-            android:textSize="20dip"/>
-
     </LinearLayout>
 </ScrollView>

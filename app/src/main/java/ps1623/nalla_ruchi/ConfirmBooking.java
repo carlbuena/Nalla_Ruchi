@@ -7,7 +7,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,7 +20,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class ConfirmBooking extends AppCompatActivity implements View.OnClickListener {
+public class ConfirmBooking extends BaseActivity implements View.OnClickListener {
 
     private TextView editTextCook_Name;
     private TextView editTextAddress;
@@ -51,9 +52,9 @@ public class ConfirmBooking extends AppCompatActivity implements View.OnClickLis
         cookname = extras.getString(Config.CLASS_COOK_NAME);
         address = extras.getString(Config.COOK_ADDRESS);
         suburb = extras.getString(Config.COOK_SUBURB);
-        date = extras.getString(Config.BOOKING_DATE);
-        time = extras.getString(Config.BOOKING_TIME);
-        price = extras.getString(Config.BOOKING_PRICE);
+        date = extras.getString(Config.CLASS_DATE);
+        time = extras.getString(Config.CLASS_TIME);
+        price = extras.getString(Config.CLASS_PRICE);
 
         editTextCook_Name = (TextView) findViewById(R.id.editTextCook_Name);
         editTextAddress = (TextView) findViewById(R.id.editTextCook_Address);
@@ -135,15 +136,14 @@ public class ConfirmBooking extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-
     private void addBooking(){
-        /*
+
         final String Cook_Name = editTextCook_Name.getText().toString().trim();
         final String Address = editTextAddress.getText().toString().trim();
         final String Suburb = editTextSuburb.getText().toString().trim();
         final String Date = editTextDate.getText().toString().trim();
         final String Time = editTextTime.getText().toString().trim();
-        final String Price = editTextPrice.getText().toString().trim();*/
+        final String Price = editTextPrice.getText().toString().trim();
 
         class AddBooking extends AsyncTask<Void,Void,String>{
             ProgressDialog loading;
@@ -165,9 +165,9 @@ public class ConfirmBooking extends AppCompatActivity implements View.OnClickLis
                 HashMap<String,String> hashMap = new HashMap<>();
                 //hashMap.put(Config.KEY_BOOKING_CUSTOMER_ID,Customer_ID);
                 hashMap.put(Config.KEY_BOOKING_COOK_ID,cookid);
-                hashMap.put(Config.KEY_BOOKING_DATE,date);
-                hashMap.put(Config.KEY_BOOKING_TIME,time);
-                hashMap.put(Config.KEY_BOOKING_PRICE,price);
+                hashMap.put(Config.KEY_BOOKING_DATE,Date);
+                hashMap.put(Config.KEY_BOOKING_TIME,Time);
+                hashMap.put(Config.KEY_BOOKING_PRICE,Price);
 
                 RequestHandler rh = new RequestHandler();
 
@@ -180,60 +180,6 @@ public class ConfirmBooking extends AppCompatActivity implements View.OnClickLis
         AddBooking ab = new AddBooking();
         ab.execute();
     }
-/*
-    private void deleteFood(){
-        class DeleteFood extends AsyncTask<Void,Void,String> {
-            ProgressDialog loading;
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(ConfirmBooking.this, "Updating...", "Wait...", false, false);
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast.makeText(ConfirmBooking.this, s, Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-                RequestHandler rh = new RequestHandler();
-                //String s = rh.sendGetRequestParam(Config.URL_DELETE_FOOD, foodid);
-                //return s;
-            }
-        }
-
-        DeleteFood de = new DeleteFood();
-        de.execute();
-    }
-
-    private void confirmDeleteFood(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Are you sure you want to delete this food?");
-
-        alertDialogBuilder.setPositiveButton("Yes",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        deleteFood();
-                        startActivity(new Intent(ConfirmBooking.this,ViewAllFood.class));
-                    }
-                });
-
-        alertDialogBuilder.setNegativeButton("No",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-
-                    }
-                });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }*/
 
     @Override
     public void onClick(View v) {
@@ -245,5 +191,24 @@ public class ConfirmBooking extends AppCompatActivity implements View.OnClickLis
         if(v == buttonCancel){
             startActivity(new Intent(ConfirmBooking.this,Booking.class));
         }
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        navigationView.getMenu().findItem(R.id.customer_home).setVisible(false);
+        navigationView.getMenu().findItem(R.id.make_booking).setVisible(false);
+        navigationView.getMenu().findItem(R.id.view_cooks).setVisible(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -8,11 +8,16 @@ package ps1623.nalla_ruchi;
 public class foodGallery {
 
     //Data Variables
+    private int foodID;
     private String imageUrl;
     private String foodname;
     private String dishtype;
 
     //Getters and Setters
+    public int getfoodID() {
+        return foodID;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -23,6 +28,10 @@ public class foodGallery {
 
     public String getName() {
         return foodname;
+    }
+
+    public void setfoodID(int name) {
+        this.foodID = name;
     }
 
     public void setName(String name) {

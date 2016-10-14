@@ -1,39 +1,42 @@
 package ps1623.nalla_ruchi;
 
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.support.v7.widget.LinearLayoutManager;
-        import android.support.v7.widget.RecyclerView;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 
-        import android.view.View;
-        import android.widget.ProgressBar;
-        import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 
-        import com.android.volley.RequestQueue;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.JsonArrayRequest;
-        import com.android.volley.toolbox.Volley;
+public class foodGalleryMain extends BaseActivity implements RecyclerView.OnScrollChangeListener{
 
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
-
-        import java.util.ArrayList;
-        import java.util.List;
-
-public class foodGalleryMain extends AppCompatActivity implements RecyclerView.OnScrollChangeListener {
-
+    private int foodid;
     //Creating a List of superheroes
-    private List<foodGallery> listSuperHeroes;
+    private List<foodGallery> listFoodPhotos;
 
     //Creating Views
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
+    private Button buttonView;
 
     //Volley Request Queue
     private RequestQueue requestQueue;
@@ -51,9 +54,10 @@ public class foodGalleryMain extends AppCompatActivity implements RecyclerView.O
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        buttonView = (Button) findViewById(R.id.button2);
 
         //Initializing our superheroes list
-        listSuperHeroes = new ArrayList<>();
+        listFoodPhotos = new ArrayList<>();
         requestQueue = Volley.newRequestQueue(this);
 
         //Calling method to get data to fetch data
@@ -62,8 +66,9 @@ public class foodGalleryMain extends AppCompatActivity implements RecyclerView.O
         //Adding an scroll change listener to recyclerview
         recyclerView.setOnScrollChangeListener(this);
 
+
         //initializing our adapter
-        adapter = new CardAdapter(listSuperHeroes, this);
+        adapter = new CardAdapter(listFoodPhotos, this);
 
         //Adding adapter to recyclerview
         recyclerView.setAdapter(adapter);
@@ -123,14 +128,17 @@ public class foodGalleryMain extends AppCompatActivity implements RecyclerView.O
                 json = array.getJSONObject(i);
 
                 //Adding data to the superhero object
+                foodGallery.setfoodID(json.getInt(Config.TAG_ID));
                 foodGallery.setImageUrl(json.getString(Config.TAG_FOOD_IMAGE));
                 foodGallery.setName(json.getString(Config.TAG_NAME));
                 foodGallery.setPublisher(json.getString(Config.TAG_TYPE));
+
+                foodid = foodGallery.getfoodID();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             //Adding the foodGalllery object to the list
-            listSuperHeroes.add(foodGallery);
+            listFoodPhotos.add(foodGallery);
         }
 
         //Notifying the adapter that data has been added or changed
@@ -156,4 +164,52 @@ public class foodGalleryMain extends AppCompatActivity implements RecyclerView.O
             getData();
         }
     }
+
+   public void onClick(View v) {
+
+        Intent intent = new Intent(this, youtubePage.class);
+        //foodGallery foodGallery = new foodGallery();
+        //int id = foodGallery.getfoodID();
+        String id = String.valueOf(foodid);
+        Bundle extras = new Bundle();
+        extras.putString(Config.TAG_ID, id);
+        intent.putExtras(extras);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        navigationView.getMenu().findItem(R.id.cook_home).setVisible(false);
+        navigationView.getMenu().findItem(R.id.cook_profile).setVisible(false);
+        navigationView.getMenu().findItem(R.id.view_customers).setVisible(false);
+        navigationView.getMenu().findItem(R.id.add_food).setVisible(false);
+        navigationView.getMenu().findItem(R.id.view_bookings).setVisible(false);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        switch (id)
+        {
+            case R.id.customer_home: return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }
+
+
+
+

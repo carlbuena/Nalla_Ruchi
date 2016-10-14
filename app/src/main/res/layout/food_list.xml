@@ -57,7 +57,17 @@
                 </TableRow>
 
             </TableLayout>
+            <Button
+                android:text="Check the Cook profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardView"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/button2"
+                android:onClick="onClick"/>
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>
+

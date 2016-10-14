@@ -117,7 +117,6 @@ public class RegisterCook extends AppCompatActivity implements View.OnClickListe
                 loading.dismiss();
                 Toast.makeText(RegisterCook.this, s, Toast.LENGTH_LONG).show();
                 if (s.equalsIgnoreCase("Cook account created successfully")) {
-                    //TODO: change cooklogin.class to cook home page and pass email: intent.putExtra(USER_NAME, email);
                     Intent intent = new Intent(RegisterCook.this, CookLogin.class);
                     startActivity(intent);
                 }

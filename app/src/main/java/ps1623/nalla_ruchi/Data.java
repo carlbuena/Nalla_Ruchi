@@ -5,14 +5,17 @@ package ps1623.nalla_ruchi;
  */
 
 public class Data {
+    public String cookFirstName;
+    public String cookSurname;
     public String foodName;
     public String foodDescription;
     public String foodEthnicity;
     public String foodType;
     public String dishType;
-    public Double foodPrice;
+    public String foodPrice;
     public int menuID;
-    public int foodID;
+    public String foodID;
+    public String cookID;
 
     public String cookName;
     public String cookLocation;

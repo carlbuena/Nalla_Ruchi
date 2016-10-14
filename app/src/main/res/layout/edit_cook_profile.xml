@@ -16,25 +16,17 @@
             android:layout_height="match_parent"
             android:id="@+id/editTextCook_Pic"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cook ID" />
+            android:id="@+id/editTextCook_ID"
+            android:visibility="gone" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextCook_ID" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Role" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editTextRole" />
+            android:id="@+id/editTextRole"
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="wrap_content"

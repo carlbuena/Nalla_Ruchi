@@ -20,6 +20,7 @@ public class Config {
     public static final String URL_GET_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/getCustomer.php";
     public static final String URL_UPDATE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/updateCustomer.php";
     public static final String URL_DELETE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/deleteCustomer.php?Customer_ID=";
+    public static final String URL_CUSTOMER_PROFILE = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/customerProfile.php";
 
     public static final String URL_ADD_COOK="http://pe-ps1623.scem.westernsydney.edu.au/api/cook/addCook.php";
     public static final String URL_GET_ALL_COOKS = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getAllCooks.php";
@@ -28,17 +29,17 @@ public class Config {
     public static final String URL_DELETE_COOK = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/deleteCook.php?Cook_ID=";
     public static final String URL_COOK_PROFILE = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/cookProfile.php";
 
-    public static final String URL_ADD_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/addBooking.php";
-    public static final String URL_GET_ALL_BOOKINGS = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/getAllBooking.php";
-    public static final String URL_GET_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/getBooking.php";
-    public static final String URL_UPDATE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/updateBooking.php";
-    public static final String URL_DELETE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/booking/deleteBooking.php";
+    public static final String URL_ADD_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/addBooking.php";
+    public static final String URL_GET_ALL_BOOKINGS = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/getAllBooking.php";
+    public static final String URL_GET_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/getBooking.php";
+    public static final String URL_UPDATE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/updateBooking.php";
+    public static final String URL_DELETE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/deleteBooking.php";
 
-    public static final String URL_ADD_ORDER ="http://pe-ps1623.scem.westernsydney.edu.au/api/order/addOrder.php";
-    public static final String URL_GET_ALL_ORDERS = "http://pe-ps1623.scem.westernsydney.edu.au/api/order/getAllOrders.php";
-    public static final String URL_GET_ORDER = "http://pe-ps1623.scem.westernsydney.edu.au/api/order/getOrder.php";
-    public static final String URL_UPDATE_ORDER = "http://pe-ps1623.scem.westernsydney.edu.au/api/order/updateOrder.php";
-    public static final String URL_DELETE_ORDER = "http://pe-ps1623.scem.westernsydney.edu.au/api/order/deleteOrder.php";
+    public static final String URL_ADD_ORDER ="http://pe-ps1623.scem.westernsydney.edu.au/api/orders/addOrder.php";
+    public static final String URL_GET_ALL_ORDERS = "http://pe-ps1623.scem.westernsydney.edu.au/api/orders/getAllOrders.php";
+    public static final String URL_GET_ORDER = "http://pe-ps1623.scem.westernsydney.edu.au/api/orders/getOrder.php";
+    public static final String URL_UPDATE_ORDER = "http://pe-ps1623.scem.westernsydney.edu.au/api/orders/updateOrder.php";
+    public static final String URL_DELETE_ORDER = "http://pe-ps1623.scem.westernsydney.edu.au/api/orders/deleteOrder.php";
 
     public static final String URL_ADD_PAYMENT ="http://pe-ps1623.scem.westernsydney.edu.au/api/payment/addPayment.php";
     public static final String URL_GET_ALL_PAYMENTS = "http://pe-ps1623.scem.westernsydney.edu.au/api/payment/getAllPayments.php";
@@ -57,6 +58,7 @@ public class Config {
     public static final String DATA_URL = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/cookSpinner.php";
     public static final String DATA_URL_FOODIMAGES = "http://pe-ps1623.scem.westernsydney.edu.au/api/foodImages/feed.php?page=";
 
+    public static final String YOUTUBE_API_KEY = "AIzaSyC4SSBXDr_mG0gg319yGeUqQXbzPd_gmnA";
 
     //Keys that will be used to send the request to php scripts
     public static final String KEY_EMAIL = "Email";
@@ -112,9 +114,9 @@ public class Config {
     public static final String KEY_ORDER_QUANTITY = "orderQuantity";
     public static final String KEY_ORDER_PRICE = "orderPrice";
     public static final String KEY_ORDER_DATE = "orderDate";
-    public static final String KEY_ORDER_STATUS = "orderStatus";
     public static final String KEY_ORDER_MADE = "orderMadeDate";
     public static final String KEY_ORDER_DUE = "orderDueDate";
+    public static final String KEY_ORDER_COMMENTS = "orderComment";
 
     public static final String KEY_PAYMENT_ID = "Payment_ID";
     public static final String KEY_PAYMENT_TYPE = "paymentType";

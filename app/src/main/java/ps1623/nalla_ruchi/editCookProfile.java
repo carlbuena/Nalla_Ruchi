@@ -118,7 +118,7 @@ public class editCookProfile extends AppCompatActivity implements View.OnClickLi
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_GET_COOK,cookid);
+                String s = rh.sendGetRequestParam(Config.URL_COOK_PROFILE,cookid);
                 return s;
             }
         }

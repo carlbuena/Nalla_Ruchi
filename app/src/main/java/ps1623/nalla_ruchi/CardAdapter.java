@@ -2,16 +2,21 @@ package ps1623.nalla_ruchi;
 
 
         import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+        import android.media.Image;
+        import android.support.v7.widget.RecyclerView;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.ProgressBar;
+        import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
+        import com.android.volley.toolbox.ImageLoader;
+        import com.android.volley.toolbox.NetworkImageView;
 
-import java.util.List;
+        import org.w3c.dom.Text;
+
+        import java.util.ArrayList;
+        import java.util.List;
 
 /**
  * Created by Prageeth on 11/9/2015.

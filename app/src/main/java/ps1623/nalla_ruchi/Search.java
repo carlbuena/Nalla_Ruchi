@@ -124,7 +124,7 @@ public class Search extends AppCompatActivity {
                 url = new URL("http://pe-ps1623.scem.westernsydney.edu.au/api/search/foodSearch.php");
 
             } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
+                // Auto-generated catch block
                 e.printStackTrace();
                 return e.toString();
             }
@@ -215,14 +215,17 @@ public class Search extends AppCompatActivity {
                     for (int i = 0; i < jArray.length(); i++) {
                         JSONObject json_data = jArray.getJSONObject(i);
                         Data foodData = new Data();
+                        foodData.cookFirstName = json_data.getString("FirstName");
+                        foodData.cookSurname = json_data.getString("Surname");
                         foodData.foodName = json_data.getString("Food_Name");
                         foodData.foodDescription = json_data.getString("Description");
                         foodData.foodEthnicity = json_data.getString("Ethnicity");
                         foodData.foodType = json_data.getString("Type");
                         foodData.dishType = json_data.getString("Dish_Type");
-                        foodData.foodPrice = json_data.getDouble("Price");
+                        foodData.foodPrice = json_data.getString("Price");
                         foodData.menuID = json_data.getInt("Menu_ID");
-                        foodData.foodID = json_data.getInt("Food_ID");
+                        foodData.foodID = json_data.getString("Food_ID");
+                        foodData.cookID = json_data.getString("Cook_ID");
                         data.add(foodData);
                     }
 

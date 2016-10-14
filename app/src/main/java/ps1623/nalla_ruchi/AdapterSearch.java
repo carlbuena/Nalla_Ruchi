@@ -6,13 +6,13 @@ package ps1623.nalla_ruchi;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -45,12 +45,16 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         // Get current position of item in RecyclerView to bind data and assign values from list
         MyHolder myHolder = (MyHolder) holder;
         Data current = data.get(position);
+        myHolder.textCookID.setText(current.cookID);
+        myHolder.textCookFirstName.setText(current.cookFirstName);
+        myHolder.textCookSurname.setText(current.cookSurname);
+        myHolder.textFoodID.setText(current.foodID);
         myHolder.textFoodName.setText(current.foodName);
         myHolder.textFoodDescription.setText("Description: " + current.foodDescription);
         myHolder.textEthnicity.setText("Ethnicity: " + current.foodEthnicity);
         myHolder.textType.setText("Type: " + current.foodType);
         myHolder.textDishType.setText("Dish Type: " + current.dishType);
-        myHolder.textPrice.setText("Price: " + current.foodPrice);
+        myHolder.textPrice.setText(current.foodPrice);
         myHolder.textPrice.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
 
     }
@@ -64,6 +68,10 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         //Views
+        TextView textCookID;
+        TextView textCookFirstName;
+        TextView textCookSurname;
+        TextView textFoodID;
         TextView textFoodName;
         TextView textFoodDescription;
         TextView textEthnicity;
@@ -74,6 +82,10 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         // create constructor to get widget reference
         public MyHolder(View itemView) {
             super(itemView);
+            textFoodID= (TextView) itemView.findViewById(R.id.textfoodID);
+            textCookID= (TextView) itemView.findViewById(R.id.textcookID);
+            textCookFirstName= (TextView) itemView.findViewById(R.id.textcookFirstName);
+            textCookSurname= (TextView) itemView.findViewById(R.id.textcookSurname);
             textFoodName= (TextView) itemView.findViewById(R.id.textfoodName);
             textFoodDescription= (TextView) itemView.findViewById(R.id.textfoodDescription);
             textEthnicity = (TextView) itemView.findViewById(R.id.textfoodEthnicity);
@@ -84,16 +96,42 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             itemView.setOnClickListener(this);
         }
 
-
-
-        // Click event for all items
         @Override
         public void onClick(View v) {
-            Toast.makeText(context, "Out of stock", Toast.LENGTH_SHORT).show();
-            context.startActivity(new Intent(v.getContext(),CreateBooking.class));
+            Intent intent = new Intent(v.getContext(), CreateOrder.class);
+
+            String cookid = textCookID.getText().toString();
+            String firstname = textCookFirstName.getText().toString();
+            String surname = textCookSurname.getText().toString();
+            String foodid = textFoodID.getText().toString();
+            String foodname = textFoodName.getText().toString();
+            String foodprice = textPrice.getText().toString();
+            String fooddes = textFoodDescription.getText().toString();
+            String foodeth = textEthnicity.getText().toString();
+            String foodtype = textType.getText().toString();
+            String fooddish = textDishType.getText().toString();
+
+            Bundle extras = new Bundle();
+
+            extras.putString(Config.COOK_ID, cookid);
+            extras.putString(Config.COOK_FIRSTNAME,firstname);
+            extras.putString(Config.COOK_SURNAME,surname);
+            extras.putString(Config.FOOD_ID, foodid);
+            extras.putString(Config.FOOD_NAME,foodname);
+            extras.putString(Config.FOOD_PRICE,foodprice);
+            extras.putString(Config.FOOD_DES,fooddes);
+            extras.putString(Config.FOOD_ETH,foodeth);
+            extras.putString(Config.FOOD_TYPE,foodtype);
+            extras.putString(Config.FOOD_DISH,fooddish);
+
+            intent.putExtras(extras);
+
+            context.startActivity(intent);
+
         }
+    }
 
     }
 
-}
+
 

@@ -117,7 +117,6 @@ public class RegisterCustomer extends AppCompatActivity implements View.OnClickL
                 loading.dismiss();
                 Toast.makeText(RegisterCustomer.this,s,Toast.LENGTH_LONG).show();
                 if (s.equalsIgnoreCase("Customer account created successfully")) {
-                    //TODO: change customerlogin.class to customer home page and pass email: intent.putExtra(USER_NAME, email);
                     Intent intent = new Intent(RegisterCustomer.this, CustomerLogin.class);
                     startActivity(intent);
                 }

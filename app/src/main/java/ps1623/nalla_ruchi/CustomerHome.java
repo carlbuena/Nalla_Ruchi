@@ -2,14 +2,15 @@ package ps1623.nalla_ruchi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 /**
  * Created by Carl on 19/09/16.
  */
-public class CustomerHome extends AppCompatActivity implements View.OnClickListener {
+public class CustomerHome extends BaseActivity implements View.OnClickListener {
 
     private Button buttonOrder;
     private Button buttonViewCooks;
@@ -38,7 +39,7 @@ public class CustomerHome extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View v) {
         if (v == buttonOrder) {
-            startActivity(new Intent(this, CreateBooking.class));
+            startActivity(new Intent(this, CreateOrder.class));
         }
         if (v == buttonViewCooks) {
             //startActivity(new Intent(this, CustomerLogin.class));
@@ -52,15 +53,33 @@ public class CustomerHome extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    /*@Override
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        navigationView.getMenu().findItem(R.id.cook_home).setVisible(false);
+        navigationView.getMenu().findItem(R.id.cook_profile).setVisible(false);
+        navigationView.getMenu().findItem(R.id.view_customers).setVisible(false);
+        navigationView.getMenu().findItem(R.id.add_food).setVisible(false);
+        navigationView.getMenu().findItem(R.id.view_bookings).setVisible(false);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        switch (id)
+        {
+            case R.id.customer_home: return true;
         }
+
         return super.onOptionsItemSelected(item);
-    }*/
+    }
+
 }
 

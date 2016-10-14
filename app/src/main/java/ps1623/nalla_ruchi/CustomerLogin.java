@@ -34,7 +34,6 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
     @InjectView(R.id.customer_input_password) EditText passwordText;
     @InjectView(R.id.customer_btn_login) Button loginButton;
     @InjectView(R.id.link_customer_register) TextView customerRegisterLink;
-    @InjectView(R.id.link_continue_guest) TextView continueGuestLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +50,6 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
             public void onClick(View v) {
                 //Start the Customer Register activity
                 Intent intent = new Intent(getApplicationContext(), RegisterCustomer.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
-            }
-        });
-
-        continueGuestLink.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // Continue to app as guest
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
@@ -86,7 +75,7 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
                 super.onPostExecute(s);
                 loading.dismiss();
                 if (s.equalsIgnoreCase("success")) {
-                    Intent intent = new Intent(CustomerLogin.this, CustomerHome.class);
+                    Intent intent = new Intent(CustomerLogin.this, foodGalleryMain.class);
                     intent.putExtra(USER_NAME, email);
                     startActivity(intent);
                 } else {
