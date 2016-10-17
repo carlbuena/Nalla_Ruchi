@@ -167,6 +167,10 @@ public class BaseActivity extends AppCompatActivity implements
                 startActivity(new Intent(this, CustomerProfile.class));
                 return true;
 
+            case R.id.cook_bookings:
+                startActivity(new Intent(this, CookBookings.class));
+                return true;
+
         }
 
         return super.onOptionsItemSelected(item);

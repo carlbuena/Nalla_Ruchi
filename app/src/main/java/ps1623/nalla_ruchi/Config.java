@@ -34,6 +34,8 @@ public class Config {
     public static final String URL_GET_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/getBooking.php";
     public static final String URL_UPDATE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/updateBooking.php";
     public static final String URL_DELETE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/deleteBooking.php";
+    public static final String URL_BOOKING_PROFILE = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/bookingProfile.php";
+    public static final String URL_COMPLETE_BOOKING = "http://pe-ps1623.scem.westernsydney.edu.au/api/bookings/completeBooking.php";
 
     public static final String URL_ADD_ORDER ="http://pe-ps1623.scem.westernsydney.edu.au/api/orders/addOrder.php";
     public static final String URL_GET_ALL_ORDERS = "http://pe-ps1623.scem.westernsydney.edu.au/api/orders/getAllOrders.php";
@@ -99,6 +101,8 @@ public class Config {
     public static final String KEY_BOOKING_ID = "Booking_ID";
     public static final String KEY_BOOKING_PAYMENT_ID = "Payment_ID";
     public static final String KEY_BOOKING_CUSTOMER_ID = "Customer_ID";
+    public static final String KEY_BOOKING_CUSTOMER_FIRSTNAME = "FirstName";
+    public static final String KEY_BOOKING_CUSTOMER_SURNAME = "Surname";
     public static final String KEY_BOOKING_DATE = "BookingDate";
     public static final String KEY_BOOKING_TIME = "BookingTime";
     public static final String KEY_BOOKING_MADE = "BookingDateMade";
@@ -165,6 +169,8 @@ public class Config {
 
     public static final String TAG_BOOKING_ID = "Booking_ID";
     public static final String TAG_BOOKING_CUSTOMER_ID = "Customer_ID";
+    public static final String TAG_BOOKING_CUSTOMER_FIRSTNAME = "FirstName";
+    public static final String TAG_BOOKING_CUSTOMER_SURNAME = "Surname";
     public static final String TAG_BOOKINGDATE = "BookingDate";
     public static final String TAG_BOOKINGTIME = "BookingTime";
     public static final String TAG_BOOKINGMADE = "BookingDateMade";

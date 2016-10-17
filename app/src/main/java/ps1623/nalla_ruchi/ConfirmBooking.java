@@ -144,13 +144,14 @@ public class ConfirmBooking extends BaseActivity implements View.OnClickListener
         final String Date = editTextDate.getText().toString().trim();
         final String Time = editTextTime.getText().toString().trim();
         final String Price = editTextPrice.getText().toString().trim();
+        final String Status = "Pending";
 
         class AddBooking extends AsyncTask<Void,Void,String>{
             ProgressDialog loading;
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ConfirmBooking.this,"Updating...","Wait...",false,false);
+                loading = ProgressDialog.show(ConfirmBooking.this,"Adding...","Wait...",false,false);
             }
 
             @Override
@@ -168,6 +169,8 @@ public class ConfirmBooking extends BaseActivity implements View.OnClickListener
                 hashMap.put(Config.KEY_BOOKING_DATE,Date);
                 hashMap.put(Config.KEY_BOOKING_TIME,Time);
                 hashMap.put(Config.KEY_BOOKING_PRICE,Price);
+                hashMap.put(Config.KEY_BOOKING_PRICE,Price);
+                hashMap.put(Config.KEY_BOOKING_STATUS,Status);
 
                 RequestHandler rh = new RequestHandler();
 

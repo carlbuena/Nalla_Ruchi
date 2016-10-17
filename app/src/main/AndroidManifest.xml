@@ -124,6 +124,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <activity
@@ -183,6 +184,17 @@
         <activity
             android:name=".ConfirmBooking"
             android:label="Profile">
+        </activity>
+
+        <activity
+            android:name=".CookBookings"
+            android:label="My Bookings">
+
+        </activity>
+
+        <activity
+            android:name=".editCookBookings"
+            android:label="Edit Booking">
         </activity>
 
     </application>
