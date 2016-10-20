@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/cook_home"
+        android:title="Home"/>
+    <item
+        android:id="@+id/customer_home"
+        android:title="Home"/>
+    <item
+        android:id="@+id/cook_profile"
+        android:title="My Profile"/>
+    <item
+        android:id="@+id/customer_profile"
+        android:title="My Profile"/>
+    <item
+        android:id="@+id/search"
+        android:title="Search Dishes"/>
+    <item
+        android:id="@+id/make_booking"
+        android:title="Make a Booking"/>
+    <item
+        android:id="@+id/add_food"
+        android:title="Add Dishes"/>
+    <item
+        android:id="@+id/view_food"
+        android:title="View Food"/>
+    <item
+        android:id="@+id/view_bookings"
+        android:title="View Class Bookings"/>
+     <item
+        android:id="@+id/cook_bookings"
+        android:title="View My Bookings"/>
+    <item
+        android:id="@+id/view_customers"
+        android:title="View Customers"/>
+    <item
+        android:id="@+id/view_cooks"
+        android:title="View Cooks"/>
+    <item
+        android:id="@+id/view_map"
+        android:title="View Map"/>
+    <item
+        android:id="@+id/food_gallery"
+        android:title="Food Gallery"/>
+    <item
+        android:id="@+id/cook_gallery"
+        android:title="Cook Gallery"/>
+    <item
+        android:id="@+id/video"
+        android:title="Video"/>
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"/>
+</menu>
