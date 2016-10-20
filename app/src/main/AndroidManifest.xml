@@ -21,6 +21,10 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="ps1623.nalla_ruchi.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="ps1623.nalla_ruchi.permission.READ_GSERVICES" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
