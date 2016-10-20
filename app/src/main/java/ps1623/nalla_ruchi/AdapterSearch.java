@@ -46,10 +46,9 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         MyHolder myHolder = (MyHolder) holder;
         Data current = data.get(position);
         myHolder.textCookID.setText(current.cookID);
-        myHolder.textCookFirstName.setText(current.cookFirstName);
-        myHolder.textCookSurname.setText(current.cookSurname);
+        myHolder.textCookName.setText("Cook Name: " + current.cookFirstName + " " + current.cookSurname);
         myHolder.textFoodID.setText(current.foodID);
-        myHolder.textFoodName.setText(current.foodName);
+        myHolder.textFoodName.setText("Food Name: " + current.foodName);
         myHolder.textFoodDescription.setText("Description: " + current.foodDescription);
         myHolder.textEthnicity.setText("Ethnicity: " + current.foodEthnicity);
         myHolder.textType.setText("Type: " + current.foodType);
@@ -69,8 +68,7 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         //Views
         TextView textCookID;
-        TextView textCookFirstName;
-        TextView textCookSurname;
+        TextView textCookName;
         TextView textFoodID;
         TextView textFoodName;
         TextView textFoodDescription;
@@ -84,8 +82,7 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             super(itemView);
             textFoodID= (TextView) itemView.findViewById(R.id.textfoodID);
             textCookID= (TextView) itemView.findViewById(R.id.textcookID);
-            textCookFirstName= (TextView) itemView.findViewById(R.id.textcookFirstName);
-            textCookSurname= (TextView) itemView.findViewById(R.id.textcookSurname);
+            textCookName= (TextView) itemView.findViewById(R.id.textcookName);
             textFoodName= (TextView) itemView.findViewById(R.id.textfoodName);
             textFoodDescription= (TextView) itemView.findViewById(R.id.textfoodDescription);
             textEthnicity = (TextView) itemView.findViewById(R.id.textfoodEthnicity);
@@ -101,8 +98,7 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             Intent intent = new Intent(v.getContext(), CreateOrder.class);
 
             String cookid = textCookID.getText().toString();
-            String firstname = textCookFirstName.getText().toString();
-            String surname = textCookSurname.getText().toString();
+            String cookname = textCookName.getText().toString();
             String foodid = textFoodID.getText().toString();
             String foodname = textFoodName.getText().toString();
             String foodprice = textPrice.getText().toString();
@@ -114,8 +110,7 @@ public class AdapterSearch extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             Bundle extras = new Bundle();
 
             extras.putString(Config.COOK_ID, cookid);
-            extras.putString(Config.COOK_FIRSTNAME,firstname);
-            extras.putString(Config.COOK_SURNAME,surname);
+            extras.putString(Config.COOK_FIRSTNAME,cookname);
             extras.putString(Config.FOOD_ID, foodid);
             extras.putString(Config.FOOD_NAME,foodname);
             extras.putString(Config.FOOD_PRICE,foodprice);

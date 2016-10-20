@@ -15,6 +15,16 @@
             android:layout_marginTop="24dp"
             android:src="@drawable/logo"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:textStyle="italic"
+            android:text="Nalla Ruchi is a catering app developed with the intention of promoting micro entrepreneurship among house wives in the state of Kerala. You can order delicious and cheap home made food and join for a cooking class with our chefs."/>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

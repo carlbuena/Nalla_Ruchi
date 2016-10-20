@@ -6,15 +6,17 @@ package ps1623.nalla_ruchi;
 
         import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,6 +37,7 @@ public class ViewAllCooks extends BaseActivity implements ListView.OnItemClickLi
         setContentView(R.layout.view_all_cooks);
         listView = (ListView) findViewById(R.id.listView);
         listView.setOnItemClickListener(this);
+
         getJSON();
     }
 
@@ -118,6 +121,11 @@ public class ViewAllCooks extends BaseActivity implements ListView.OnItemClickLi
         Intent intent = new Intent(this, ViewCook.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
 
+        //Reading the Preferences File
+        SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+        String Uname = userDetails.getString("username", "");
+        String Utype = userDetails.getString("usertype", "");
+
         String cook_id = map.get(Config.TAG_COOK_ID).toString();
         String role = map.get(Config.TAG_COOK_ROLE).toString();
         String firstName = map.get(Config.TAG_COOK_FIRSTNAME).toString();
@@ -144,19 +152,41 @@ public class ViewAllCooks extends BaseActivity implements ListView.OnItemClickLi
 
         intent.putExtras(extras);
 
-        startActivity(intent);
+        /*if(Utype.equalsIgnoreCase("cook")) {
+            startActivity(intent);
+        }*/
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
-        navigationView.getMenu().findItem(R.id.cook_home).setVisible(false);
-        navigationView.getMenu().findItem(R.id.cook_profile).setVisible(false);
-        navigationView.getMenu().findItem(R.id.add_food).setVisible(false);
-        navigationView.getMenu().findItem(R.id.view_bookings).setVisible(false);
+        //Reading the Preferences File
+        SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+        String Uname = userDetails.getString("username", "");
+        String Utype = userDetails.getString("usertype", "");
 
-        return true;
+        TextView user_email = (TextView) findViewById(R.id.user_email);
+        user_email.setText(Uname);
+
+        if(Utype.equalsIgnoreCase("customer")) {
+            navigationView.getMenu().findItem(R.id.cook_home).setVisible(false);
+            navigationView.getMenu().findItem(R.id.cook_profile).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_customers).setVisible(false);
+            navigationView.getMenu().findItem(R.id.add_food).setVisible(false);
+            navigationView.getMenu().findItem(R.id.cook_bookings).setVisible(false);
+
+            return true;
+        }
+        else {
+            navigationView.getMenu().findItem(R.id.customer_home).setVisible(false);
+            navigationView.getMenu().findItem(R.id.customer_profile).setVisible(false);
+            navigationView.getMenu().findItem(R.id.make_booking).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_bookings).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_cooks).setVisible(false);
+
+            return true;
+        }
     }
 
     @Override

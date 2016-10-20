@@ -39,7 +39,7 @@
             android:label="View All Food"></activity>
         <activity
             android:name=".ViewAllCooks"
-            android:label="View All Cooks">
+            android:label="Contacts">
 
         </activity>
         <activity
@@ -120,11 +120,6 @@
             android:name=".HomePage"
             android:label="Nalla Ruchi"
             android:theme="@style/AppThemeBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
 
         <activity
@@ -149,7 +144,7 @@
 
         <activity
             android:name=".foodGalleryMain"
-            android:label="Food Gallery">
+            android:label="Nalla Ruchi">
 
         </activity>
 
@@ -186,6 +181,7 @@
             android:label="Profile">
         </activity>
 
+        //Broken From here on down.
         <activity
             android:name=".CookBookings"
             android:label="My Bookings">
@@ -195,6 +191,35 @@
         <activity
             android:name=".editCookBookings"
             android:label="Edit Booking">
+        </activity>
+
+        <activity
+            android:name=".CustomerOrders"
+            android:label="View My Orders">
+        </activity>
+
+        <activity
+            android:name=".SplashScreen"
+            android:label="Nalla Ruchi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".cookGalleryMain"
+            android:label="Homepage">
+        </activity>
+
+        <activity
+            android:name=".youtubePage"
+            android:label="Homepage">
+        </activity>
+
+        <activity
+            android:name=".PayPal"
+            android:label="Homepage">
         </activity>
 
     </application>

@@ -23,6 +23,19 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="0dp"
+            android:text="View Cooks"
+            android:id="@+id/Cooks"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:padding="12dp"
+            android:textSize="5pt"
+            android:theme="@style/MyButton"
+            android:layout_weight="1"
+            android:background="#ffffff" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
             android:text="Make a Booking"
             android:id="@+id/Booking"
             android:layout_gravity="center_horizontal"

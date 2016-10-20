@@ -59,6 +59,7 @@ public class Config {
 
     public static final String DATA_URL = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/cookSpinner.php";
     public static final String DATA_URL_FOODIMAGES = "http://pe-ps1623.scem.westernsydney.edu.au/api/foodImages/feed.php?page=";
+    public static final String DATA_URL_COOKIMAGES = "http://pe-ps1623.scem.westernsydney.edu.au/api/chefImages/feed.php?page=";
 
     public static final String YOUTUBE_API_KEY = "AIzaSyC4SSBXDr_mG0gg319yGeUqQXbzPd_gmnA";
 
@@ -117,10 +118,8 @@ public class Config {
     public static final String KEY_ORDER_COOK_ID = "Cook_ID";
     public static final String KEY_ORDER_QUANTITY = "orderQuantity";
     public static final String KEY_ORDER_PRICE = "orderPrice";
-    public static final String KEY_ORDER_DATE = "orderDate";
-    public static final String KEY_ORDER_MADE = "orderMadeDate";
+    public static final String KEY_ORDER_COMMENT = "orderComment";
     public static final String KEY_ORDER_DUE = "orderDueDate";
-    public static final String KEY_ORDER_COMMENTS = "orderComment";
 
     public static final String KEY_PAYMENT_ID = "Payment_ID";
     public static final String KEY_PAYMENT_TYPE = "paymentType";
@@ -155,6 +154,7 @@ public class Config {
     public static final String TAG_STATE = "State";
     public static final String TAG_DOR = "DateOfRegistration";
 
+    public static final String TAG_COOK_IMAGE = "CookPicture";
     public static final String TAG_COOK_ID = "Cook_ID";
     public static final String TAG_COOK_ROLE = "Role";
     public static final String TAG_COOK_FIRSTNAME = "FirstName";
@@ -184,9 +184,7 @@ public class Config {
     public static final String TAG_ORDER_COOK_ID = "Cook_ID";
     public static final String TAG_ORDER_QUANTITY = "orderQuantity";
     public static final String TAG_ORDER_PRICE = "orderPrice";
-    public static final String TAG_ORDER_DATE = "orderDate";
-    public static final String TAG_ORDER_STATUS = "orderStatus";
-    public static final String TAG_ORDER_MADE = "orderMadeDate";
+    public static final String TAG_ORDER_COMMENT = "orderComment";
     public static final String TAG_ORDER_DUE = "orderDueDate";
 
     public static final String TAG_PAYMENT_ID = "Payment_ID";
@@ -258,5 +256,13 @@ public class Config {
     public static final String CLASS_TOTAL = "Total_Attendees";
 
     public static final String ORDER_ID = "Order_ID";
+    public static final String ORDER_CUSTOMER_ID= "Customer_ID";
+    public static final String ORDER_FOOD_ID = "Food_ID";
+    public static final String ORDER_COOK_ID = "Cook_ID";
+    public static final String ORDER_QUANTITY = "orderQuantity";
+    public static final String ORDER_PRICE = "orderPrice";
+    public static final String ORDER_COMMENT = "orderComment";
+    public static final String ORDER_DUE = "orderDueDate";
+
     public static final String PAYMENT_ID = "Payment_ID";
 }

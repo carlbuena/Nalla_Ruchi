@@ -91,6 +91,8 @@ public class editCustomerProfile extends AppCompatActivity implements View.OnCli
         editTextCustomer_State.setText(customerState);
         editTextCustomer_DOR.setText(customerDOR);
 
+        editTextCustomer_DOR.setKeyListener(null);
+
         getCustomer();
     }
 

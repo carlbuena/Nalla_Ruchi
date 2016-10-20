@@ -1,6 +1,8 @@
 package ps1623.nalla_ruchi;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -30,16 +32,17 @@ public class CreateOrder extends AppCompatActivity implements View.OnClickListen
 
     private Button buttonOrder;
 
+    private Button buttonConfirm;
+    private Button buttonCancel;
+
     private TextView TextFoodName;
     private TextView TextFoodPrice;
-    private TextView TextFirstName;
-    private TextView TextSurname;
+    private TextView TextCookName;
     private EditText Comment;
     private EditText Quantity;
 
     private String cookid;
-    private String firstname;
-    private String surname;
+    private String cookname;
     private String foodid;
     private String foodname;
     private String foodprice;
@@ -67,8 +70,7 @@ public class CreateOrder extends AppCompatActivity implements View.OnClickListen
         Bundle extras = intent.getExtras();
 
         cookid = extras.getString(Config.COOK_ID);
-        firstname = extras.getString(Config.COOK_FIRSTNAME);
-        surname = extras.getString(Config.COOK_SURNAME);
+        cookname = extras.getString(Config.COOK_FIRSTNAME);
         foodid = extras.getString(Config.FOOD_ID);
         foodname = extras.getString(Config.FOOD_NAME);
         foodprice = extras.getString(Config.FOOD_PRICE);
@@ -80,19 +82,17 @@ public class CreateOrder extends AppCompatActivity implements View.OnClickListen
 
         TextFoodName = (TextView) findViewById(textfoodName);
         TextFoodPrice = (TextView) findViewById(R.id.textPrice);
-        TextFirstName = (TextView) findViewById(R.id.textcookFirstName);
-        TextSurname = (TextView) findViewById(R.id.textcookSurname);
+        TextCookName = (TextView) findViewById(R.id.textcookName);
         Comment = (EditText) findViewById(R.id.comment);
         Quantity = (EditText) findViewById(R.id.quantity);
 
-        buttonOrder = (Button) findViewById(R.id.buttonOrder);
+        buttonConfirm = (Button) findViewById(R.id.buttonConfirm);
 
-        buttonOrder.setOnClickListener(this);
+        buttonConfirm.setOnClickListener(this);
 
         TextFoodName.setText(foodname);
         TextFoodPrice.setText(foodprice);
-        TextFirstName.setText(firstname);
-        TextSurname.setText(surname);
+        TextCookName.setText(cookname);
 
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         selectDate = (Button) findViewById(R.id.select_date_button);
@@ -157,7 +157,7 @@ public class CreateOrder extends AppCompatActivity implements View.OnClickListen
                 params.put(Config.KEY_ORDER_DUE,Date);
                 params.put(Config.KEY_ORDER_PRICE, Price);
                 params.put(Config.KEY_ORDER_QUANTITY, FoodQuantity);
-                params.put(Config.KEY_ORDER_COMMENTS, UserComment);
+                params.put(Config.KEY_ORDER_COMMENT, UserComment);
 
                 RequestHandler rh = new RequestHandler();
                 String res = rh.sendPostRequest(Config.URL_ADD_ORDER, params);
@@ -167,6 +167,45 @@ public class CreateOrder extends AppCompatActivity implements View.OnClickListen
 
         MakeOrder mo = new MakeOrder();
         mo.execute();
+    }
+
+    public void alertDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(CreateOrder.this);
+
+        // Setting Dialog Title
+        alertDialog.setTitle("Confirm Your Order...");
+
+        // Setting Dialog Message
+        alertDialog.setMessage("Are you sure you want to order this item?");
+
+        // Setting Icon to Dialog
+        alertDialog.setIcon(R.drawable.logo);
+
+        // Setting Positive "Yes" Button
+        alertDialog.setPositiveButton("Cash on Hand", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+                makeOrder();
+                startActivity(new Intent(CreateOrder.this, cookGalleryMain.class));
+            }
+        });
+
+        // Setting Negative "NO" Button
+        alertDialog.setNeutralButton("PayPal", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Cancel booking
+                startActivity(new Intent(CreateOrder.this, PayPal.class));
+            }
+        });
+
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Cancel booking
+               dialog.cancel();
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
     }
 
     /*@Override
@@ -218,10 +257,13 @@ public class CreateOrder extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if(v == buttonOrder){
-            makeOrder();
-            //Confirm here.
-            startActivity(new Intent(this,CustomerHome.class));
+
+        if(v == buttonConfirm){
+            alertDialog();
+        }
+
+        if(v == buttonCancel){
+            startActivity(new Intent(CreateOrder.this,Search.class));
         }
     }
 }

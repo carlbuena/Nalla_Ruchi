@@ -1,19 +1,21 @@
 package ps1623.nalla_ruchi;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
 /**
  * Created by Carl on 19/09/16.
  */
 public class CookHome extends BaseActivity implements View.OnClickListener {
 
-    private Button buttonViewMenu;
     private Button buttonAddFood;
-    private Button buttonViewOrders;
+    //private Button buttonViewOrders;
     private Button buttonViewBookings;
     private Button buttonViewProfile;
 
@@ -23,37 +25,32 @@ public class CookHome extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cook_home);
 
-        buttonViewMenu = (Button) findViewById(R.id.viewMenu);
         buttonAddFood = (Button) findViewById(R.id.addFood);
-        buttonViewOrders = (Button) findViewById(R.id.viewOrders);
+        //buttonViewOrders = (Button) findViewById(R.id.viewOrders);
         buttonViewBookings = (Button) findViewById(R.id.viewBookings);
         buttonViewProfile = (Button) findViewById(R.id.viewProfile);
 
 
         //Setting listeners to button
-        buttonViewMenu.setOnClickListener(this);
         buttonAddFood.setOnClickListener(this);
-        buttonViewOrders.setOnClickListener(this);
+        //buttonViewOrders.setOnClickListener(this);
         buttonViewBookings.setOnClickListener(this);
         buttonViewProfile.setOnClickListener(this);
 
     }
 
     public void onClick(View v) {
-        if (v == buttonViewMenu) {
-            //startActivity(new Intent(this, CreateOrder.class));
+        if (v == buttonViewBookings) {
+            startActivity(new Intent(this, CookBookings.class));
         }
         if (v == buttonAddFood) {
             startActivity(new Intent(this, InsertFood.class));
         }
-        if (v == buttonViewOrders) {
+        /*if (v == buttonViewOrders) {
             //startActivity(new Intent(this, CustomerLogin.class));
-        }
-        if (v == buttonViewBookings) {
-            //startActivity(new Intent(this, CustomerLogin.class));
-        }
+        }*/
         if (v == buttonViewProfile) {
-            //startActivity(new Intent(this, CustomerLogin.class));
+            startActivity(new Intent(this, CookProfile.class));
         }
 
     }
@@ -62,11 +59,31 @@ public class CookHome extends BaseActivity implements View.OnClickListener {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
-        navigationView.getMenu().findItem(R.id.customer_home).setVisible(false);
-        navigationView.getMenu().findItem(R.id.make_booking).setVisible(false);
-        navigationView.getMenu().findItem(R.id.view_cooks).setVisible(false);
-        navigationView.getMenu().findItem(R.id.view_food).setVisible(false);
-        return true;
+
+        //Reading the Preferences File
+        SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+        String Uname = userDetails.getString("username", "");
+        String Utype = userDetails.getString("usertype", "");
+
+        TextView user_email = (TextView) findViewById(R.id.user_email);
+        user_email.setText(Uname);
+
+        if(Utype.equalsIgnoreCase("customer")) {
+            navigationView.getMenu().findItem(R.id.cook_home).setVisible(false);
+            navigationView.getMenu().findItem(R.id.cook_profile).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_customers).setVisible(false);
+            navigationView.getMenu().findItem(R.id.add_food).setVisible(false);
+            navigationView.getMenu().findItem(R.id.cook_bookings).setVisible(false);
+            return true;
+        }
+        else {
+            navigationView.getMenu().findItem(R.id.customer_home).setVisible(false);
+            navigationView.getMenu().findItem(R.id.customer_profile).setVisible(false);
+            navigationView.getMenu().findItem(R.id.make_booking).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_bookings).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_cooks).setVisible(false);
+            return true;
+        }
     }
 
     @Override

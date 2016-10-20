@@ -3,20 +3,20 @@ package ps1623.nalla_ruchi;
 /**
  * Created by Carl on 29/08/16.
  */
-        import android.app.ProgressDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-        import android.content.SharedPreferences;
-        import android.os.AsyncTask;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,54 +24,54 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class ViewFood extends BaseActivity implements View.OnClickListener {
+public class ViewOrder extends BaseActivity implements View.OnClickListener {
 
+    private EditText editTextOrder_ID;
+    private EditText editTextCustomer_ID;
     private EditText editTextFood_ID;
-    private EditText editTextFood_Name;
+    private EditText editTextCook_ID;
+    private EditText editTextQuantity;
+    private EditText editTextDue;
     private EditText editTextPrice;
-    private EditText editTextDescription;
-    private EditText editTextEthnicity;
-    private EditText editTextType;
-    private EditText editTextDish;
-    private EditText editTextMenu_ID;
+    private EditText editTextComment;
 
     private Button buttonUpdate;
     private Button buttonDelete;
 
+    private String orderid;
+    private String customerid;
     private String foodid;
-    private String foodname;
-    private String foodprice;
-    private String fooddes;
-    private String foodeth;
-    private String foodtype;
-    private String fooddish;
-    private String foodmenu;
+    private String cookid;
+    private String quantity;
+    private String due;
+    private String price;
+    private String comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_food);
+        setContentView(R.layout.view_order);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        foodid = extras.getString(Config.FOOD_ID);
-        foodname = extras.getString(Config.FOOD_NAME);
-        foodprice = extras.getString(Config.FOOD_PRICE);
-        fooddes = extras.getString(Config.FOOD_DES);
-        foodeth = extras.getString(Config.FOOD_ETH);
-        foodtype = extras.getString(Config.FOOD_TYPE);
-        fooddish = extras.getString(Config.FOOD_DISH);
-        foodmenu = extras.getString(Config.FOOD_MENU_ID);
+        orderid = extras.getString(Config.ORDER_ID);
+        customerid = extras.getString(Config.ORDER_CUSTOMER_ID);
+        foodid = extras.getString(Config.ORDER_FOOD_ID);
+        cookid = extras.getString(Config.ORDER_COOK_ID);
+        quantity = extras.getString(Config.ORDER_QUANTITY);
+        due = extras.getString(Config.ORDER_DUE);
+        price = extras.getString(Config.ORDER_PRICE);
+        comment = extras.getString(Config.ORDER_COMMENT);
 
+        editTextOrder_ID = (EditText) findViewById(R.id.editTextOrder_ID);
+        editTextCustomer_ID = (EditText) findViewById(R.id.editTextCustomer_ID);
         editTextFood_ID = (EditText) findViewById(R.id.editTextFood_ID);
-        editTextFood_Name = (EditText) findViewById(R.id.editTextFood_Name);
+        editTextCook_ID = (EditText) findViewById(R.id.editTextCook_ID);
+        editTextQuantity = (EditText) findViewById(R.id.editTextQuantity);
+        editTextDue = (EditText) findViewById(R.id.editTextDue);
         editTextPrice = (EditText) findViewById(R.id.editTextPrice);
-        editTextDescription = (EditText) findViewById(R.id.editTextDescription);
-        editTextEthnicity = (EditText) findViewById(R.id.editTextEthnicity);
-        editTextType = (EditText) findViewById(R.id.editTextType);
-        editTextDish = (EditText) findViewById(R.id.editTextDish);
-        editTextMenu_ID = (EditText) findViewById(R.id.editTextMenu_ID);
+        editTextComment = (EditText) findViewById(R.id.editTextComment);
 
         buttonUpdate = (Button) findViewById(R.id.buttonUpdate);
         buttonDelete = (Button) findViewById(R.id.buttonDelete);
@@ -79,67 +79,67 @@ public class ViewFood extends BaseActivity implements View.OnClickListener {
         buttonUpdate.setOnClickListener(this);
         buttonDelete.setOnClickListener(this);
 
+        editTextOrder_ID.setText(orderid);
+        editTextCustomer_ID.setText(customerid);
         editTextFood_ID.setText(foodid);
-        editTextFood_Name.setText(foodname);
-        editTextPrice.setText(foodprice);
-        editTextDescription.setText(fooddes);
-        editTextEthnicity.setText(foodeth);
-        editTextType.setText(foodtype);
-        editTextDish.setText(fooddish);
-        editTextMenu_ID.setText(foodmenu);
+        editTextCook_ID.setText(cookid);
+        editTextQuantity.setText(quantity);
+        editTextDue.setText(due);
+        editTextPrice.setText(price);
+        editTextComment.setText(comment);
 
-        getFood();
+        getOrder();
     }
 
-    private void getFood(){
-        class GetFood extends AsyncTask<Void,Void,String>{
+    private void getOrder(){
+        class GetOrder extends AsyncTask<Void,Void,String>{
             ProgressDialog loading;
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ViewFood.this,"Fetching...","Wait...",false,false);
+                loading = ProgressDialog.show(ViewOrder.this,"Fetching...","Wait...",false,false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                showFood(s);
+                showOrder(s);
             }
 
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_GET_FOOD,foodid);
+                String s = rh.sendGetRequestParam(Config.URL_GET_ALL_ORDERS,orderid);
                 return s;
             }
         }
-        GetFood ge = new GetFood();
-        ge.execute();
+        GetOrder go = new GetOrder();
+        go.execute();
     }
 
-    private void showFood(String json){
+    private void showOrder(String json){
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
             JSONObject c = result.getJSONObject(0);
-            String id = c.getString(Config.TAG_ID);
-            String name = c.getString(Config.TAG_NAME);
-            String price = c.getString(Config.TAG_PRICE);
-            String des = c.getString(Config.TAG_DES);
-            String eth = c.getString(Config.TAG_ETH);
-            String type = c.getString(Config.TAG_TYPE);
-            String dish = c.getString(Config.TAG_DISH);
-            String menu_id = c.getString(Config.TAG_FOOD_MENU_ID);
+            String orderid = c.getString(Config.TAG_ORDER_ID);
+            String customerid = c.getString(Config.TAG_ORDER_CUSTOMER_ID);
+            String foodid = c.getString(Config.TAG_ORDER_FOOD_ID);
+            String cookid = c.getString(Config.TAG_ORDER_COOK_ID);
+            String quantity = c.getString(Config.TAG_ORDER_QUANTITY);
+            String due = c.getString(Config.TAG_ORDER_DUE);
+            String price = c.getString(Config.TAG_ORDER_PRICE);
+            String comment = c.getString(Config.TAG_ORDER_COMMENT);
 
-            editTextFood_ID.setText(id);
-            editTextFood_Name.setText(name);
+            editTextOrder_ID.setText(orderid);
+            editTextCustomer_ID.setText(customerid);
+            editTextFood_ID.setText(foodid);
+            editTextCook_ID.setText(cookid);
+            editTextQuantity.setText(quantity);
+            editTextDue.setText(due);
             editTextPrice.setText(price);
-            editTextDescription.setText(des);
-            editTextEthnicity.setText(eth);
-            editTextType.setText(type);
-            editTextDish.setText(dish);
-            editTextMenu_ID.setText(menu_id);
+            editTextComment.setText(comment);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -148,45 +148,45 @@ public class ViewFood extends BaseActivity implements View.OnClickListener {
 
 
     private void updateFood(){
+        final String Order_ID = editTextOrder_ID.getText().toString().trim();
+        final String Customer_ID = editTextCustomer_ID.getText().toString().trim();
         final String Food_ID = editTextFood_ID.getText().toString().trim();
-        final String Food_Name = editTextFood_Name.getText().toString().trim();
+        final String Cook_ID = editTextCook_ID.getText().toString().trim();
+        final String Quantity = editTextQuantity.getText().toString().trim();
+        final String Due = editTextDue.getText().toString().trim();
         final String Price = editTextPrice.getText().toString().trim();
-        final String Description = editTextDescription.getText().toString().trim();
-        final String Ethnicity = editTextEthnicity.getText().toString().trim();
-        final String Type = editTextType.getText().toString().trim();
-        final String Dish = editTextDish.getText().toString().trim();
-        final String Menu_ID = editTextMenu_ID.getText().toString().trim();
+        final String Comment = editTextComment.getText().toString().trim();
 
         class UpdateFood extends AsyncTask<Void,Void,String>{
             ProgressDialog loading;
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ViewFood.this,"Updating...","Wait...",false,false);
+                loading = ProgressDialog.show(ViewOrder.this,"Updating...","Wait...",false,false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(ViewFood.this,s,Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewOrder.this,s,Toast.LENGTH_LONG).show();
             }
 
             @Override
             protected String doInBackground(Void... params) {
                 HashMap<String,String> hashMap = new HashMap<>();
-                hashMap.put(Config.KEY_FOOD_ID,Food_ID);
-                hashMap.put(Config.KEY_FOOD_NAME,Food_Name);
-                hashMap.put(Config.KEY_FOOD_PRICE,Price);
-                hashMap.put(Config.KEY_FOOD_DES,Description);
-                hashMap.put(Config.KEY_FOOD_ETH,Ethnicity);
-                hashMap.put(Config.KEY_FOOD_TYPE,Type);
-                hashMap.put(Config.KEY_FOOD_DISH,Dish);
-                hashMap.put(Config.KEY_FOOD_MENU_ID,Menu_ID);
+                hashMap.put(Config.KEY_ORDER_ID,Order_ID);
+                hashMap.put(Config.KEY_ORDER_CUSTOMER_ID,Customer_ID);
+                hashMap.put(Config.KEY_ORDER_FOOD_ID,Food_ID);
+                hashMap.put(Config.KEY_ORDER_COOK_ID,Cook_ID);
+                hashMap.put(Config.KEY_ORDER_QUANTITY,Quantity);
+                hashMap.put(Config.KEY_ORDER_DUE,Due);
+                hashMap.put(Config.KEY_ORDER_PRICE,Price);
+                hashMap.put(Config.KEY_ORDER_COMMENT,Comment);
 
                 RequestHandler rh = new RequestHandler();
 
-                String s = rh.sendPostRequest(Config.URL_UPDATE_FOOD,hashMap);
+                String s = rh.sendPostRequest(Config.URL_UPDATE_ORDER,hashMap);
 
                 return s;
             }
@@ -196,32 +196,32 @@ public class ViewFood extends BaseActivity implements View.OnClickListener {
         ue.execute();
     }
 
-    private void deleteFood(){
-        class DeleteFood extends AsyncTask<Void,Void,String> {
+    private void deleteOrder(){
+        class DeleteOrder extends AsyncTask<Void,Void,String> {
             ProgressDialog loading;
 
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(ViewFood.this, "Updating...", "Wait...", false, false);
+                loading = ProgressDialog.show(ViewOrder.this, "Updating...", "Wait...", false, false);
             }
 
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(ViewFood.this, s, Toast.LENGTH_LONG).show();
+                Toast.makeText(ViewOrder.this, s, Toast.LENGTH_LONG).show();
             }
 
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequestParam(Config.URL_DELETE_FOOD, foodid);
+                String s = rh.sendGetRequestParam(Config.URL_DELETE_ORDER, orderid);
                 return s;
             }
         }
 
-        DeleteFood de = new DeleteFood();
+        DeleteOrder de = new DeleteOrder();
         de.execute();
     }
 
@@ -233,8 +233,8 @@ public class ViewFood extends BaseActivity implements View.OnClickListener {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        deleteFood();
-                        startActivity(new Intent(ViewFood.this,ViewAllFood.class));
+                        deleteOrder();
+                        startActivity(new Intent(ViewOrder.this,CustomerOrders.class));
                     }
                 });
 
@@ -254,7 +254,7 @@ public class ViewFood extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         if(v == buttonUpdate){
             updateFood();
-            startActivity(new Intent(ViewFood.this,ViewAllFood.class));
+            startActivity(new Intent(ViewOrder.this,ViewAllFood.class));
         }
 
         if(v == buttonDelete){

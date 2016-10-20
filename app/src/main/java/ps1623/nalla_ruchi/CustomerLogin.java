@@ -2,6 +2,7 @@ package ps1623.nalla_ruchi;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -57,8 +58,15 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
         loginButton.setOnClickListener(this);
     }
     public void invokeLogin(){
-        String email = editTextUserName.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+        String email = editTextUserName.getText().toString();
+        String password = editTextPassword.getText().toString();
+        String customer = "customer";
+        SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+        SharedPreferences.Editor edit = userDetails.edit();
+        edit.clear();
+        edit.putString("username", email);
+        edit.putString("usertype", customer);
+        edit.commit();
         login(email,password);
     }
     public void login(final String email, final String password) {
@@ -75,7 +83,7 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
                 super.onPostExecute(s);
                 loading.dismiss();
                 if (s.equalsIgnoreCase("success")) {
-                    Intent intent = new Intent(CustomerLogin.this, foodGalleryMain.class);
+                    Intent intent = new Intent(CustomerLogin.this, cookGalleryMain.class);
                     intent.putExtra(USER_NAME, email);
                     startActivity(intent);
                 } else {
@@ -145,9 +153,4 @@ public class CustomerLogin extends AppCompatActivity implements View.OnClickList
         return valid;
     }
 
-    //@Override
-    //public void onBackPressed()
-    //{
-      //  moveTaskToBack(true);
-    //}
 }

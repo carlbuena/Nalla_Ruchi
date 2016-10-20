@@ -3,8 +3,11 @@ package ps1623.nalla_ruchi;
 /**
  * Created by Carl on 29/08/16.
  */
+
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -184,11 +188,49 @@ public class ConfirmBooking extends BaseActivity implements View.OnClickListener
         ab.execute();
     }
 
+    public void alertDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(ConfirmBooking.this);
+
+        // Setting Dialog Title
+        alertDialog.setTitle("Confirm Booking...");
+
+        // Setting Dialog Message
+        alertDialog.setMessage("Are you sure you want book this class?");
+
+        // Setting Icon to Dialog
+        alertDialog.setIcon(R.drawable.logo);
+
+        // Setting Positive "Yes" Button
+        alertDialog.setPositiveButton("Cash on Hand", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+                addBooking();
+                startActivity(new Intent(ConfirmBooking.this, cookGalleryMain.class));
+            }
+        });
+
+        // Setting Negative "NO" Button
+        alertDialog.setNeutralButton("PayPal", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Cancel booking
+                startActivity(new Intent(ConfirmBooking.this, PayPal.class));
+            }
+        });
+
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Cancel booking
+                dialog.cancel();
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
+    }
+
     @Override
     public void onClick(View v) {
         if(v == buttonConfirm){
-            addBooking();
-            startActivity(new Intent(ConfirmBooking.this, CustomerHome.class));
+            alertDialog();
         }
 
         if(v == buttonCancel){
@@ -199,10 +241,30 @@ public class ConfirmBooking extends BaseActivity implements View.OnClickListener
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
-        navigationView.getMenu().findItem(R.id.customer_home).setVisible(false);
-        navigationView.getMenu().findItem(R.id.make_booking).setVisible(false);
-        navigationView.getMenu().findItem(R.id.view_cooks).setVisible(false);
-        return true;
+        //Reading the Preferences File
+        SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+        String Uname = userDetails.getString("username", "");
+        String Utype = userDetails.getString("usertype", "");
+
+        TextView user_email = (TextView) findViewById(R.id.user_email);
+        user_email.setText(Uname);
+
+        if(Utype.equalsIgnoreCase("customer")) {
+            navigationView.getMenu().findItem(R.id.cook_home).setVisible(false);
+            navigationView.getMenu().findItem(R.id.cook_profile).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_customers).setVisible(false);
+            navigationView.getMenu().findItem(R.id.add_food).setVisible(false);
+            navigationView.getMenu().findItem(R.id.cook_bookings).setVisible(false);
+            return true;
+        }
+        else {
+            navigationView.getMenu().findItem(R.id.customer_home).setVisible(false);
+            navigationView.getMenu().findItem(R.id.customer_profile).setVisible(false);
+            navigationView.getMenu().findItem(R.id.make_booking).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_bookings).setVisible(false);
+            navigationView.getMenu().findItem(R.id.view_cooks).setVisible(false);
+            return true;
+        }
     }
 
     @Override

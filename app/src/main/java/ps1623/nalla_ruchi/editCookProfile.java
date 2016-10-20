@@ -96,6 +96,8 @@ public class editCookProfile extends AppCompatActivity implements View.OnClickLi
         editTextCook_State.setText(cookState);
         editTextCook_DOR.setText(cookDOR);
 
+        editTextCook_DOR.setKeyListener(null);
+
         getCook();
     }
 

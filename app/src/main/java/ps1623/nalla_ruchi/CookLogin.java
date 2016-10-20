@@ -2,6 +2,7 @@ package ps1623.nalla_ruchi;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.cast.framework.SessionManager;
 
 import java.util.HashMap;
 
@@ -22,6 +25,7 @@ public class CookLogin extends AppCompatActivity implements View.OnClickListener
 
     private EditText editTextUserName;
     private EditText editTextPassword;
+    SessionManager session;
 
     public static final String USER_NAME = "USERNAME";
     public static final String PASSWORD = "PASSWORD";
@@ -58,6 +62,13 @@ public class CookLogin extends AppCompatActivity implements View.OnClickListener
     public void invokeLogin(){
         String email = editTextUserName.getText().toString();
         String password = editTextPassword.getText().toString();
+        String cook = "cook";
+        SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+        SharedPreferences.Editor edit = userDetails.edit();
+        edit.clear();
+        edit.putString("username", email);
+        edit.putString("usertype", cook);
+        edit.commit();
         login(email,password);
     }
     public void login(final String email, final String password) {
@@ -120,7 +131,7 @@ public class CookLogin extends AppCompatActivity implements View.OnClickListener
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
         loginButton.setEnabled(true);
-        }
+    }
 
     public boolean validate() {
         boolean valid = true;

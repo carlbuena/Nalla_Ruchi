@@ -115,7 +115,7 @@ public class BaseActivity extends AppCompatActivity implements
                 return true;
 
             case R.id.customer_home:
-                startActivity(new Intent(this, CustomerHome.class));
+                startActivity(new Intent(this, foodGalleryMain.class));
                 return true;
 
             case R.id.cook_profile:
@@ -147,20 +147,20 @@ public class BaseActivity extends AppCompatActivity implements
                 return true;
 
             case R.id.food_gallery:
-                startActivity(new Intent(this, foodGalleryMain.class));
+                    startActivity(new Intent(this, foodGalleryMain.class));
+                    return true;
+
+            case R.id.cook_gallery:
+                startActivity(new Intent(this, cookGalleryMain.class));
                 return true;
 
             case R.id.view_bookings:
-                //TODO: make viewbookings class
-                //startActivity(new Intent(this, ViewBookings.class));
+                //TODO: make viewmybookings class for customers
+                //startActivity(new Intent(this, ViewMyBookings.class));
                 return true;
 
             case R.id.make_booking:
                 startActivity(new Intent(this, Booking.class));
-                return true;
-
-            case R.id.logout:
-                startActivity(new Intent(this, HomePage.class));
                 return true;
 
             case R.id.customer_profile:
@@ -169,6 +169,14 @@ public class BaseActivity extends AppCompatActivity implements
 
             case R.id.cook_bookings:
                 startActivity(new Intent(this, CookBookings.class));
+                return true;
+
+            case R.id.logout:
+                startActivity(new Intent(this, HomePage.class));
+                return true;
+
+            case R.id.video:
+                startActivity(new Intent(this, youtubePage.class));
                 return true;
 
         }

@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/primary_material_dark</item>
         <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
         <item name="colorAccent">@color/accent_material_dark</item>
+        <item name="colorButtonNormal">#B284BE</item>
+        <item name="android:colorButtonNormal">#B284BE</item>
     </style>
 
     <style name="AppThemeBar" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -13,6 +15,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorButtonNormal">#B284BE</item>
+        <item name="android:colorButtonNormal">#B284BE</item>
     </style>
 
     <style name="MyButton" parent="Theme.AppCompat.Light.DarkActionBar">

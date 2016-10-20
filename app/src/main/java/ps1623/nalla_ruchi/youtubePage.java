@@ -29,7 +29,7 @@ public class youtubePage extends YouTubeBaseActivity implements YouTubePlayer.On
     @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
         if (!wasRestored) {
-            player.cueVideo("fhWaJi1Hsfo"); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
+            player.cueVideo("MOPQp4mEWfk");
         }
     }
 
