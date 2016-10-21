@@ -55,15 +55,15 @@ public class editCustomerProfile extends AppCompatActivity implements View.OnCli
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        customerid = extras.getString(Config.CUSTOMER_ID);
-        customerFirstName = extras.getString(Config.CUSTOMER_FIRSTNAME);
-        customerSurname = extras.getString(Config.CUSTOMER_SURNAME);
-        customerMobile = extras.getString(Config.CUSTOMER_MOBILE);
-        customerEmail = extras.getString(Config.CUSTOMER_EMAIL);
-        customerAddress = extras.getString(Config.CUSTOMER_ADDRESS);
-        customerSuburb = extras.getString(Config.CUSTOMER_SUBURB);
-        customerState = extras.getString(Config.CUSTOMER_STATE);
-        customerDOR = extras.getString(Config.CUSTOMER_DOR);
+        customerid = extras.getString(Config.TAG_CUSTOMER_ID);
+        customerFirstName = extras.getString(Config.TAG_FIRSTNAME);
+        customerSurname = extras.getString(Config.TAG_SURNAME);
+        customerMobile = extras.getString(Config.TAG_MOBILE);
+        customerEmail = extras.getString(Config.TAG_EMAIL);
+        customerAddress = extras.getString(Config.TAG_ADDRESS);
+        customerSuburb = extras.getString(Config.TAG_SUBURB);
+        customerState = extras.getString(Config.TAG_STATE);
+        customerDOR = extras.getString(Config.TAG_DOR);
 
         editTextCustomer_ID = (EditText) findViewById(R.id.editTextCustomer_ID);
         editTextCustomer_First_Name = (EditText) findViewById(R.id.editTextCustomer_First_Name);

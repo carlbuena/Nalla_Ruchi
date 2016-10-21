@@ -12,10 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -25,29 +23,57 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CustomerProfile extends BaseActivity implements ListView.OnItemClickListener {
+public class CustomerProfile extends BaseActivity implements View.OnClickListener {
 
     private ListView listView;
 
     private String JSON_STRING;
 
+    private Button buttonEdit;
+
+    private TextView editTextCustomer_ID;
+    private TextView editTextCustomer_First_Name;
+    private TextView editTextCustomer_Surname;
+    private TextView editTextCustomer_Mobile;
+    private TextView editTextCustomer_Email;
+    private TextView editTextCustomer_Address;
+    private TextView editTextCustomer_Suburb;
+    private TextView editTextCustomer_State;
+    private TextView editTextCustomer_DOR;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.customer_profile);
-        listView = (ListView) findViewById(R.id.listView);
-        listView.setOnItemClickListener(this);
+        setContentView(R.layout.customer_profile_list);
+
+        editTextCustomer_ID = (TextView) findViewById(R.id.Customer_ID);
+        editTextCustomer_First_Name = (TextView) findViewById(R.id.FirstName);
+        editTextCustomer_Surname = (TextView) findViewById(R.id.Surname);
+        editTextCustomer_Mobile = (TextView) findViewById(R.id.Mobile);
+        editTextCustomer_Email = (TextView) findViewById(R.id.Email);
+        editTextCustomer_Address = (TextView) findViewById(R.id.Address);
+        editTextCustomer_Suburb = (TextView) findViewById(R.id.Suburb);
+        editTextCustomer_State = (TextView) findViewById(R.id.State);
+        editTextCustomer_DOR = (TextView) findViewById(R.id.DateOfRegistration);
+
+        buttonEdit = (Button) findViewById(R.id.buttonEdit);
+        buttonEdit.setOnClickListener(this);
+
         getJSON();
     }
 
-    private void showCustomer(){
+    private void showCustomer() {
         JSONObject jsonObject = null;
-        ArrayList<HashMap<String,String>> list = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
         try {
             jsonObject = new JSONObject(JSON_STRING);
             JSONArray result = jsonObject.getJSONArray(Config.TAG_JSON_ARRAY);
 
-            for(int i = 0; i<result.length(); i++){
+            SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+            String Uname = userDetails.getString("username", "");
+            String Utype = userDetails.getString("usertype", "");
+
+            for (int i = 0; i < result.length(); i++) {
                 JSONObject jo = result.getJSONObject(i);
                 String id = jo.getString(Config.TAG_CUSTOMER_ID);
                 String firstName = jo.getString(Config.TAG_FIRSTNAME);
@@ -59,29 +85,24 @@ public class CustomerProfile extends BaseActivity implements ListView.OnItemClic
                 String state = jo.getString(Config.TAG_STATE);
                 String dor = jo.getString(Config.TAG_DOR);
 
-                HashMap<String,String> customer = new HashMap<>();
-                customer.put(Config.TAG_CUSTOMER_ID,id);
-                customer.put(Config.TAG_FIRSTNAME,firstName);
-                customer.put(Config.TAG_SURNAME,surname);
-                customer.put(Config.TAG_MOBILE,mobile);
-                customer.put(Config.TAG_EMAIL,email);
-                customer.put(Config.TAG_ADDRESS,address);
-                customer.put(Config.TAG_SUBURB,suburb);
-                customer.put(Config.TAG_STATE,state);
-                customer.put(Config.TAG_DOR,dor);
-                list.add(customer);
+                if (email.equalsIgnoreCase(Uname)) {
+                    editTextCustomer_ID.setText(id);
+                    editTextCustomer_First_Name.setText(firstName);
+                    editTextCustomer_Surname.setText(surname);
+                    editTextCustomer_Mobile.setText(mobile);
+                    editTextCustomer_Email.setText(email);
+                    editTextCustomer_Address.setText(address);
+                    editTextCustomer_Suburb.setText(suburb);
+                    editTextCustomer_State.setText(state);
+                    editTextCustomer_DOR.setText(dor);
+                    break;
+                }
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        ListAdapter adapter = new SimpleAdapter(
-                CustomerProfile.this, list, R.layout.customer_profile_list,
-                new String[]{Config.TAG_CUSTOMER_ID,Config.TAG_FIRSTNAME,Config.TAG_SURNAME,Config.TAG_MOBILE,Config.TAG_EMAIL,Config.TAG_ADDRESS,Config.TAG_SUBURB,Config.TAG_STATE,Config.TAG_DOR},
-                new int[]{R.id.Customer_ID, R.id.FirstName, R.id.Surname, R.id.Mobile, R.id.Email, R.id.Address, R.id.Suburb, R.id.State, R.id.DateOfRegistration});
-
-        listView.setAdapter(adapter);
     }
 
     private void getJSON(){
@@ -105,7 +126,7 @@ public class CustomerProfile extends BaseActivity implements ListView.OnItemClic
             @Override
             protected String doInBackground(Void... params) {
                 RequestHandler rh = new RequestHandler();
-                String s = rh.sendGetRequest(Config.URL_CUSTOMER_PROFILE);
+                String s = rh.sendGetRequest(Config.URL_GET_ALL_CUSTOMERS);
                 return s;
             }
         }
@@ -114,36 +135,45 @@ public class CustomerProfile extends BaseActivity implements ListView.OnItemClic
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, editCustomerProfile.class);
-        HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
+    public void onClick(View v){
+        if(v == buttonEdit) {
+            Intent intent = new Intent(CustomerProfile.this, editCookProfile.class);
 
-        String customer_id = map.get(Config.TAG_CUSTOMER_ID).toString();
-        String firstName = map.get(Config.TAG_FIRSTNAME).toString();
-        String surname = map.get(Config.TAG_SURNAME).toString();
-        String mobile = map.get(Config.TAG_MOBILE).toString();
-        String email = map.get(Config.TAG_EMAIL).toString();
-        String address = map.get(Config.TAG_ADDRESS).toString();
-        String suburb = map.get(Config.TAG_SUBURB).toString();
-        String state = map.get(Config.TAG_STATE).toString();
-        String dor =  map.get(Config.TAG_DOR).toString();
+            String customer_id = editTextCustomer_ID.getText().toString();
+            String firstName = editTextCustomer_First_Name.getText().toString();
+            String surname = editTextCustomer_Surname.getText().toString();
+            String mobile = editTextCustomer_Mobile.getText().toString();
+            String email = editTextCustomer_Email.getText().toString();
+            String address = editTextCustomer_Address.getText().toString();
+            String suburb = editTextCustomer_Suburb.getText().toString();
+            String state = editTextCustomer_State.getText().toString();
+            String dor = editTextCustomer_DOR.getText().toString();
 
-        Bundle extras = new Bundle();
+            Bundle extras = new Bundle();
 
-        extras.putString(Config.TAG_CUSTOMER_ID,customer_id);
-        extras.putString(Config.TAG_FIRSTNAME,firstName);
-        extras.putString(Config.TAG_SURNAME,surname);
-        extras.putString(Config.TAG_MOBILE,mobile);
-        extras.putString(Config.TAG_EMAIL,email);
-        extras.putString(Config.TAG_ADDRESS,address);
-        extras.putString(Config.TAG_SUBURB,suburb);
-        extras.putString(Config.TAG_STATE,state);
-        extras.putString(Config.TAG_DOR,dor);
+            extras.putString(Config.TAG_CUSTOMER_ID, customer_id);
+            extras.putString(Config.TAG_FIRSTNAME, firstName);
+            extras.putString(Config.TAG_SURNAME, surname);
+            extras.putString(Config.TAG_MOBILE, mobile);
+            extras.putString(Config.TAG_EMAIL, email);
+            extras.putString(Config.TAG_ADDRESS, address);
+            extras.putString(Config.TAG_SUBURB, suburb);
+            extras.putString(Config.TAG_STATE, state);
+            extras.putString(Config.TAG_DOR, dor);
 
-        intent.putExtras(extras);
+            intent.putExtras(extras);
 
-        startActivity(intent);
+            SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+            String Uname = userDetails.getString("username", "");
+            String Utype = userDetails.getString("usertype", "");
+
+            if(Uname.equalsIgnoreCase(email) && Utype.equalsIgnoreCase("customer")) {
+                startActivity(intent);
+            }
+        }
     }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

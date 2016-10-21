@@ -57,16 +57,16 @@ public class editCookProfile extends AppCompatActivity implements View.OnClickLi
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        cookid = extras.getString(Config.COOK_ID);
-        role = extras.getString(Config.COOK_ROLE);
-        cookFirstName = extras.getString(Config.COOK_FIRSTNAME);
-        cookSurname = extras.getString(Config.COOK_SURNAME);
-        cookMobile = extras.getString(Config.COOK_MOBILE);
-        cookEmail = extras.getString(Config.COOK_EMAIL);
-        cookAddress = extras.getString(Config.COOK_ADDRESS);
-        cookSuburb = extras.getString(Config.COOK_SUBURB);
-        cookState = extras.getString(Config.COOK_STATE);
-        cookDOR = extras.getString(Config.COOK_DOR);
+        cookid = extras.getString(Config.TAG_COOK_ID);
+        role = extras.getString(Config.TAG_COOK_ROLE);
+        cookFirstName = extras.getString(Config.TAG_COOK_FIRSTNAME);
+        cookSurname = extras.getString(Config.TAG_COOK_SURNAME);
+        cookMobile = extras.getString(Config.TAG_COOK_MOBILE);
+        cookEmail = extras.getString(Config.TAG_COOK_EMAIL);
+        cookAddress = extras.getString(Config.TAG_COOK_ADDRESS);
+        cookSuburb = extras.getString(Config.TAG_COOK_SUBURB);
+        cookState = extras.getString(Config.TAG_COOK_STATE);
+        cookDOR = extras.getString(Config.TAG_COOK_DOR);
 
         editTextCook_ID = (EditText) findViewById(R.id.editTextCook_ID);
         editTextRole = (EditText) findViewById(R.id.editTextRole);

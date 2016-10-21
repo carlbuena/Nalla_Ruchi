@@ -21,6 +21,7 @@ public class Config {
     public static final String URL_UPDATE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/updateCustomer.php";
     public static final String URL_DELETE_CUSTOMER = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/deleteCustomer.php?Customer_ID=";
     public static final String URL_CUSTOMER_PROFILE = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/customerProfile.php";
+    //public static final String URL_GET_CUSTOMER_EMAIL = "http://pe-ps1623.scem.westernsydney.edu.au/api/customer/customerEmail.php?";
 
     public static final String URL_ADD_COOK="http://pe-ps1623.scem.westernsydney.edu.au/api/cook/addCook.php";
     public static final String URL_GET_ALL_COOKS = "http://pe-ps1623.scem.westernsydney.edu.au/api/cook/getAllCooks.php";
