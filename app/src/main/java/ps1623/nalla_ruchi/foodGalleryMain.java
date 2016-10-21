@@ -31,6 +31,7 @@ import java.util.List;
 public class foodGalleryMain extends BaseActivity implements RecyclerView.OnScrollChangeListener{
 
     private int foodid;
+    private String foodname;
     //Creating a List of superheroes
     private List<foodGallery> listFoodPhotos;
 
@@ -136,6 +137,7 @@ public class foodGalleryMain extends BaseActivity implements RecyclerView.OnScro
                 foodGallery.setPublisher(json.getString(Config.TAG_TYPE));
 
                 foodid = foodGallery.getfoodID();
+                foodname = foodGallery.getName();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -169,13 +171,19 @@ public class foodGalleryMain extends BaseActivity implements RecyclerView.OnScro
 
     public void onClick(View v) {
 
-        Intent intent = new Intent(this, youtubePage.class);
+        Intent intent = new Intent(this, Search.class);
         //foodGallery foodGallery = new foodGallery();
         //int id = foodGallery.getfoodID();
         String id = String.valueOf(foodid);
-        Bundle extras = new Bundle();
-        extras.putString(Config.TAG_ID, id);
-        intent.putExtras(extras);
+
+        SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+        String Uname = userDetails.getString("username", "");
+        String Utype = userDetails.getString("usertype", "");
+
+        String query = foodname;
+        SharedPreferences.Editor edit = userDetails.edit();
+        edit.putString("query", query);
+        edit.commit();
         startActivity(intent);
 
     }

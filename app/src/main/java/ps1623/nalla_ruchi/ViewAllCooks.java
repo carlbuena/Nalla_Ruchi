@@ -118,7 +118,7 @@ public class ViewAllCooks extends BaseActivity implements ListView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ViewCook.class);
+        Intent intent = new Intent(this, Search.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
 
         //Reading the Preferences File
@@ -150,7 +150,13 @@ public class ViewAllCooks extends BaseActivity implements ListView.OnItemClickLi
         extras.putString(Config.TAG_COOK_STATE,state);
         extras.putString(Config.TAG_COOK_DOR,dor);
 
-        intent.putExtras(extras);
+        String query = firstName;
+        SharedPreferences.Editor edit = userDetails.edit();
+        edit.putString("query", query);
+        edit.commit();
+        startActivity(intent);
+
+        //intent.putExtras(extras);
 
         /*if(Utype.equalsIgnoreCase("cook")) {
             startActivity(intent);

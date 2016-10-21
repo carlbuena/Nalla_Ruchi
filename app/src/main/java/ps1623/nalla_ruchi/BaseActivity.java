@@ -2,6 +2,8 @@ package ps1623.nalla_ruchi;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.annotation.LayoutRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -123,6 +125,11 @@ public class BaseActivity extends AppCompatActivity implements
                 return true;
 
             case R.id.search:
+                SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+                String query = "";
+                SharedPreferences.Editor edit = userDetails.edit();
+                edit.putString("query", query);
+                edit.commit();
                 startActivity(new Intent(this, Search.class));
                 return true;
 
@@ -176,7 +183,15 @@ public class BaseActivity extends AppCompatActivity implements
                 return true;
 
             case R.id.video:
-                startActivity(new Intent(this, youtubePage.class));
+                Intent myWebLink = new Intent(android.content.Intent.ACTION_VIEW);
+                myWebLink.setData(Uri.parse("https://www.youtube.com/channel/UCjnWsfROeb3Oy44tEPZYLkw"));
+                startActivity(myWebLink);
+                return true;
+
+            case R.id.facebook:
+                Intent myFacebookLink = new Intent(android.content.Intent.ACTION_VIEW);
+                myFacebookLink.setData(Uri.parse("https://www.facebook.com/NALLA-RUCHI-1600188320276589/?notif_t=fbpage_fan_invite&notif_id=1476934206495434"));
+                startActivity(myFacebookLink);
                 return true;
 
         }

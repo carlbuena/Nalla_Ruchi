@@ -113,7 +113,7 @@ public class ViewAllFood extends BaseActivity implements ListView.OnItemClickLis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ViewFood.class);
+        Intent intent = new Intent(this, CreateOrder.class);
         HashMap<String,String> map =(HashMap)parent.getItemAtPosition(position);
 
         //Reading the Preferences File

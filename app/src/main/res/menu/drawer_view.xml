@@ -35,7 +35,7 @@
         android:title="View Customers"/>
     <item
         android:id="@+id/view_cooks"
-        android:title="View Cooks"/>
+        android:title="Contacts"/>
     <item
         android:id="@+id/view_map"
         android:title="View Map"/>
@@ -47,7 +47,10 @@
         android:title="Cook Gallery"/>
     <item
         android:id="@+id/video"
-        android:title="Video"/>
+        android:title="YouTube Channel"/>
+    <item
+        android:id="@+id/facebook"
+        android:title="Facebook Page"/>
     <item
         android:id="@+id/logout"
         android:title="Logout"/>

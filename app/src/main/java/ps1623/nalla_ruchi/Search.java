@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -36,6 +37,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ps1623.nalla_ruchi.R.id.action_search;
+
 public class Search extends AppCompatActivity {
 
     // CONNECTION_TIMEOUT and READ_TIMEOUT are in milliseconds
@@ -60,15 +63,25 @@ public class Search extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.search_main, menu);
 
         // Get Search item from action bar and Get Search service
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+        MenuItem searchItem = menu.findItem(action_search);
         SearchManager searchManager = (SearchManager) Search.this.getSystemService(Context.SEARCH_SERVICE);
+
+        SharedPreferences userDetails = this.getSharedPreferences("userdetails", MODE_PRIVATE);
+        String Uname = userDetails.getString("username", "");
+        String Utype = userDetails.getString("usertype", "");
+        String Uquery = userDetails.getString("query", "");
+
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
         }
+
         if (searchView != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(Search.this.getComponentName()));
             searchView.setIconified(false);
         }
+
+        searchView.setQuery(Uquery, false);
+        menu.findItem(R.id.action_search).expandActionView();
 
         return true;
     }

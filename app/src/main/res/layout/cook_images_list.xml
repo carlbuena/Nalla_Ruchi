@@ -43,7 +43,7 @@
 
                 <TableRow>
                     <TextView
-                        android:text="FoodType"
+                        android:text="Food Type"
                         android:visibility="gone"
                         android:paddingRight="10dp"
                         android:layout_width="wrap_content"
@@ -61,9 +61,45 @@
 
             </TableLayout>
 
+            <TextView
+                android:text="Rate Quantity"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
             <RatingBar
-                android:id="@+id/ratingBar"
+                android:id="@+id/ratingQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:rating="0.0" />
+
+            <TextView
+                android:text="Rate Quality"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <RatingBar
+                android:id="@+id/ratingQuality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:rating="0.0" />
+
+            <TextView
+                android:text="Rate Delivery"
+                android:paddingRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <RatingBar
+                android:id="@+id/ratingDelivery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
